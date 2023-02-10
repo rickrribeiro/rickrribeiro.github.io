@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 18
+env:
+  - OWNER=Ricardo
+
+jobs:
+  include:
+    - stage: lint and unit
+      install:
+        - npm i
+      script:
+        - npm run lint
+        - npm test
+
+    - stage: deploy
+      if: branch = main
+      install:
+        - npm i
+      script:
+        - npm run deploy -- -m "Travis deploy"
