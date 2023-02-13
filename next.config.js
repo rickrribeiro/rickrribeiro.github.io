@@ -1,33 +1,33 @@
-// // next.config.js
+// next.config.js
 
-// const isGithubActions = process.env.GITHUB_ACTIONS || false
-// let configs
+const isGithubActions = process.env.GITHUB_ACTIONS || false
+let configs
 
-// if (isGithubActions) {
-//   let assetPrefix = ''
-//   let basePath = '/'
-//   // trim off `<owner>/`
-//   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+if (isGithubActions) {
+  let assetPrefix = ''
+  let basePath = '/'
+  // trim off `<owner>/`
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
-//   assetPrefix = `/${repo}/`
-//   basePath = `/${repo}`
-//   configs = {
-//     assetPrefix: assetPrefix,
-//     basePath: basePath
-//     // images: {
-//     //   loader: 'imgix',
-//     //   path: 'the "domain" of your Imigix source',
-//     // },
-//   }
-// } else {
-//   configs = {
-//     experimental: {
-//       appDir: true
-//     }
-//   }
-// }
+  assetPrefix = `/${repo}/`
+  basePath = `/${repo}`
+  configs = {
+    assetPrefix: assetPrefix,
+    basePath: basePath,
+    images: {
+      loader: 'akamai',
+      path: ''
+    }
+  }
+} else {
+  configs = {
+    experimental: {
+      appDir: true
+    }
+  }
+}
 
-// module.exports = configs
+module.exports = configs
 
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {
@@ -50,15 +50,15 @@
 
 // module.exports = nextConfig
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    loader: 'akamai',
-    path: ''
-  },
-  reactStrictMode: true,
-  basePath: '/rickribeiro',
-  assetPrefix: '/rickribeiro/'
-}
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     loader: 'akamai',
+//     path: ''
+//   },
+//   reactStrictMode: true,
+//   basePath: '/rickribeiro',
+//   assetPrefix: '/rickribeiro/'
+// }
 
-module.exports = nextConfig
+// module.exports = nextConfig
