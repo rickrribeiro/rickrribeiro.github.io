@@ -1,23 +1,39 @@
-// next.config.js
+// // next.config.js
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false
+// const isGithubActions = process.env.GITHUB_ACTIONS || false
+// let configs
 
-let assetPrefix = ''
-let basePath = '/'
+// if (isGithubActions) {
+//   let assetPrefix = ''
+//   let basePath = '/'
+//   // trim off `<owner>/`
+//   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
-if (isGithubActions) {
-  // trim off `<owner>/`
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+//   assetPrefix = `/${repo}/`
+//   basePath = `/${repo}`
+//   configs = {
+//     assetPrefix: assetPrefix,
+//     basePath: basePath
+//     // images: {
+//     //   loader: 'imgix',
+//     //   path: 'the "domain" of your Imigix source',
+//     // },
+//   }
+// } else {
+//   configs = {
+//     experimental: {
+//       appDir: true
+//     }
+//   }
+// }
 
-  assetPrefix = `/${repo}/`
-  basePath = `/base`
+// module.exports = configs
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true
+  }
 }
 
-module.exports = {
-  assetPrefix: assetPrefix,
-  basePath: basePath
-  // images: {
-  //   loader: 'imgix',
-  //   path: 'the "domain" of your Imigix source',
-  // },
-}
+module.exports = nextConfig
