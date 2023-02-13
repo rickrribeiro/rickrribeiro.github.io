@@ -53,8 +53,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  basePath: '/rickribeiro.github.io',
-  assetPrefix: '/rickribeiro.github.io/'
+  basePath: '/rickribeiro',
+  assetPrefix: '/rickribeiro/'
 }
 
 module.exports = nextConfig
