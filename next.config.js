@@ -38,13 +38,23 @@
 
 // module.exports = nextConfig
 
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     loader: 'akamai',
+//     path: ''
+//   },
+//   assetPrefix: './',
+//   exportTrailingSlash: true
+// }
+
+// module.exports = nextConfig
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    loader: 'akamai',
-    path: ''
-  },
-  assetPrefix: './'
+  reactStrictMode: true,
+  basePath: '/rickribeiro.github.io',
+  assetPrefix: '/rickribeiro.github.io/'
 }
 
 module.exports = nextConfig
