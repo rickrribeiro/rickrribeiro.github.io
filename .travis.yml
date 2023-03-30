@@ -14,8 +14,11 @@ jobs:
         - npm test
 
     - stage: deploy
-      if: branch = main
+      if: branch = AleatoryBranchNameToDontDoDeployBecauseImAlreadyDoingItUsingGithubActionsSoThisCodeIsOldMaybeImGonnaUseItAgainSomeDayButNotForNowSoItsNotWorkingxD
       install:
         - npm i
       script:
+        - npm run build
+        - npm run export
+        - touch out/.nojekyll
         - npm run deploy -- -m "Travis deploy"

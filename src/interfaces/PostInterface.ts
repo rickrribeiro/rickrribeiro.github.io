@@ -10,6 +10,6 @@ export default interface PostInterface {
   content: string
   imageUrl: string
   authorId: string // AuthorInterface
-  categories: string[] // CategoryInterface[]
+  categories?: string[] // CategoryInterface[]
   comments?: string[] // CommentInterface
 }
