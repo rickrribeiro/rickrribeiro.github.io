@@ -1,6 +1,6 @@
 export default interface AuthorInterface {
   id: string
   name: string
-  photoUrl: string
+  photo: { url: string }
   bio: string
 }

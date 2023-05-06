@@ -1,27 +1,13 @@
 import Head from 'next/head'
 import { PostCard, Categories, PostWidget } from '@/components'
-const posts = [
-  {
-    title: 'React Next Test Deploy Tailwind',
-    excerpt: 'test',
-    id: '1',
-    slug: '',
-    content: '',
-    imageUrl: '',
-    authorId: ''
-  },
-  {
-    title: 'React Next Test Deploy2 Tailwind',
-    excerpt: 'test2',
-    id: '2',
-    slug: '',
-    content: '',
-    imageUrl: '',
-    authorId: ''
-  }
-]
+import { DataService } from '../services/index'
+import { PostInterface } from '@/interfaces'
+import { Key } from 'react'
 
-export default function Home() {
+const dataService = new DataService()
+
+export default function Home({ posts }: any) {
+  // todo - fix type
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -33,9 +19,11 @@ export default function Home() {
       {/* <FeaturedPosts /> */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 col-span-1">
-          {posts.map((post, index) => (
-            <PostCard key={index} post={post} />
-          ))}
+          {posts.map(
+            (post: { node: PostInterface }, index: Key | null | undefined) => (
+              <PostCard key={index} post={post.node} />
+            )
+          )}
         </div>
         <div className="lg:col-span-4 col-span-1">
           <div className="lg:sticky relative top-8">
@@ -46,4 +34,11 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = (await dataService.getPosts()) || []
+  return {
+    props: { posts }
+  }
 }

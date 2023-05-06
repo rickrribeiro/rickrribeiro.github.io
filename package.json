@@ -17,12 +17,19 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "@next/font": "13.1.6",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
     "eslint-config-next": "13.1.6",
+    "graphql": "^16.6.0",
+    "graphql-request": "^6.0.0",
     "html-react-parser": "^3.0.9",
     "moment": "^2.29.4",
     "next": "13.1.6",
@@ -44,6 +51,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
     "postcss": "^8.3.8",
     "prettier": "^2.8.4",
     "tailwindcss": "^2.2.7"

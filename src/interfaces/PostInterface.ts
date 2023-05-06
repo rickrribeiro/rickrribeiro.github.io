@@ -1,4 +1,4 @@
-// import type AuthorInterface from './AuthorInterface'
+import type AuthorInterface from './AuthorInterface'
 // import type CategoryInterface from './CategoryInterface'
 // import type CommentInterface from './CommentInterface'
 
@@ -8,8 +8,10 @@ export default interface PostInterface {
   slug: string
   excerpt: string
   content: string
-  imageUrl: string
-  authorId: string // AuthorInterface
+  featuredImage: { url: string }
+  author: AuthorInterface
+  createdAt: string
+  views?: number
   categories?: string[] // CategoryInterface[]
   comments?: string[] // CommentInterface
 }
