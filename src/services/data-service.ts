@@ -1,6 +1,8 @@
 import { request, gql } from 'graphql-request'
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT || ''
+const graphqlAPI =
+  'https://api-sa-east-1.hygraph.com/v2/clhakszgz1iem01t53piqci16/master'
+//process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT || ''
 
 class DataService {
   async getPosts() {
