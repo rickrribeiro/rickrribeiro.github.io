@@ -211,7 +211,7 @@ class DataService {
   }
   async submitComment(obj: any) {
     //todo fix tyype
-    const result: any = await fetch('/api/comments', {
+    const result: any = await fetch(`${graphqlAPI}/api/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
