@@ -209,18 +209,18 @@ class DataService {
 
     return result.posts
   }
-  async submitComment(obj: any) {
-    //todo fix tyype
-    const result: any = await fetch(`${graphqlAPI}/api/comments`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)
-    })
+  // async submitComment(obj: any) {
+  //   //todo fix tyype
+  //   const result: any = await fetch(`${graphqlAPI}/api/comments`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(obj)
+  //   })
 
-    return result.json()
-  }
+  //   return result.json()
+  // }
   async getComments(slug: string) {
     const query = gql`
       query GetComments($slug: String!) {
