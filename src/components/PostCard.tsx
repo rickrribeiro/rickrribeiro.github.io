@@ -4,7 +4,7 @@ import { PostInterface } from '@/interfaces'
 import moment from 'moment'
 import Link from 'next/link'
 import Image from 'next/image'
-
+const grpahCMSImageLoader = ({ src }: any) => src
 interface PostCardInterface {
   post: PostInterface
 }

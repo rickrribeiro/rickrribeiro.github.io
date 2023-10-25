@@ -1,17 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { CategoryInterface } from '@/interfaces'
 
-const categories: CategoryInterface[] = [
-  {
-    id: '1',
-    name: 'react',
-    slug: 'react'
-  },
-  { id: '1', name: 'react2', slug: 'react2' }
-]
+import { DataService } from '../services'
+
+const dataService = new DataService()
 
 const Header = () => {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    dataService.getCategories().then((newCategories) => {
+      setCategories(newCategories)
+    })
+  }, [])
+
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="border-b w-full inline-block border-blue-400 py-8">
