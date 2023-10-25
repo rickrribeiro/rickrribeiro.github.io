@@ -1,10 +1,12 @@
 import React from 'react'
-import Header from './Header'
+import SideBar from './SideBar'
+// import Header from './Header'
 
 const Layout = ({ children }: any) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <SideBar />
       {children}
     </>
   )

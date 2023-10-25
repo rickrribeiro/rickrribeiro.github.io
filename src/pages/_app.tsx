@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import '@/styles/globals.scss'
+// import '@/styles/globals.scss'
+import '@/styles/index.css'
+import '@/styles/bootstrap.min.css'
 import { Layout } from '@/components'
 // import 'tailwindcss/'  QUALQUER COISA VOLTAR
 import type { AppProps } from 'next/app'
