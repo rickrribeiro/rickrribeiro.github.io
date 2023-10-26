@@ -6,8 +6,13 @@ const Layout = ({ children }: any) => {
   return (
     <>
       {/* <Header /> */}
-      <SideBar />
-      {children}
+   
+        <SideBar />
+        <div className="container-fluid">
+        <main className="tm-main">
+        {children}
+        </main>
+      </div>
     </>
   )
 }

@@ -52,20 +52,21 @@ hr {
 }
 
 .tm-site-logo {
-    max-width: 5px;
-    max-height: 5px;
-    border-radius: 50%;
-    background-color: white;    
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.tm-site-logo i { 
+.tm-site-logo img { 
+    border-radius: 50%;
     color: #0CC;
-
-    
+    max-width: 185px;
+    max-height: 185px; 
+    display: block; /* Remove any extra spacing caused by the inline display of the image */
+    margin-bottom: 10px; 
 }
+
+
 
 .tm-main {
     margin-left: 400px;
@@ -79,7 +80,10 @@ hr {
     justify-content: space-between;
 }
 
-.tm-nav { margin-bottom: 100px; }
+.tm-nav { 
+    margin-bottom: 100px; 
+    align-items: center;
+}
 
 .tm-nav-item {
     list-style: none;
@@ -591,4 +595,11 @@ a:hover figcaption { color: #056767; }
 
 @media (max-width: 380px) {
     .tm-person img { max-width: 120px; }
+}
+
+
+
+.layout-center{
+    display: flex;
+    flex-direction: row;    
 }
