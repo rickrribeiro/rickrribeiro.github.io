@@ -1,16 +1,16 @@
 import React from 'react'
-import SideBar from './SideBar'
+// import SideBar from './SideBar'
 // import Header from './Header'
 
 const Layout = ({ children }: any) => {
   return (
     <>
       {/* <Header /> */}
-   
-        <SideBar />
-        <div className="container-fluid">
+
+      {/* <SideBar /> */}
+      <div className="container-fluid">
         <main className="tm-main">
-        {children}
+          {children}
         </main>
       </div>
     </>

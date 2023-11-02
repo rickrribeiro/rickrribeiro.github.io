@@ -20,5 +20,3 @@ jobs:
       script:
         - npm run build
         - npm run export
-        - touch out/.nojekyll
-        - npm run deploy -- -m "Travis deploy"
