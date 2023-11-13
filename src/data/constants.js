@@ -229,11 +229,11 @@ export const experiences = [
 export const education = [
   {
     id: 0,
-    img: "",
-    school: "",
+    img: "https://i.pinimg.com/736x/37/1d/1b/371d1bd86f60c06af7a19c0ddc5a1288.jpg",
+    school: "Universidade de São Paulo (USP)",
     date: "Nov 2023",
     desc: "",
-    degree: "Pós graduation",
+    degree: "Master of Business Administration (MBA) - Software Engineering",
   },
   {
     id: 1,
