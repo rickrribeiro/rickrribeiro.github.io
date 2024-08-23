@@ -1,14 +1,21 @@
 export const Bio = {
   name: "Ricardo Ribeiro",
-  roles: ["Backend Developer", "Digital Nomad"],
+  roles: ["FullStack Developer", "Digital Nomad"],
   description:
-    "I am a motivated developer, always looking for new challenges. Currently developing, testing and debugging micro-services systems with NodeJS and AWS. I can easily work with different languages or technologies. Able to self-manage during independent projects, as well as collaborate in a team. I'm very creative, outgoing with good interpersonal relationship, trying to learn as much as I can and be 1% better everyday..",
+    `I have over 4 years of experience working in software development, testing and debugging. I'm graduated in computer science and studying MBA in Software Engineering. I'm currently working as a Backend Developer with microservices systems using Node.js, Typescript, AWS and other technologies. I can easily work with different languages or technologies. Always looking for complex challenges to develop my creativity and learn more.
+    I have worked on projects with different scopes, such as: police investigation/intelligence system, CMS, product subscription management, HR systems, augmented reality, environment monitoring, etc...
+    I'm creative, outgoing with good interpersonal relationship, resilient, always trying to collaborate with my team.
+    If you catch me outside of work, I'm an adventurous traveler currently living as a digital nomad and an avid lover of online games and sports!
+    I have already lived in Ireland for 7 months, in Argentina for 4 months and visited several other countries. So I have great flexibility and ability to adapt to different work environments and cultures.
+    I grew up in Brazil and I'm open to remote or on-site positions depending on the location (preferred: Asia, NA, EU, Oceania). 
+`,
   github: "https://github.com/rickrribeiro",
   resume: "https://www.linkedin.com/in/rickrribeiro/",
   linkedin: "https://www.linkedin.com/in/rickrribeiro/",
   insta: "https://www.instagram.com/rickrribeiro/",
   facebook: "https://www.facebook.com/rickrribeiro/",
   whatsapp: "https://api.whatsapp.com/send?phone=5571996820764",
+  medium: "https://medium.com/@rickrribeiro/"
 };
 
 export const skills = [
@@ -136,7 +143,7 @@ export const skills = [
     title: "Frontend",
     skills: [
       {
-        name: "React Js",
+        name: "ReactJs",
         image:
           "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
       },
@@ -166,10 +173,24 @@ export const skills = [
 export const experiences = [
   {
     id: 0,
+    img: "https://portal.mindsight.com.br/static/media/mindsight-logo.21cd7586.png",
+    role: "FullStack Engineer",
+    company: "Mindsight",
+    date: "Mar 2024 - Now",
+    desc: "Working on HR systems with Django and React",
+    skills: [
+      "Django",
+      "React",
+      "Docker",
+    ],
+    doc: "",
+  },
+  {
+    id: 1,
     img: "https://searchvectorlogo.com/wp-content/uploads/2023/07/agile-content-logo-vector.png",
     role: "Backend Engineer",
     company: "Agile Content",
-    date: "Mar 2022 - Now",
+    date: "Mar 2022 - Mar 2024",
     desc: "Working on a subscription management system with NodeJS, Typescript and AWS",
     skills: [
       "Docker",
@@ -187,7 +208,7 @@ export const experiences = [
     doc: "",
   },
   {
-    id: 1,
+    id: 2,
     img: "https://sgnsistemas.com.br/wp-content/uploads/2021/10/cliente-ipq.jpg",
     role: "Fullstack Internship",
     company: "IPQ Tecnologia",
@@ -207,7 +228,7 @@ export const experiences = [
     doc: "",
   },
   {
-    id: 2,
+    id: 3,
     img: "https://escritorioaimt.ifsc.usp.br/wp-content/uploads/2021/05/logo-senai-cimatec.jpg",
     role: "Fullstack Internship",
     company: "Senai Cimatec",
@@ -248,7 +269,7 @@ export const education = [
     img: "https://escritorioaimt.ifsc.usp.br/wp-content/uploads/2021/05/logo-senai-cimatec.jpg",
     school: "Senai Cimatec",
     date: "feb 2017 - Aug 2021",
-    desc: "I transferred to Computer Science at the end of the course because it was difficult to balance study with work and I wanted to focus more on software than on hardware",
+    desc: "I transferred to Computer Science at the end of the course because it was difficult to balance full time course study with work and I wanted to focus more on software than on hardware",
     degree: "Bachelor of Technology - BTech, Computer Engineering",
   },
   {

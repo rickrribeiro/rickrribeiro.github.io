@@ -3,7 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Bio } from "../../data/constants";
-import { WhatsApp } from "@mui/icons-material";
+import { WhatsApp, Book } from "@mui/icons-material";
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -100,6 +100,9 @@ function Footer() {
           </SocialMediaIcon>
           <SocialMediaIcon href={Bio.insta} target="display">
             <InstagramIcon />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.medium} target="display">
+            <Book />
           </SocialMediaIcon>
         </SocialMediaIcons>
       </FooterWrapper>
