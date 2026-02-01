@@ -1,0 +1,7 @@
+- botar o doc do curriculo e jogar no __LEMBRAR_DE_BOTAR_DOC_AQ no constants.js
+- botar direito a descrição das vagas
+- botar a especialização de agentes e a pós em agentes
+- botar docs com as ementas dos cursos
+- começar a botar os projetos
+- botar idiomas que falo, com a certificação do HSK, detalhe de espanhol (botar 4 meses argentina, 4 meses peru), detalhe ingles ( 7 meses irlanda e certificado griffith)
+- countries visited
