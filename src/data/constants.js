@@ -2,18 +2,17 @@ export const Bio = {
   name: "Ricardo Ribeiro",
   roles: ["FullStack Developer", "Digital Nomad"],
   description:
-    `I have over 4 years of experience working in software development, testing and debugging. I'm graduated in computer science and studying MBA in Software Engineering. I'm currently working as a FullStack Developer with microservices systems using Django, React and other technologies. I can easily work with different languages or technologies. Always looking for complex challenges to develop my creativity and learn more.
-    I have worked on projects with different scopes, such as: police investigation/intelligence system, CMS, product subscription management, HR systems, augmented reality, environment monitoring, etc...
-    I'm creative, outgoing with good interpersonal relationship, resilient, always trying to collaborate with my team.
-    If you catch me outside of work, I'm an adventurous traveler currently living as a digital nomad and an avid lover of online games and sports!
-    I have already lived in Ireland for 7 months, in Argentina for 4 months and visited several other countries. So I have great flexibility and ability to adapt to different work environments and cultures.
-    I grew up in Brazil and I'm open to remote or on-site positions depending on the location (preferred: Asia, NA, EU, Oceania). 
+    `I have over 5 years of experience working in software development, testing and debugging. I'm graduated in computer science and studying MBA in Software Engineering. I'm currently working as a FullStack Developer using Django, React and other technologies. I can easily work with different languages or technologies. Always looking for complex challenges to develop my creativity and learn more.
+     I have worked on projects with different scopes, such as: police investigation/intelligence system, CMS, product subscription management, augmented reality, environment monitoring, etc...
+     I'm creative, outgoing with good interpersonal relationship, resilient, always trying to collaborate with my team.
+     If you catch me outside of work, I'm an adventurous traveler currently living as a digital nomad and an avid lover of online games and sports!
+     I have already lived in several other countries (1-7 months). So I have great flexibility and ability to adapt to different work environments and cultures.
+     I grew up in Brazil and I'm open to remote or on-site positions depending on the location (preferred: Asia, NA, EU, Oceania).
 `,
   github: "https://github.com/rickrribeiro",
-  resume: "https://www.linkedin.com/in/rickrribeiro/",
+  resume: "__LEMBRAR_DE_BOTAR_DOC_AQ",
   linkedin: "https://www.linkedin.com/in/rickrribeiro/",
   insta: "https://www.instagram.com/rickrribeiro/",
-  facebook: "https://www.facebook.com/rickrribeiro/",
   whatsapp: "https://api.whatsapp.com/send?phone=5571996820764",
   medium: "https://medium.com/@rickrribeiro/"
 };
