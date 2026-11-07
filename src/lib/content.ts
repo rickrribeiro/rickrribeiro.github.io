@@ -336,7 +336,9 @@ export function countryStats(content: ParsedContent, now: Date = buildNow()): Co
     if (c) c.days = days; // nomads.com dates are sometimes off; the curated total wins
   }
   for (const c of map.values()) c.cities.sort((a, b) => b.days - a.days || a.city.localeCompare(b.city));
-  return [...map.values()].sort((a, b) => b.days - a.days || b.last.localeCompare(a.last));
+  // Home country first, then by time spent.
+  const home = (c: CountryStat) => (c.kinds.includes('home') ? 1 : 0);
+  return [...map.values()].sort((a, b) => home(b) - home(a) || b.days - a.days || b.last.localeCompare(a.last));
 }
 
 const haversineKm = (a: Trip, b: Trip) => {
@@ -361,7 +363,12 @@ export function journeyTotals(content: ParsedContent, now: Date = buildNow()) {
 /** Human duration for a number of days: "2 yrs 3 mos" / "3 wks" / "5 days". */
 export function formatDays(days: number, t: TFunction, tag: string): string {
   const rule = (n: number) => new Intl.PluralRules(tag).select(n);
-  if (days >= 60) return formatDuration(Math.round(days / 30.44), t, tag);
+  if (days >= 30) {
+    // A month or more is shown in months; a fraction above .5 rounds up.
+    const m = days / 30.44;
+    const months = Math.max(1, Math.floor(m) + (m - Math.floor(m) > 0.5 ? 1 : 0));
+    return formatDuration(months, t, tag);
+  }
   if (days >= 14) return t(`journey.duration.weeks_${rule(Math.round(days / 7))}`, { n: Math.round(days / 7) });
   return t(`journey.duration.days_${rule(Math.max(1, days))}`, { n: Math.max(1, days) });
 }
@@ -374,4 +381,10 @@ export function countryName(content: ParsedContent, locale: string, code: string
 /** Lower-bound display for counts that are probably incomplete: 53 → "50+", 7 → "7". */
 export function atLeast(n: number): string {
   return n >= 20 ? `${Math.floor(n / 10) * 10}+` : String(n);
+}
+
+/** Custom label replacing the time spent for a country (journey.json → overrides.countryLabel). */
+export function countryLabel(content: ParsedContent, locale: string, code: string): string | undefined {
+  const l = content.journey.overrides?.countryLabel?.[code];
+  return l ? (l[locale] ?? l[content.site.defaultLocale]) : undefined;
 }

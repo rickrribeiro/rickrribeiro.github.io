@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useSite } from '../app/SiteContext';
 import { Seo } from '../app/seo';
-import { atLeast, countryName, countryStats, formatDays, formatRange, formatYm, journeyTotals, pastTrips } from '../lib/content';
+import { atLeast, countryLabel, countryName, countryStats, formatDays, formatRange, formatYm, journeyTotals, pastTrips } from '../lib/content';
 import type { PlaceKind } from '../lib/schema';
 import { PageHeader } from '../components/ui';
 import { ExternalLink } from '../components/Links';
@@ -138,7 +138,7 @@ export function JourneyPage() {
                       <span className="country__bar" aria-hidden="true">
                         <span style={{ width: `${Math.max(2, (c.days / maxDays) * 100)}%` }} />
                       </span>
-                      <span className="country__time">{c.days > 0 ? formatDays(c.days, t, tag) : t('journey.passingThrough')}</span>
+                      <span className="country__time">{countryLabel(content, locale, c.country) ?? (c.days > 0 ? formatDays(c.days, t, tag) : t('journey.passingThrough'))}</span>
                       <span className="country__cities label">{t(`journey.cities_${new Intl.PluralRules(tag).select(c.cities.length)}`, { n: c.cities.length })}</span>
                     </summary>
                     <ul role="list" className="country__list">

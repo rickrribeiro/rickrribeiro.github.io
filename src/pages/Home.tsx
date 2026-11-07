@@ -3,6 +3,7 @@ import { useSite } from '../app/SiteContext';
 import { Seo, personJsonLd } from '../app/seo';
 import {
   atLeast,
+  countryLabel,
   countryName,
   countryStats,
   formatDays,
@@ -154,7 +155,7 @@ export function HomePage() {
                     <li key={c.country}>
                       <span className="mono">{c.country}</span> {region(c.country)}
                       <KindBadges kinds={c.kinds} />
-                      <span className="label">{c.days > 0 ? formatDays(c.days, t, tag) : ''}</span>
+                      <span className="label">{countryLabel(content, locale, c.country) ?? (c.days > 0 ? formatDays(c.days, t, tag) : '')}</span>
                     </li>
                   ))}
                 </ol>
