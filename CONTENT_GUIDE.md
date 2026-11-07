@@ -253,10 +253,18 @@ These are **your** languages, not the website's interface languages.
 
 ## Beyond the code (journey)
 
-`src/content/journey.json` → `places`:
-`{ "id": "tokyo", "enabled": true, "kind": "visited", "city": "Tokyo", "country": "JP", "lat": 35.68, "lon": 139.69, "start": "2027-04", "end": null }`.
-`kind` is `home`, `lived`, `studied`, `spoke` or `visited`. Notes go in `locales/<lang>/site.json` → `journey.places.<id>`.
-Places with `home` or `lived` also show in the homepage teaser.
+Two sources:
+
+1. **Every trip** comes from your public nomads.com log. Run `npm run sync:nomads`; it regenerates
+   `src/content/trips.json`. **Don't edit that file by hand.** The page ranks countries by total time
+   spent (future trips are ignored, and an ongoing stay counts up to the build date) and lists each
+   city with its dates. It also shows the totals (countries, cities, trips, km, "nomad since") and
+   every stop on the globe.
+2. **Places with a story** are curated in `src/content/journey.json` → `places`:
+   `{ "id": "tokyo-talk", "enabled": true, "kinds": ["spoke"], "city": "Tokyo", "country": "JP", "lat": 35.68, "lon": 139.69, "start": "2027-04", "end": null }`.
+   `kinds` can be `home`, `lived`, `studied`, `spoke` or `visited`; the first one is primary. They become
+   badges on the place *and* on its country in the ranking (studied and spoke are highlighted).
+   Notes go in `locales/<lang>/site.json` → `journey.places.<id>`.
 
 ## Homepage, navigation and sections
 

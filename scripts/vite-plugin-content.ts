@@ -38,7 +38,14 @@ export function contentPlugin(): Plugin {
       }
       if (id.startsWith('\0' + LOCALE_PREFIX)) {
         const code = id.slice(('\0' + LOCALE_PREFIX).length);
-        return `export default ${JSON.stringify({ text: content!.locales[code] ?? {}, ui: content!.ui[code] ?? {} })};`;
+        // Country names are resolved here, once, so prerendered HTML and the browser
+        // (which may ship a different ICU version) always show identical text.
+        const tag = content!.site.locales.find((l) => l.code === code)?.tag ?? code;
+        const display = new Intl.DisplayNames([tag], { type: 'region' });
+        const shortNames: Record<string, string> = { HK: 'Hong Kong', MO: 'Macau' };
+        const codes = new Set([...content!.trips.trips.map((t) => t.country), ...content!.journey.places.map((p) => p.country)]);
+        const countries = Object.fromEntries([...codes].map((c) => [c, shortNames[c] ?? (display.of(c) ?? c).replace(/ SAR China$| \(.*\)$/, '')]));
+        return `export default ${JSON.stringify({ text: content!.locales[code] ?? {}, ui: content!.ui[code] ?? {}, countries })};`;
       }
       return `export default ${JSON.stringify({ ...content!, locales: {}, ui: {} })};`;
     },

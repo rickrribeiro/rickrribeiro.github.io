@@ -2,6 +2,10 @@ import { Fragment, type ReactNode } from 'react';
 import { useSite } from '../app/SiteContext';
 import { Seo, personJsonLd } from '../app/seo';
 import {
+  countryName,
+  countryStats,
+  formatDays,
+  journeyTotals,
   featuredProjects,
   homeLimit,
   homeSections,
@@ -24,10 +28,11 @@ import { Img } from '../components/Media';
 import { L } from '../components/Links';
 import { Icon } from '../components/Icon';
 import { ContactBlock } from './Contact';
+import { KindBadges } from './Journey';
 
 export function HomePage() {
   const { content, locale, tag, t, text } = useSite();
-  const region = (code: string) => new Intl.DisplayNames([tag], { type: 'region' }).of(code) ?? code;
+  const region = (code: string) => countryName(content, locale, code);
   const order = homeSections(content);
   const num = (id: HomeSectionId) => String(order.indexOf(id) + 1).padStart(2, '0');
 
@@ -36,6 +41,8 @@ export function HomePage() {
   const more = workProjects(content)
     .filter((p) => !featuredIds.has(p.id))
     .slice(0, homeLimit(content, 'moreProjects', 8));
+  const topCountries = countryStats(content).slice(0, 5);
+  const totals = journeyTotals(content);
   const lab = labProjects(content).slice(0, homeLimit(content, 'experiments', 3));
 
   const sections: Record<HomeSectionId, () => ReactNode> = {
@@ -137,16 +144,20 @@ export function HomePage() {
             <SectionHeader index={num('journey')} kicker={t('home.journey.kicker')} title={text.journey?.title} id="h-journey" />
             <Reveal className="journey-teaser__body" delay={80}>
               <p className="journey-teaser__lead serif">{text.journey?.intro}</p>
-              <ul role="list" className="journey-teaser__places">
-                {content.journey.places
-                  .filter((p) => p.enabled && (p.kind === 'home' || p.kind === 'lived'))
-                  .map((p) => (
-                    <li key={p.id}>
-                      <span className="mono">{p.country}</span> {p.city ? `${p.city}, ${region(p.country)}` : region(p.country)}
-                      <span className="label">{t(`journey.kind.${p.kind}`)}</span>
+              <div className="journey-teaser__side">
+                <p className="label">
+                  {t('journey.teaserTotals', { countries: totals.countries, cities: totals.cities })}
+                </p>
+                <ol role="list" className="journey-teaser__places">
+                  {topCountries.map((c) => (
+                    <li key={c.country}>
+                      <span className="mono">{c.country}</span> {region(c.country)}
+                      <KindBadges kinds={c.kinds} />
+                      <span className="label">{c.days > 0 ? formatDays(c.days, t, tag) : ''}</span>
                     </li>
                   ))}
-              </ul>
+                </ol>
+              </div>
               <L to="/journey/" className="link-arrow">
                 {t('home.journey.all')} <Icon name="arrow-right" size={16} />
               </L>

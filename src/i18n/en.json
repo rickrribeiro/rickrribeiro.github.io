@@ -279,7 +279,31 @@
     "places": "Places",
     "months": "{n} months",
     "languagesTitle": "Languages I live in",
-    "follow": "More photos on Instagram"
+    "follow": "More photos on Instagram",
+    "statsLabel": "Travel in numbers",
+    "stats": {
+      "countries": "Countries",
+      "cities": "Cities",
+      "trips": "Trips",
+      "km": "Kilometres",
+      "nomadSince": "Nomad since"
+    },
+    "legendHighlight": "Studied · spoke · lived",
+    "legendTrip": "Every stop",
+    "highlights": "Where I studied, spoke & lived",
+    "countriesTitle": "Countries, by time spent",
+    "countriesIntro": "Every country I've been to, ordered by how long I've stayed. Open one to see the cities and dates.",
+    "passingThrough": "Passing through",
+    "cities_one": "{n} city",
+    "cities_other": "{n} cities",
+    "source": "Trips synced from my public log on {date} —",
+    "teaserTotals": "{countries} countries · {cities} cities — most time spent in",
+    "duration": {
+      "days_one": "{n} day",
+      "days_other": "{n} days",
+      "weeks_one": "{n} week",
+      "weeks_other": "{n} weeks"
+    }
   },
   "contact": {
     "kicker": "Contact",

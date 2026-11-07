@@ -279,7 +279,31 @@
     "places": "Lugares",
     "months": "{n} meses",
     "languagesTitle": "Idiomas em que vivo",
-    "follow": "Mais fotos no Instagram"
+    "follow": "Mais fotos no Instagram",
+    "statsLabel": "Viagens em números",
+    "stats": {
+      "countries": "Países",
+      "cities": "Cidades",
+      "trips": "Viagens",
+      "km": "Quilômetros",
+      "nomadSince": "Nômade desde"
+    },
+    "legendHighlight": "Estudei · palestrei · morei",
+    "legendTrip": "Cada parada",
+    "highlights": "Onde estudei, palestrei e morei",
+    "countriesTitle": "Países, por tempo",
+    "countriesIntro": "Todos os países por onde passei, ordenados por quanto tempo fiquei. Abra um para ver as cidades e datas.",
+    "passingThrough": "De passagem",
+    "cities_one": "{n} cidade",
+    "cities_other": "{n} cidades",
+    "source": "Viagens sincronizadas do meu registro público em {date} —",
+    "teaserTotals": "{countries} países · {cities} cidades — onde mais passei tempo",
+    "duration": {
+      "days_one": "{n} dia",
+      "days_other": "{n} dias",
+      "weeks_one": "{n} semana",
+      "weeks_other": "{n} semanas"
+    }
   },
   "contact": {
     "kicker": "Contato",

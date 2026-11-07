@@ -43,6 +43,7 @@ export function loadRawContent(): RawContent {
     projects: c('projects'),
     talks: c('talks'),
     journey: c('journey'),
+    trips: fs.existsSync(path.join(contentDir, 'trips.json')) ? c('trips') : undefined,
     locales,
     ui,
   };

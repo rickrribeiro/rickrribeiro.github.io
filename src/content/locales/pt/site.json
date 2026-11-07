@@ -3,7 +3,10 @@
   "location": "Bahia, Brasil · trabalhando remotamente para o mundo todo",
   "hero": {
     "eyebrow": "Full-stack · sistemas distribuídos · engenharia de IA",
-    "headline": ["Construo o que", "ainda não"],
+    "headline": [
+      "Construo o que",
+      "ainda não"
+    ],
     "headlineAccent": "existe.",
     "lead": "Engenheiro de software com mais de 6 anos entregando sistemas distribuídos, plataformas em cloud e produtos de IA — de integrações de inteligência policial que processam mais de 2M de mensagens por dia a um redesenho com RAG que reduziu os custos de IA em 90%."
   },
@@ -24,7 +27,7 @@
   },
   "journey": {
     "title": "Além do código",
-    "intro": "Cresci na Bahia, estudei inglês na Irlanda, morei na Argentina e passei anos trabalhando remotamente enquanto viajava. Viver em outros idiomas me ensinou a me adaptar rápido e a me comunicar com clareza com times que raramente encontro pessoalmente.",
+    "intro": "Cresci na Bahia, estudei inglês na Irlanda, morei na Argentina e trabalho remotamente como nômade digital desde 2023 — pela América Latina, Europa e Ásia. Viver em outros idiomas me ensinou a me adaptar rápido e a me comunicar com clareza com times que raramente encontro pessoalmente.",
     "outro": "Fora do trabalho: viajante aventureiro, fã de jogos online e de esportes, e estudante lento, mas constante, de mandarim e japonês.",
     "places": {
       "salvador": "Minha base. Onde cresci, estudei e comecei minha carreira.",
@@ -35,7 +38,10 @@
     }
   },
   "contact": {
-    "title": ["Vamos construir", "o que vem a seguir."],
+    "title": [
+      "Vamos construir",
+      "o que vem a seguir."
+    ],
     "lead": "Contratando para uma vaga sênior de engenharia, planejando algo ambicioso ou só quer conversar sobre arquitetura? Minha caixa de entrada está aberta."
   },
   "seo": {

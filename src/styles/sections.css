@@ -369,3 +369,10 @@
     grid-template-columns: 1fr;
   }
 }
+.journey-teaser__side {
+  display: grid;
+  gap: var(--space-xs);
+}
+.journey-teaser__places li .kind-badges {
+  margin-left: 0.2rem;
+}

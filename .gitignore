@@ -9,3 +9,4 @@ npm-debug.log*
 # personal working files kept out of the repo
 cv-ricardo-ribeiro-english.docx-2.pdf
 MINHAS_anotacoes.md
+.cache

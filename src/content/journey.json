@@ -1,13 +1,81 @@
 {
-  "$comment": "Places for the 'Beyond the code' page. kind: home | lived | studied | spoke | visited. lat/lon place the point on the globe. Text (notes) in locales/<lang>/site.json under journey.places.<id>. Add your travels here!",
+  "$comment": "Curated places for 'Beyond the code' — the ones with a story (home, lived, studied, spoke). Every other trip comes from trips.json (npm run sync:nomads). kinds: home | lived | studied | spoke | visited (first = primary). Notes in locales/<lang>/site.json → journey.places.<id>.",
   "places": [
-    { "id": "salvador", "enabled": true, "kind": "home", "city": "Salvador", "country": "BR", "lat": -12.97, "lon": -38.5, "start": null, "end": null },
-    { "id": "cork", "enabled": true, "kind": "lived", "city": "Cork", "country": "IE", "lat": 51.9, "lon": -8.47, "start": "2019-09", "end": "2020-03" },
-    { "id": "argentina", "enabled": true, "kind": "lived", "city": null, "country": "AR", "lat": -38.4, "lon": -63.6, "start": null, "end": null, "durationMonths": 4 },
-    { "id": "sao-paulo", "enabled": true, "kind": "spoke", "city": "São Paulo", "country": "BR", "lat": -23.55, "lon": -46.63, "start": "2023-06", "end": null },
-    { "id": "goiania", "enabled": true, "kind": "spoke", "city": "Goiânia", "country": "BR", "lat": -16.68, "lon": -49.25, "start": "2024-11", "end": null }
+    {
+      "id": "salvador",
+      "enabled": true,
+      "kinds": [
+        "home",
+        "studied"
+      ],
+      "city": "Salvador",
+      "country": "BR",
+      "lat": -12.97,
+      "lon": -38.5,
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "cork",
+      "enabled": true,
+      "kinds": [
+        "studied",
+        "lived"
+      ],
+      "city": "Cork",
+      "country": "IE",
+      "lat": 51.9,
+      "lon": -8.47,
+      "start": "2019-09",
+      "end": "2020-03"
+    },
+    {
+      "id": "argentina",
+      "enabled": true,
+      "kinds": [
+        "lived"
+      ],
+      "city": null,
+      "country": "AR",
+      "lat": -38.4,
+      "lon": -63.6,
+      "start": null,
+      "end": null,
+      "durationMonths": 4
+    },
+    {
+      "id": "sao-paulo",
+      "enabled": true,
+      "kinds": [
+        "spoke"
+      ],
+      "city": "São Paulo",
+      "country": "BR",
+      "lat": -23.55,
+      "lon": -46.63,
+      "start": "2023-06",
+      "end": null
+    },
+    {
+      "id": "goiania",
+      "enabled": true,
+      "kinds": [
+        "spoke"
+      ],
+      "city": "Goiânia",
+      "country": "BR",
+      "lat": -16.68,
+      "lon": -49.25,
+      "start": "2024-11",
+      "end": null
+    }
   ],
   "photos": [
-    { "src": "/images/portrait/ricardo-ribeiro.webp", "width": 800, "height": 800, "alt": "portrait" }
+    {
+      "src": "/images/portrait/ricardo-ribeiro.webp",
+      "width": 800,
+      "height": 800,
+      "alt": "portrait"
+    }
   ]
 }

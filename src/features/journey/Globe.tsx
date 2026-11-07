@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import type { Place } from '../../lib/schema';
+import type { Place, Trip } from '../../lib/schema';
 
 /**
  * Wireframe globe (graticule only — no map data to download) with the journey's
  * places as glowing points and arcs from home. Drag or use arrow keys to rotate.
  */
-export function Globe({ places, label, names = {} }: { places: Place[]; label: string; names?: Record<string, string> }) {
+export function Globe({ places, trips = [], label, names = {} }: { places: Place[]; trips?: Trip[]; label: string; names?: Record<string, string> }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function Globe({ places, label, names = {} }: { places: Place[]; label: s
     const mono = css.getPropertyValue('--font-mono').trim() || 'monospace';
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const home = places.find((p) => p.kind === 'home') ?? places[0];
+    const home = places.find((p) => p.kinds.includes('home')) ?? places[0];
     let lon0 = -(home?.lon ?? 0) * (Math.PI / 180) - 0.6;
     let lat0 = 0.32;
     let w = 0;
@@ -94,6 +94,39 @@ export function Globe({ places, label, names = {} }: { places: Place[]; label: s
       for (let lat = -75; lat <= 75; lat += 15) line(Array.from({ length: 73 }, (_, i) => proj(toVec(lat, -180 + i * 5))));
       for (let lon = -180; lon < 180; lon += 15) line(Array.from({ length: 37 }, (_, i) => proj(toVec(-90 + i * 5, lon))));
 
+      // Every trip: a faint chronological route plus a small dot per city.
+      if (trips.length) {
+        ctx.strokeStyle = text;
+        ctx.lineWidth = 0.8;
+        for (let i = 1; i < trips.length; i++) {
+          const a = toVec(trips[i - 1].lat, trips[i - 1].lon);
+          const b = toVec(trips[i].lat, trips[i].lon);
+          const pts = Array.from({ length: 13 }, (_, k) => proj(slerp(a, b, k / 12, 0.06)));
+          ctx.save();
+          ctx.globalCompositeOperation = 'lighter';
+          for (let k = 1; k < pts.length; k++) {
+            const p0 = pts[k - 1];
+            const p1 = pts[k];
+            if (p0.z < 0 && p1.z < 0) continue;
+            ctx.globalAlpha = 0.04 + Math.max(0, (p0.z + p1.z) / 2) * 0.08;
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.lineTo(p1.x, p1.y);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+        for (const tr of trips) {
+          const q = proj(toVec(tr.lat, tr.lon));
+          if (q.z < 0) continue;
+          ctx.globalAlpha = 0.25 + q.z * 0.6;
+          ctx.fillStyle = signal;
+          ctx.beginPath();
+          ctx.arc(q.x, q.y, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
       if (home) {
         const a = toVec(home.lat, home.lon);
         for (const p of places) {
@@ -117,7 +150,7 @@ export function Globe({ places, label, names = {} }: { places: Place[]; label: s
       for (const p of places) {
         const q = proj(toVec(p.lat, p.lon));
         if (q.z < -0.05) continue;
-        const isHome = p.kind === 'home';
+        const isHome = p.kinds.includes('home');
         ctx.globalAlpha = 0.25 + q.z * 0.75;
         ctx.fillStyle = isHome ? accent : text;
         ctx.beginPath();
@@ -209,7 +242,7 @@ export function Globe({ places, label, names = {} }: { places: Place[]; label: s
       canvas.removeEventListener('keydown', key);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [places]);
+  }, [places, trips]);
 
   return <canvas ref={ref} className="globe" role="img" aria-label={label} tabIndex={0} />;
 }

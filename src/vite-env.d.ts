@@ -5,6 +5,6 @@ declare module 'virtual:content' {
   export default content;
 }
 declare module 'virtual:content-loaders' {
-  const loaders: Record<string, () => Promise<{ default: { text: import('./lib/validate').ParsedContent['locales'][string]; ui: Record<string, string> } }>>;
+  const loaders: Record<string, () => Promise<{ default: { text: import('./lib/validate').ParsedContent['locales'][string]; ui: Record<string, string>; countries: Record<string, string> } }>>;
   export default loaders;
 }

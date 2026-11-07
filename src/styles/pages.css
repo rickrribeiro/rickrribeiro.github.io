@@ -717,3 +717,192 @@
 .page-loading {
   min-height: 60vh;
 }
+
+/* ── Journey: stats, badges, countries ranking ──────────────────────── */
+.journey-stats dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  margin: 0 0 var(--space-xl);
+  border-top: var(--hairline);
+}
+.journey-stats dl > div {
+  padding: var(--space-s) var(--space-s) 0 0;
+}
+.journey-stats dl > div + div {
+  padding-left: var(--space-s);
+  border-left: var(--hairline);
+}
+.journey-stats dd {
+  margin: 0.3rem 0 0;
+  font-size: var(--step-3);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+}
+.kind-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  vertical-align: middle;
+}
+.kind-badge {
+  padding: 0.12rem 0.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.kind-badge--studied,
+.kind-badge--spoke {
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.kind-badge--home {
+  border-color: color-mix(in oklab, var(--signal) 50%, transparent);
+  color: var(--signal);
+}
+.place .kind-badges {
+  margin-bottom: 0.2rem;
+}
+.journey__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  justify-content: center;
+  margin-top: var(--space-xs);
+}
+.legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: -0.4rem;
+}
+.legend-dot--home {
+  background: var(--accent);
+}
+.legend-dot--highlight {
+  background: var(--text);
+}
+.legend-dot--trip {
+  background: var(--signal);
+  width: 5px;
+  height: 5px;
+}
+
+.countries__head {
+  display: grid;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-m);
+}
+.countries {
+  margin: 0;
+  border-top: var(--hairline);
+}
+.country {
+  border-bottom: var(--hairline);
+}
+.country__summary {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1.2fr) minmax(0, 1fr) 8.5rem 5.5rem;
+  align-items: center;
+  gap: var(--space-s);
+  padding: 0.85rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.country__summary::-webkit-details-marker {
+  display: none;
+}
+.country__summary:hover .country__name {
+  color: var(--accent);
+}
+.country__rank {
+  color: var(--text-faint);
+}
+.country__name {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+  font-size: var(--step-1);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  transition: color var(--dur-2);
+}
+.country__bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.country__bar span {
+  display: block;
+  height: 100%;
+  background: color-mix(in oklab, var(--text) 70%, transparent);
+  border-radius: 2px;
+}
+.country--highlight .country__bar span {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.country__time {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.country__cities {
+  text-align: right;
+}
+.country[open] .country__summary,
+.country details[open] .country__summary {
+  color: var(--text);
+}
+.country__list {
+  margin: 0 0 var(--space-s) 2.5rem;
+  display: grid;
+  gap: 0;
+  border-left: 1px solid var(--line);
+}
+.country__list li {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr) auto;
+  gap: var(--space-s);
+  align-items: baseline;
+  padding: 0.4rem 0 0.4rem var(--space-s);
+  font-size: var(--step--1);
+}
+.country__list .mono {
+  font-size: var(--step--2);
+}
+.countries__source {
+  margin-top: var(--space-s);
+}
+@media (max-width: 48rem) {
+  .country__summary {
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    row-gap: 0.4rem;
+  }
+  .country__bar {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+  .country__cities {
+    display: none;
+  }
+  .country__list {
+    margin-left: 0;
+  }
+  .country__list li {
+    grid-template-columns: 1fr auto;
+  }
+  .country__list li .muted {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

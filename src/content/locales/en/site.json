@@ -3,7 +3,10 @@
   "location": "Bahia, Brazil · working remotely worldwide",
   "hero": {
     "eyebrow": "Full-stack · distributed systems · AI engineering",
-    "headline": ["I build what", "doesn't exist"],
+    "headline": [
+      "I build what",
+      "doesn't exist"
+    ],
     "headlineAccent": "yet.",
     "lead": "Software engineer with 6+ years shipping distributed systems, cloud platforms and AI products — from police-intelligence integrations moving 2M+ messages a day to a RAG redesign that cut AI costs by 90%."
   },
@@ -24,7 +27,7 @@
   },
   "journey": {
     "title": "Beyond the code",
-    "intro": "I grew up in Bahia, Brazil, studied English in Ireland, lived in Argentina and have spent years working remotely while travelling. Living in other languages taught me to adapt quickly and to communicate clearly with teams I rarely meet in person.",
+    "intro": "I grew up in Bahia, Brazil, studied English in Ireland, lived in Argentina and have been working remotely as a digital nomad since 2023 — across Latin America, Europe and Asia. Living in other languages taught me to adapt quickly and to communicate clearly with teams I rarely meet in person.",
     "outro": "Outside of work: an adventurous traveller, a lover of online games and sports, and a slow-but-steady student of Mandarin and Japanese.",
     "places": {
       "salvador": "Home base. Where I grew up, studied and started my career.",
@@ -35,7 +38,10 @@
     }
   },
   "contact": {
-    "title": ["Let's build", "what's next."],
+    "title": [
+      "Let's build",
+      "what's next."
+    ],
     "lead": "Hiring for a senior engineering role, planning something ambitious, or just want to talk architecture? My inbox is open."
   },
   "seo": {

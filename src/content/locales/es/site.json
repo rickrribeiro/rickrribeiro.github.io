@@ -3,7 +3,10 @@
   "location": "Bahía, Brasil · trabajo en remoto para todo el mundo",
   "hero": {
     "eyebrow": "Full-stack · sistemas distribuidos · ingeniería de IA",
-    "headline": ["Construyo lo que", "todavía no"],
+    "headline": [
+      "Construyo lo que",
+      "todavía no"
+    ],
     "headlineAccent": "existe.",
     "lead": "Ingeniero de software con más de 6 años entregando sistemas distribuidos, plataformas cloud y productos de IA: desde integraciones de inteligencia policial que mueven más de 2 millones de mensajes al día hasta un rediseño con RAG que redujo los costes de IA en un 90%."
   },
@@ -24,7 +27,7 @@
   },
   "journey": {
     "title": "Más allá del código",
-    "intro": "Crecí en Bahía, Brasil, estudié inglés en Irlanda, viví en Argentina y llevo años trabajando en remoto mientras viajo. Vivir en otros idiomas me enseñó a adaptarme rápido y a comunicarme con claridad con equipos a los que rara vez veo en persona.",
+    "intro": "Crecí en Bahía, Brasil, estudié inglés en Irlanda, viví en Argentina y trabajo en remoto como nómada digital desde 2023 — por América Latina, Europa y Asia. Vivir en otros idiomas me enseñó a adaptarme rápido y a comunicarme con claridad con equipos que casi nunca veo en persona.",
     "outro": "Fuera del trabajo: viajero aventurero, amante de los juegos online y del deporte, y estudiante lento pero constante de mandarín y japonés.",
     "places": {
       "salvador": "Mi base. Donde crecí, estudié y empecé mi carrera.",
@@ -35,7 +38,10 @@
     }
   },
   "contact": {
-    "title": ["Construyamos", "lo que viene."],
+    "title": [
+      "Construyamos",
+      "lo que viene."
+    ],
     "lead": "¿Buscas a alguien para un puesto de ingeniería sénior, estás planeando algo ambicioso o simplemente quieres hablar de arquitectura? Mi bandeja de entrada está abierta."
   },
   "seo": {

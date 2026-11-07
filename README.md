@@ -22,7 +22,16 @@ npm run validate   # check all content (also runs automatically on build)
 npm run build      # production build into dist/ (prerendered)
 npm run preview    # serve dist/ locally
 npm run images     # convert new .jpg/.png in public/images to .webp
+npm run sync:nomads       # refresh src/content/trips.json from nomads.com
+npm run sources:snapshot  # nomads + LinkedIn (via local Chrome) + GitHub → .cache/sources/
 ```
+
+### Keeping it up to date
+
+In Claude Code, ask *"atualiza o portfólio"* (or run `/update-portfolio`). The project skill in
+`.claude/skills/update-portfolio/` snapshots LinkedIn, nomads.com and GitHub, diffs them against the JSON,
+updates all three languages, then validates, tests and builds. It asks before anything is pushed.
+To read LinkedIn, it needs Chrome running with `--remote-debugging-port=9333` and you logged in.
 
 You need Node 20 or newer; CI uses Node 24.
 

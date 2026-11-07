@@ -26,6 +26,7 @@ export interface RawContent {
   projects: unknown;
   talks: unknown;
   journey: unknown;
+  trips?: unknown;
   locales: Record<string, RawLocale>;
   ui: Record<string, unknown>;
 }
@@ -44,6 +45,9 @@ export interface ParsedContent {
   projectFilters: string[];
   talks: S.Talk[];
   journey: S.Journey;
+  trips: S.Trips;
+  /** locale → ISO country code → display name (filled per language at load time). */
+  countries?: Record<string, Record<string, string>>;
   locales: Record<
     string,
     { projects: S.LocaleProjects; resume: S.LocaleResume; talks: S.LocaleTalks; site: S.LocaleSite }
@@ -119,8 +123,9 @@ export function validateContent(raw: RawContent, assetExists?: (path: string) =>
   const projects = parse(S.projectsSchema, raw.projects, 'projects.json', issues);
   const talks = parse(S.talksSchema, raw.talks, 'talks.json', issues);
   const journey = parse(S.journeySchema, raw.journey, 'journey.json', issues);
+  const trips = parse(S.tripsSchema, raw.trips ?? { source: '', syncedAt: '1970-01-01', nomadSince: null, trips: [] }, 'trips.json', issues);
 
-  if (!site || !sections || !theme || !social || !skills || !experience || !education || !certifications || !languages || !projects || !talks || !journey) {
+  if (!site || !sections || !theme || !social || !skills || !experience || !education || !certifications || !languages || !projects || !talks || !journey || !trips) {
     return { content: null, issues };
   }
 
@@ -308,6 +313,7 @@ export function validateContent(raw: RawContent, assetExists?: (path: string) =>
     projectFilters: projects.filters,
     talks: talks.items,
     journey,
+    trips,
     locales,
     ui,
   };

@@ -23,6 +23,7 @@ export function ensureLocale(code: string): Promise<void> {
           loaders[c]().then((m) => {
             content.locales[c] = m.default.text;
             content.ui[c] = m.default.ui;
+            (content.countries ??= {})[c] = m.default.countries;
           }),
         );
       }

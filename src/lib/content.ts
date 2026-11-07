@@ -12,6 +12,8 @@ import type {
   ProjectText,
   Talk,
   LocaleSite,
+  PlaceKind,
+  Trip,
 } from './schema';
 
 // ── generic helpers ──────────────────────────────────────────────────────
@@ -72,6 +74,14 @@ export function talkText(content: ParsedContent, locale: string, id: string) {
 }
 
 // ── dates ────────────────────────────────────────────────────────────────
+/**
+ * "Now" for anything date-relative (ongoing stays, "present" durations). Pinned to the
+ * build so prerendered HTML and the hydrated app always agree; rebuilds refresh it.
+ */
+export function buildNow(): Date {
+  return typeof __BUILD_DATE__ !== 'undefined' ? new Date(__BUILD_DATE__) : new Date();
+}
+
 export function parseYm(ym: string): Date {
   const [y, m, d] = ym.split('-').map(Number);
   return new Date(Date.UTC(y, (m ?? 1) - 1, d ?? 1));
@@ -96,7 +106,7 @@ export function formatRange(start: string, end: string | null, tag: string, pres
 }
 
 /** Inclusive month count between two YYYY-MM values (end null = `now`). */
-export function monthsBetween(start: string, end: string | null, now: Date = new Date()): number {
+export function monthsBetween(start: string, end: string | null, now: Date = buildNow()): number {
   const s = parseYm(start);
   const e = end ? parseYm(end) : now;
   return Math.max(1, (e.getUTCFullYear() - s.getUTCFullYear()) * 12 + (e.getUTCMonth() - s.getUTCMonth()) + 1);
@@ -258,7 +268,7 @@ export function skillsByYear(content: ParsedContent): { year: number; skills: Sk
   return [...years.entries()].sort((a, b) => b[0] - a[0]).map(([year, skills]) => ({ year, skills }));
 }
 
-export function yearsOfExperience(content: ParsedContent, now: Date = new Date()): number {
+export function yearsOfExperience(content: ParsedContent, now: Date = buildNow()): number {
   return Math.floor(monthsBetween(content.site.careerStart, null, now) / 12);
 }
 
@@ -270,4 +280,87 @@ export function visibleTalks(content: ParsedContent): Talk[] {
 // ── resume ───────────────────────────────────────────────────────────────
 export function resumeUrl(content: ParsedContent, locale: string): string {
   return content.site.resume[locale] ?? content.site.resume[content.site.defaultLocale];
+}
+
+// ── journey ──────────────────────────────────────────────────────────────
+const DAY = 86_400_000;
+
+/** Trips that have already started; an ongoing stay counts up to `now`. */
+export function pastTrips(content: ParsedContent, now: Date = buildNow()): Trip[] {
+  const today = now.toISOString().slice(0, 10);
+  return content.trips.trips
+    .filter((t) => t.start <= today)
+    .map((t) => (t.end > today ? { ...t, end: today, days: Math.max(0, Math.round((Date.parse(today) - Date.parse(t.start)) / DAY)) } : t));
+}
+
+export interface CityStat {
+  city: string;
+  days: number;
+  visits: { start: string; end: string; days: number }[];
+}
+export interface CountryStat {
+  country: string;
+  days: number;
+  trips: number;
+  first: string;
+  last: string;
+  cities: CityStat[];
+  /** Kinds from curated places in this country (studied, spoke, …) — used for highlights. */
+  kinds: PlaceKind[];
+}
+
+/** Countries ordered by total time spent there (then by most recent visit). */
+export function countryStats(content: ParsedContent, now: Date = buildNow()): CountryStat[] {
+  const map = new Map<string, CountryStat>();
+  for (const t of pastTrips(content, now)) {
+    const c = map.get(t.country) ?? { country: t.country, days: 0, trips: 0, first: t.start, last: t.end, cities: [], kinds: [] };
+    c.days += t.days;
+    c.trips += 1;
+    if (t.start < c.first) c.first = t.start;
+    if (t.end > c.last) c.last = t.end;
+    let city = c.cities.find((x) => x.city === t.city);
+    if (!city) c.cities.push((city = { city: t.city, days: 0, visits: [] }));
+    city.days += t.days;
+    city.visits.push({ start: t.start, end: t.end, days: t.days });
+    map.set(t.country, c);
+  }
+  for (const p of content.journey.places.filter((x) => x.enabled)) {
+    const c = map.get(p.country) ?? { country: p.country, days: 0, trips: 0, first: '', last: '', cities: [], kinds: [] };
+    for (const k of p.kinds) if (!c.kinds.includes(k)) c.kinds.push(k);
+    map.set(p.country, c);
+  }
+  for (const c of map.values()) c.cities.sort((a, b) => b.days - a.days || a.city.localeCompare(b.city));
+  return [...map.values()].sort((a, b) => b.days - a.days || b.last.localeCompare(a.last));
+}
+
+const haversineKm = (a: Trip, b: Trip) => {
+  const r = Math.PI / 180;
+  const h = Math.sin(((b.lat - a.lat) * r) / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(((b.lon - a.lon) * r) / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.sqrt(h));
+};
+
+export function journeyTotals(content: ParsedContent, now: Date = buildNow()) {
+  const trips = pastTrips(content, now);
+  let km = 0;
+  for (let i = 1; i < trips.length; i++) km += haversineKm(trips[i - 1], trips[i]);
+  return {
+    countries: new Set(trips.map((t) => t.country)).size,
+    cities: new Set(trips.map((t) => `${t.city}|${t.country}`)).size,
+    trips: trips.length,
+    km: Math.round(km),
+    nomadSince: content.trips.nomadSince,
+  };
+}
+
+/** Human duration for a number of days: "2 yrs 3 mos" / "3 wks" / "5 days". */
+export function formatDays(days: number, t: TFunction, tag: string): string {
+  const rule = (n: number) => new Intl.PluralRules(tag).select(n);
+  if (days >= 60) return formatDuration(Math.round(days / 30.44), t, tag);
+  if (days >= 14) return t(`journey.duration.weeks_${rule(Math.round(days / 7))}`, { n: Math.round(days / 7) });
+  return t(`journey.duration.days_${rule(Math.max(1, days))}`, { n: Math.max(1, days) });
+}
+
+/** Country display name, resolved at build time (see vite-plugin-content); falls back to the code. */
+export function countryName(content: ParsedContent, locale: string, code: string): string {
+  return content.countries?.[locale]?.[code] ?? content.countries?.[content.site.defaultLocale]?.[code] ?? code;
 }
