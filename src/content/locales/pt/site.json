@@ -1,0 +1,50 @@
+{
+  "role": "Engenheiro de Software Sênior",
+  "location": "Bahia, Brasil · trabalhando remotamente para o mundo todo",
+  "hero": {
+    "eyebrow": "Full-stack · sistemas distribuídos · engenharia de IA",
+    "headline": ["Construo o que", "ainda não"],
+    "headlineAccent": "existe.",
+    "lead": "Engenheiro de software com mais de 6 anos entregando sistemas distribuídos, plataformas em cloud e produtos de IA — de integrações de inteligência policial que processam mais de 2M de mensagens por dia a um redesenho com RAG que reduziu os custos de IA em 90%."
+  },
+  "stats": {
+    "years": "anos entregando software em produção",
+    "kafka": "mensagens Kafka por dia, plataforma de segurança pública",
+    "ai-cost": "custo de infraestrutura de IA após o redesenho com RAG",
+    "workflows": "workflows da aplicação mais rápidos na Wave"
+  },
+  "availability": "Aberto a vagas sênior de engenharia — remoto, híbrido ou presencial.",
+  "intro": {
+    "title": "Engenheiro, arquiteto, construtor.",
+    "paragraphs": [
+      "Projeto, construo e escalo sistemas de software — backend e frontend, sistemas distribuídos, infraestrutura em cloud e, cada vez mais, IA. Já trabalhei com plataformas de inteligência policial, billing de assinaturas para a maior operadora de telecom da Argentina, software de RH multi-tenant, plataformas de CMS, realidade aumentada e monitoramento ambiental.",
+      "Sou formado em Ciência da Computação, tenho MBA em Engenharia de Software pela USP e atualmente faço uma pós-graduação em Engenharia de IA Aplicada, com foco em agentes de IA e sistemas inteligentes.",
+      "Me sinto mais à vontade onde decisões de arquitetura e problemas de escala pedem respostas pragmáticas. Morei em vários países, o que me tornou adaptável, um comunicador claro e confortável em times remotos e multiculturais."
+    ]
+  },
+  "journey": {
+    "title": "Além do código",
+    "intro": "Cresci na Bahia, estudei inglês na Irlanda, morei na Argentina e passei anos trabalhando remotamente enquanto viajava. Viver em outros idiomas me ensinou a me adaptar rápido e a me comunicar com clareza com times que raramente encontro pessoalmente.",
+    "outro": "Fora do trabalho: viajante aventureiro, fã de jogos online e de esportes, e estudante lento, mas constante, de mandarim e japonês.",
+    "places": {
+      "salvador": "Minha base. Onde cresci, estudei e comecei minha carreira.",
+      "cork": "Sete meses estudando inglês no Griffith College.",
+      "argentina": "Quatro meses morando na Argentina.",
+      "sao-paulo": "Palestrei no NodeBR #63.",
+      "goiania": "Palestrei no DevFest Cerrado 2024."
+    }
+  },
+  "contact": {
+    "title": ["Vamos construir", "o que vem a seguir."],
+    "lead": "Contratando para uma vaga sênior de engenharia, planejando algo ambicioso ou só quer conversar sobre arquitetura? Minha caixa de entrada está aberta."
+  },
+  "seo": {
+    "home": "Ricardo Ribeiro — engenheiro de software sênior que constrói sistemas distribuídos, plataformas em cloud e produtos de IA. Projetos, estudos de caso e currículo.",
+    "work": "Projetos e estudos de caso selecionados de Ricardo Ribeiro: sistemas distribuídos, plataformas em AWS e Kubernetes, IA e RAG, jogos e experimentos.",
+    "about": "Currículo de Ricardo Ribeiro: experiência na Group Wave Enterprise, Mindsight, Agile Content e IPQ Tecnologia; formação, habilidades, certificações e idiomas.",
+    "lab": "O Lab — protótipos, pesquisas e experimentos de Ricardo Ribeiro: agentes de IA, pesquisa em serverless, jogos e pequenas ferramentas.",
+    "talks": "Palestras, workshops e trabalho em comunidade de Ricardo Ribeiro: NodeBR, Campus Party, DevFest Cerrado e mais.",
+    "journey": "Além do código: a trajetória internacional de Ricardo Ribeiro — Brasil, Irlanda, Argentina e a vida como engenheiro remoto.",
+    "contact": "Entre em contato com Ricardo Ribeiro — e-mail, LinkedIn e GitHub."
+  }
+}

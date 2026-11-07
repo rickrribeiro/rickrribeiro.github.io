@@ -1,0 +1,313 @@
+{
+  "meta": {
+    "siteTitle": "Ricardo Ribeiro — Ingeniero de Software Sénior",
+    "titleTemplate": "{title} — Ricardo Ribeiro"
+  },
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "language": "Idioma",
+    "mainNav": "Navegación principal",
+    "home": "Ricardo Ribeiro — inicio",
+    "external": "(se abre en una pestaña nueva)",
+    "commandPalette": "Navegación rápida",
+    "close": "Cerrar",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "diagram": "Diagrama de arquitectura de {title}",
+    "globe": "Globo con los lugares del recorrido de Ricardo. Arrastra para girarlo.",
+    "constellation": "Constelación animada de las tecnologías con las que trabaja Ricardo"
+  },
+  "nav": {
+    "home": "Inicio",
+    "work": "Proyectos",
+    "about": "Sobre mí",
+    "lab": "Lab",
+    "talks": "Charlas",
+    "journey": "Trayectoria",
+    "contact": "Contacto",
+    "resume": "CV",
+    "quick": "Navegación rápida"
+  },
+  "fastTrack": {
+    "label": "¿Contratando? Vía rápida",
+    "work": "Proyectos destacados",
+    "experience": "Experiencia",
+    "stack": "Stack",
+    "resume": "Descargar CV",
+    "email": "Escríbeme"
+  },
+  "hero": {
+    "now": "Ahora",
+    "at": "en",
+    "scroll": "Ir a los proyectos"
+  },
+  "home": {
+    "featured": {
+      "kicker": "Proyectos destacados",
+      "title": "Cosas que he construido",
+      "all": "Todos los proyectos"
+    },
+    "experience": {
+      "kicker": "Carrera",
+      "title": "Dónde he entregado",
+      "all": "CV completo"
+    },
+    "more": {
+      "kicker": "Índice",
+      "title": "Más proyectos",
+      "all": "Ver todos los proyectos"
+    },
+    "skills": {
+      "kicker": "Capacidades",
+      "title": "El stack, con pruebas",
+      "all": "Cada habilidad y dónde la usé"
+    },
+    "lab": {
+      "kicker": "El Lab",
+      "title": "Experimentos",
+      "all": "Entrar al Lab"
+    },
+    "talks": {
+      "kicker": "Comunidad",
+      "title": "En el escenario",
+      "all": "Todas las charlas"
+    },
+    "journey": {
+      "kicker": "Más allá del código",
+      "all": "La trayectoria"
+    }
+  },
+  "project": {
+    "caseStudy": "Caso de estudio",
+    "viewCase": "Ver caso de estudio",
+    "role": "Rol",
+    "period": "Periodo",
+    "status": "Estado",
+    "type": "Tipo",
+    "stack": "Stack",
+    "links": "Enlaces",
+    "overview": "Resumen",
+    "problem": "El problema",
+    "approach": "Qué hice",
+    "architecture": "Arquitectura",
+    "challenges": "Retos de ingeniería",
+    "outcomes": "Resultados",
+    "lessons": "Aprendizajes",
+    "ending": "Por qué terminó",
+    "gallery": "Galería",
+    "relatedTalks": "Charlas relacionadas",
+    "experience": "Desarrollado en",
+    "next": "Siguiente proyecto",
+    "back": "Todos los proyectos",
+    "sourcePrivate": "El código fuente es privado",
+    "sourceConfidential": "Confidencial — trabajo para un cliente o empleador",
+    "noMedia": "Sin capturas de pantalla: es un sistema backend o confidencial, así que la arquitectura cuenta la historia.",
+    "present": "actualidad"
+  },
+  "links": {
+    "github": "Código en GitHub",
+    "demo": "Demo en vivo",
+    "website": "Sitio web",
+    "slides": "Diapositivas",
+    "docs": "Documentación",
+    "video": "Vídeo",
+    "code": "Código",
+    "event": "Página del evento",
+    "credential": "Credencial"
+  },
+  "status": {
+    "shipped": "En producción",
+    "in-progress": "En curso",
+    "experimental": "Experimental",
+    "archived": "Archivado"
+  },
+  "type": {
+    "professional": "Profesional",
+    "consulting": "Consultoría",
+    "personal": "Personal",
+    "startup": "Startup",
+    "academic": "Académico",
+    "hackathon": "Hackathon",
+    "open-source": "Código abierto"
+  },
+  "category": {
+    "ai": "IA",
+    "fullstack": "Full-stack",
+    "backend": "Backend",
+    "cloud": "Cloud / Infra",
+    "games": "Juegos",
+    "mobile": "Móvil",
+    "startup": "Startup",
+    "experiments": "Experimentos",
+    "devtools": "Herramientas de desarrollo",
+    "automation": "Automatización"
+  },
+  "filter": {
+    "label": "Filtrar proyectos",
+    "all": "Todos",
+    "featured": "Destacados",
+    "lab": "Lab",
+    "count": "{count} proyectos",
+    "empty": "Aquí todavía no hay nada."
+  },
+  "work": {
+    "title": "Proyectos",
+    "kicker": "Proyectos y casos de estudio",
+    "intro": "Sistemas profesionales, productos y experimentos. El trabajo confidencial se describe hasta donde lo permite mi CV; todo lo demás enlaza al código."
+  },
+  "about": {
+    "title": "Sobre mí",
+    "kicker": "CV",
+    "experience": "Experiencia",
+    "education": "Formación",
+    "skills": "Habilidades",
+    "certifications": "Certificaciones y cursos",
+    "languages": "Idiomas",
+    "download": "Descargar CV (PDF)",
+    "downloadLang": "PDF · {lang}",
+    "currently": "Actualmente",
+    "achievements": "Logros",
+    "technologies": "Tecnologías",
+    "relatedProjects": "Proyectos relacionados",
+    "activities": "Actividades",
+    "grade": "Nota {grade}",
+    "website": "Sitio web"
+  },
+  "experience": {
+    "remote": "Remoto",
+    "onsite": "Presencial",
+    "hybrid": "Híbrido",
+    "employment": {
+      "full-time": "Jornada completa",
+      "part-time": "Media jornada",
+      "contract": "Contrato",
+      "consulting": "Consultoría",
+      "freelance": "Freelance",
+      "internship": "Prácticas",
+      "volunteer": "Voluntariado"
+    },
+    "duration": {
+      "years_one": "{n} año",
+      "years_other": "{n} años",
+      "months_one": "{n} mes",
+      "months_other": "{n} meses"
+    }
+  },
+  "education": {
+    "status": {
+      "completed": "Finalizado",
+      "in-progress": "En curso",
+      "transferred": "Traslado"
+    },
+    "expected": "previsto"
+  },
+  "skills": {
+    "intro": "Sin barras de porcentaje. Cada habilidad muestra el año en que empecé a usarla y, cuando aplica, los trabajos en los que la utilicé.",
+    "since": "desde {year}",
+    "usedAt": "Usado en",
+    "personal": "Proyectos personales y de estudio",
+    "core": "Uso diario",
+    "viewByGroup": "Por área",
+    "viewByYear": "Por año",
+    "year": "{year}",
+    "groups": {
+      "languages": "Lenguajes",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "data": "Bases de datos",
+      "messaging": "Mensajería y colas",
+      "cloud": "Cloud y DevOps",
+      "observability": "Observabilidad",
+      "testing": "Testing",
+      "ai": "Ingeniería de IA",
+      "architecture": "Arquitectura",
+      "games": "Juegos y XR",
+      "analytics": "Datos y BI"
+    }
+  },
+  "certifications": {
+    "kind": {
+      "certification": "Certificación",
+      "course": "Curso",
+      "workshop": "Taller",
+      "award": "Premio",
+      "exam": "Examen"
+    },
+    "id": "ID {id}",
+    "inProgress": "En curso"
+  },
+  "languages": {
+    "level": {
+      "native": "Nativo",
+      "fluent": "Profesional completo",
+      "advanced": "Avanzado",
+      "intermediate": "Intermedio",
+      "elementary": "Básico",
+      "learning": "Aprendiendo"
+    }
+  },
+  "lab": {
+    "title": "El Lab",
+    "kicker": "Prototipos · investigación · experimentos",
+    "intro": "Donde se ponen a prueba las ideas antes de ganarse un caso de estudio: agentes de IA, investigación, juegos y pequeñas herramientas. Algunos están sin pulir a propósito."
+  },
+  "talks": {
+    "title": "Charlas y comunidad",
+    "kicker": "Charlas · talleres · comunidad",
+    "intro": "Compartiendo lo que aprendo: en el escenario, en talleres y en las comunidades que me enseñaron.",
+    "kind": {
+      "talk": "Charla",
+      "workshop": "Taller",
+      "showcase": "Demostración",
+      "hackathon": "Hackathon",
+      "community": "Comunidad"
+    },
+    "organizer": "por {organizer}",
+    "related": "Proyecto relacionado"
+  },
+  "journey": {
+    "kicker": "Personal",
+    "kind": {
+      "home": "Hogar",
+      "lived": "Viví",
+      "studied": "Estudié",
+      "spoke": "Di una charla",
+      "visited": "Visité"
+    },
+    "places": "Lugares",
+    "months": "{n} meses",
+    "languagesTitle": "Los idiomas en los que vivo",
+    "follow": "Más fotos en Instagram"
+  },
+  "contact": {
+    "kicker": "Contacto",
+    "copy": "Copiar email",
+    "copied": "¡Copiado!",
+    "write": "Escríbeme un email",
+    "elsewhere": "En otros sitios",
+    "resume": "¿Prefieres papel? Descarga mi CV."
+  },
+  "footer": {
+    "built": "Diseñado y desarrollado por Ricardo Ribeiro con React, TypeScript y Vite. El contenido vive en JSON.",
+    "updated": "Última compilación {date}",
+    "top": "Volver arriba",
+    "source": "Código"
+  },
+  "palette": {
+    "placeholder": "Ir a una página, proyecto o acción…",
+    "hint": "Pulsa {key} en cualquier momento",
+    "pages": "Páginas",
+    "projects": "Proyectos",
+    "actions": "Acciones",
+    "empty": "Sin resultados",
+    "copyEmail": "Copiar dirección de email",
+    "switchLanguage": "Cambiar idioma a {lang}"
+  },
+  "notFound": {
+    "title": "Esta página todavía no existe.",
+    "body": "Lo cual es irónico, teniendo en cuenta el titular. Mejor echa un vistazo a los proyectos.",
+    "home": "Ir al inicio"
+  }
+}

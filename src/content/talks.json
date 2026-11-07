@@ -1,0 +1,87 @@
+{
+  "$comment": "Talks, workshops, showcases, hackathons and community roles, newest first by date. kind: talk | workshop | showcase | hackathon | community. Text in locales/<lang>/talks.json.",
+  "items": [
+    {
+      "id": "devfest-cerrado-2024",
+      "enabled": true,
+      "kind": "talk",
+      "date": "2024-11",
+      "event": "DevFest Cerrado 2024",
+      "organizer": "GDG Goiânia",
+      "location": "Goiânia, Brazil",
+      "media": [{ "src": "/images/talks/devfest-cerrado-2024.webp", "width": 480, "height": 640 }],
+      "links": {},
+      "projects": []
+    },
+    {
+      "id": "campus-party-2023",
+      "enabled": true,
+      "kind": "workshop",
+      "date": "2023-07-26",
+      "event": "Campus Party",
+      "organizer": "Instituto Campus Party",
+      "location": null,
+      "media": [
+        { "src": "/images/talks/campus-party-2023-stage.webp", "width": 704, "height": 746 },
+        { "src": "/images/talks/campus-party-2023-workshop.webp", "width": 480, "height": 360 }
+      ],
+      "links": { "code": "https://github.com/rickrribeiro/Campus_party_api_serverless" },
+      "projects": ["campus-party-serverless"]
+    },
+    {
+      "id": "nodebr-63",
+      "enabled": true,
+      "kind": "talk",
+      "date": "2023-06-30",
+      "event": "NodeBR #63",
+      "organizer": "NodeBR",
+      "location": "São Paulo, Brazil",
+      "media": [
+        { "src": "/images/talks/nodebr-63-talk.webp", "width": 480, "height": 270 },
+        { "src": "/images/talks/nodebr-63-lineup.webp", "width": 480, "height": 270 }
+      ],
+      "links": {
+        "slides": "https://docs.google.com/presentation/d/1jc-Sn5QFhB6A-trDUiPL3lmIzHPZsH3aYnciAhqrELg",
+        "code": "https://github.com/rickrribeiro/TinderGPT"
+      },
+      "projects": ["tindergpt"]
+    },
+    {
+      "id": "hacking-rio-2021",
+      "enabled": true,
+      "kind": "hackathon",
+      "date": "2021-11",
+      "event": "Hacking.Rio",
+      "organizer": null,
+      "location": null,
+      "media": [],
+      "links": {},
+      "projects": ["gameducation-hackathon"]
+    },
+    {
+      "id": "competitive-programming",
+      "enabled": true,
+      "kind": "community",
+      "date": "2017-02",
+      "endDate": "2021-08",
+      "event": "SENAI CIMATEC",
+      "organizer": null,
+      "location": "Salvador, Brazil",
+      "media": [],
+      "links": { "code": "https://github.com/rickrribeiro/CompetitiveProgramming" },
+      "projects": []
+    },
+    {
+      "id": "campus-party-2018",
+      "enabled": true,
+      "kind": "showcase",
+      "date": "2018-05",
+      "event": "Campus Party 2018",
+      "organizer": null,
+      "location": null,
+      "media": [],
+      "links": { "code": "https://github.com/rickrribeiro/CityRACampusParty_Hololens" },
+      "projects": ["hololens-city"]
+    }
+  ]
+}

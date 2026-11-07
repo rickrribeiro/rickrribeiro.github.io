@@ -1,0 +1,144 @@
+{
+  "experience": {
+    "wave": {
+      "summary": "Infrastructure, platform engineering and full-stack product work on a marketing-automation platform.",
+      "roles": {
+        "senior": {
+          "title": "Senior Software Engineer",
+          "achievements": [
+            "Optimised application workflows by more than 70% through refactoring and caching, BullMQ job deduplication and background workers for CPU-bound bottlenecks.",
+            "Owned the design, deployment and maintenance of the cloud-native infrastructure: Kubernetes, Docker, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana and Loki.",
+            "Led platform-engineering initiatives: repository standards, GitHub Actions CI/CD, reusable LLM skills/agents, a shared Claude Code RAG knowledge base, automated testing and security hardening.",
+            "Worked with an external software-architecture consultant to define the new platform architecture and contributed to the migration from microservices to a modular React/NestJS monolith.",
+            "Built product features across NestJS and React, including Meta campaign-automation workflows, a VSL Builder and AI agents that generate UI components."
+          ]
+        }
+      }
+    },
+    "vilaverde": {
+      "summary": "AI architecture, security and refactoring consultancy for a live product.",
+      "roles": {
+        "consultant": {
+          "title": "Software Consultant",
+          "achievements": [
+            "Cut monthly AI infrastructure costs by over 90% by redesigning the AI architecture around a RAG pipeline on a vector database — better answers, no knowledge-base size limit and much lower latency.",
+            "Resolved critical security and reliability issues in an AI-generated codebase: unauthorized admin access, sensitive-data exposure, Service Worker caching problems and inconsistent data from multiple sources of truth.",
+            "Led a large refactor: modularised the app, extracted reusable components, applied design patterns and replaced hard-coded values with an admin-configurable system.",
+            "Implemented monitoring and observability for detailed error tracking and faster root-cause analysis."
+          ]
+        }
+      }
+    },
+    "mindsight": {
+      "summary": "Multi-tenant HR platforms for recruitment and hiring.",
+      "roles": {
+        "fullstack": {
+          "title": "Full Stack Engineer",
+          "achievements": [
+            "Designed and delivered features, refactored legacy services and improved stability on multi-tenant HR platforms serving tens of thousands of monthly users.",
+            "Refactored critical processing flows, reducing memory consumption and execution time by over 50%.",
+            "Built authentication and system-communication features: SSO with external IdPs, OAuth2 between internal systems and event journaling for compliance.",
+            "Created a job-board application end to end (Django + React) in a team of two, with a key role in architecture, data modelling, API design, testing and deployment."
+          ]
+        }
+      }
+    },
+    "agile-content": {
+      "summary": "Subscription management for the largest telecom company in Argentina.",
+      "roles": {
+        "backend": {
+          "title": "Backend Software Engineer",
+          "achievements": [
+            "Developed and maintained microservices (Node.js APIs and serverless functions) for critical, high-volume flows: purchase, billing, renewal and cancellation.",
+            "Architected and evolved AWS solutions (Lambda, SQS, CloudWatch, ECS, X-Ray, Parameter Store, S3, Redshift, RDS) supporting millions of events per month with high availability and observability.",
+            "Contributed to architecture decisions and service patterns that improved reliability and reduced incident frequency.",
+            "Created and maintained infrastructure with Docker, Terraform, the Serverless Framework and CI/CD.",
+            "Led internal API-testing libraries in Robot Framework and reached 100% unit-test coverage.",
+            "Built datasets and reports with Tableau and QuickSight."
+          ]
+        }
+      }
+    },
+    "ipq": {
+      "summary": "Public-security and police-intelligence platform for government agencies.",
+      "roles": {
+        "fullstack": {
+          "title": "Full Stack Software Engineer",
+          "achievements": [
+            "Developed and scaled a public-security and police-intelligence platform used by government agencies, contributing to a reported crime reduction of over 30%.",
+            "Architected and implemented high-throughput Kafka integrations processing more than 2 million messages per day.",
+            "Built map layers, integrations between systems and confidential core modules under strict reliability and confidentiality requirements.",
+            "Worked on a CMS for registering electronic components, monitoring and an equipment map."
+          ]
+        }
+      }
+    },
+    "cimatec": {
+      "summary": "Systems for startups and industry, and mixed-reality research.",
+      "roles": {
+        "fullstack-intern": {
+          "title": "Full Stack Software Developer Intern",
+          "achievements": [
+            "Collaborated on a system for monitoring, automating and managing greenhouse sensors.",
+            "Owned, under supervision, the architecture and development of an API for vehicle-fleet management and reservations.",
+            "Collaborated on a traceability system for wind-tower manufacturing that tracks parts and reports what is needed to complete each tower."
+          ]
+        },
+        "ar-intern": {
+          "title": "Augmented Reality Volunteer Intern",
+          "achievements": [
+            "Features and bug fixes in a mixed-reality application for Microsoft HoloLens.",
+            "Created an i18n library for the application."
+          ]
+        }
+      }
+    }
+  },
+  "education": {
+    "unipds": {
+      "degree": "Postgraduate degree",
+      "field": "Applied Artificial Intelligence Engineering",
+      "description": "Specialising in AI agents and intelligent systems."
+    },
+    "vanderbilt": {
+      "degree": "Specializations",
+      "field": "Generative AI Software Engineering · AI Agent Development",
+      "description": "Orchestrating AI agents, prompt engineering, AI-first architectures and automating multi-step workflows."
+    },
+    "usp": {
+      "degree": "MBA",
+      "field": "Software Engineering",
+      "description": "Thesis: integrating serverless computing with microservices architecture. USP is ranked among the QS top 100 universities."
+    },
+    "unifacs": {
+      "degree": "Bachelor's degree",
+      "field": "Computer Science",
+      "description": "Transferred from Computer Engineering to focus on software rather than hardware."
+    },
+    "cimatec": {
+      "degree": "Computer Engineering (transferred)",
+      "field": "Computer Engineering",
+      "description": "Transferred to Computer Science at the end of the course.",
+      "activities": [
+        "Competitive Programming group coordinator — coached 15+ students and organised competitions",
+        "Academic coordinator of the Computer Engineering student association",
+        "Research group on AR, VR and computer vision applied to industrial innovation",
+        "HoloLens projects for Campus Party",
+        "Computer Engineering representative at CREA Jr-BA"
+      ]
+    },
+    "griffith": {
+      "degree": "General English",
+      "field": "English (C1)",
+      "description": "English course while living in Cork, Ireland."
+    }
+  },
+  "certifications": {},
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish",
+    "zh": "Chinese (Mandarin)",
+    "ja": "Japanese"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "Education, newest first. Text lives in locales/<lang>/resume.json under education.<id>. status: completed | in-progress | transferred.",
+  "items": [
+    { "id": "unipds", "enabled": true, "institution": "UNIPDS", "website": null, "location": null, "start": "2026-01", "end": "2027-03", "status": "in-progress", "skills": ["ai-agents", "rag", "llm-apps"], "projects": [] },
+    { "id": "vanderbilt", "enabled": true, "institution": "Vanderbilt University", "website": "https://www.vanderbilt.edu", "location": null, "start": "2026-02", "end": "2026-04", "status": "completed", "skills": ["ai-agents", "langchain", "prompt-engineering", "claude-code"], "projects": [], "certifications": ["vanderbilt-agents", "vanderbilt-genai"] },
+    { "id": "usp", "enabled": true, "institution": "Universidade de São Paulo (USP)", "website": "https://www.usp.br", "location": "São Paulo, Brazil", "start": "2023-10", "end": "2025-08", "status": "completed", "grade": "8.5", "skills": ["serverless-architecture", "microservices"], "projects": ["mba-thesis"] },
+    { "id": "unifacs", "enabled": true, "institution": "Universidade Salvador (UNIFACS)", "website": null, "location": "Salvador, Brazil", "start": "2021-08", "end": "2022-12", "status": "completed", "skills": [], "projects": ["woo-nomad-woo"] },
+    { "id": "cimatec", "enabled": true, "institution": "SENAI CIMATEC", "website": "https://www.senaicimatec.com.br", "location": "Salvador, Brazil", "start": "2017-02", "end": "2021-08", "status": "transferred", "grade": "7.5", "skills": ["cpp", "csharp", "unity", "hololens"], "projects": ["hololens-city", "compilers", "legends-of-senai"] },
+    { "id": "griffith", "enabled": true, "institution": "Griffith College Cork", "website": "https://www.griffith.ie", "location": "Cork, Ireland", "start": "2019-09", "end": "2020-03", "status": "completed", "skills": [], "projects": [] }
+  ]
+}

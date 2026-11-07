@@ -1,0 +1,50 @@
+{
+  "role": "Senior Software Engineer",
+  "location": "Bahia, Brazil · working remotely worldwide",
+  "hero": {
+    "eyebrow": "Full-stack · distributed systems · AI engineering",
+    "headline": ["I build what", "doesn't exist"],
+    "headlineAccent": "yet.",
+    "lead": "Software engineer with 6+ years shipping distributed systems, cloud platforms and AI products — from police-intelligence integrations moving 2M+ messages a day to a RAG redesign that cut AI costs by 90%."
+  },
+  "stats": {
+    "years": "years shipping production software",
+    "kafka": "Kafka messages a day, public-security platform",
+    "ai-cost": "AI infrastructure cost after a RAG redesign",
+    "workflows": "faster application workflows at Wave"
+  },
+  "availability": "Open to senior engineering roles — remote, hybrid or on-site.",
+  "intro": {
+    "title": "Engineer, architect, builder.",
+    "paragraphs": [
+      "I design, build and scale software systems — backend and frontend, distributed systems, cloud infrastructure and, more and more, AI. I've worked on police-intelligence platforms, subscription billing for the largest telecom in Argentina, multi-tenant HR software, CMS platforms, augmented reality and environmental monitoring.",
+      "I hold a degree in Computer Science and an MBA in Software Engineering from USP, and I'm currently doing a postgraduate degree in Applied AI Engineering focused on AI agents and intelligent systems.",
+      "I'm most at home where architecture decisions and scaling problems need pragmatic answers. I've lived in several countries, which made me adaptable, a clear communicator and comfortable in remote, multicultural teams."
+    ]
+  },
+  "journey": {
+    "title": "Beyond the code",
+    "intro": "I grew up in Bahia, Brazil, studied English in Ireland, lived in Argentina and have spent years working remotely while travelling. Living in other languages taught me to adapt quickly and to communicate clearly with teams I rarely meet in person.",
+    "outro": "Outside of work: an adventurous traveller, a lover of online games and sports, and a slow-but-steady student of Mandarin and Japanese.",
+    "places": {
+      "salvador": "Home base. Where I grew up, studied and started my career.",
+      "cork": "Seven months studying English at Griffith College.",
+      "argentina": "Four months living in Argentina.",
+      "sao-paulo": "Spoke at NodeBR #63.",
+      "goiania": "Spoke at DevFest Cerrado 2024."
+    }
+  },
+  "contact": {
+    "title": ["Let's build", "what's next."],
+    "lead": "Hiring for a senior engineering role, planning something ambitious, or just want to talk architecture? My inbox is open."
+  },
+  "seo": {
+    "home": "Ricardo Ribeiro — senior software engineer building distributed systems, cloud platforms and AI products. Projects, case studies and résumé.",
+    "work": "Selected projects and case studies by Ricardo Ribeiro: distributed systems, AWS and Kubernetes platforms, AI and RAG, games and experiments.",
+    "about": "Résumé of Ricardo Ribeiro: experience at Group Wave Enterprise, Mindsight, Agile Content and IPQ Tecnologia; education, skills, certifications and languages.",
+    "lab": "The Lab — prototypes, research and experiments by Ricardo Ribeiro: AI agents, serverless research, games and small tools.",
+    "talks": "Talks, workshops and community work by Ricardo Ribeiro: NodeBR, Campus Party, DevFest Cerrado and more.",
+    "journey": "Beyond the code: Ricardo Ribeiro's international journey — Brazil, Ireland, Argentina and life as a remote engineer.",
+    "contact": "Contact Ricardo Ribeiro — email, LinkedIn and GitHub."
+  }
+}

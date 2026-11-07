@@ -1,0 +1,65 @@
+{
+  "$comment": "Global site settings. Translatable copy (hero, bio, SEO descriptions) lives in locales/<lang>/site.json.",
+  "name": "Ricardo Ribeiro",
+  "handle": "rickrribeiro",
+  "url": "https://rickrribeiro.github.io",
+  "email": "rickribeiro99@gmail.com",
+  "defaultLocale": "en",
+  "locales": [
+    {
+      "code": "en",
+      "label": "English",
+      "short": "EN",
+      "tag": "en-US",
+      "ogLocale": "en_US"
+    },
+    {
+      "code": "pt",
+      "label": "Português",
+      "short": "PT",
+      "tag": "pt-BR",
+      "ogLocale": "pt_BR"
+    },
+    {
+      "code": "es",
+      "label": "Español",
+      "short": "ES",
+      "tag": "es-ES",
+      "ogLocale": "es_ES"
+    }
+  ],
+  "portrait": "/images/portrait/ricardo-ribeiro.webp",
+  "resume": {
+    "en": "/resumes/ricardo-ribeiro-resume-en.pdf"
+  },
+  "currentRole": {
+    "experience": "wave"
+  },
+  "availability": {
+    "open": false,
+    "$comment": "LinkedIn 'open to work' is set to recruiters-only, so this is off by default. Set open:true to show the availability line (text in locales/<lang>/site.json → availability)."
+  },
+  "careerStart": "2018-02",
+  "stats": [
+    {
+      "id": "years",
+      "value": "6+",
+      "experience": null
+    },
+    {
+      "id": "kafka",
+      "value": "2M+",
+      "experience": "ipq"
+    },
+    {
+      "id": "ai-cost",
+      "value": "−90%",
+      "experience": "vilaverde"
+    },
+    {
+      "id": "workflows",
+      "value": "70%+",
+      "experience": "wave"
+    }
+  ]
+}

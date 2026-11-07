@@ -1,0 +1,115 @@
+/*
+ * Design tokens. Brand colours and font stacks come from src/content/theme.json
+ * (injected as --color-* / --font-*); everything here derives from them.
+ * Breakpoints (used in media queries, which can't read custom properties):
+ *   sm 40rem (640px) · md 60rem (960px) · lg 80rem (1280px) · xl 100rem (1600px)
+ */
+:root {
+  /* Fallbacks if theme.json is missing a value */
+  --color-bg: #09090a;
+  --color-bg-elevated: #111113;
+  --color-surface: #16161a;
+  --color-line: #26262b;
+  --color-text: #edebe6;
+  --color-muted: #9a9893;
+  --color-accent: #ff5b23;
+  --color-accent-ink: #140700;
+  --color-signal: #8ed1ff;
+
+  /* Semantic colours */
+  --text: var(--color-text);
+  --text-muted: var(--color-muted);
+  --text-faint: color-mix(in oklab, var(--color-muted) 60%, var(--color-bg));
+  --line: var(--color-line);
+  --line-strong: color-mix(in oklab, var(--color-text) 22%, var(--color-bg));
+  --surface-1: var(--color-bg-elevated);
+  --surface-2: var(--color-surface);
+  --surface-glass: color-mix(in oklab, var(--color-bg) 72%, transparent);
+  --accent: var(--color-accent);
+  --accent-soft: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  --accent-glow: color-mix(in oklab, var(--color-accent) 45%, transparent);
+  --signal: var(--color-signal);
+  --success: #7ee2a8;
+  --warning: #ffcf5c;
+  --focus: var(--color-signal);
+
+  /* Status colours */
+  --status-shipped: #7ee2a8;
+  --status-in-progress: var(--color-accent);
+  --status-experimental: var(--color-signal);
+  --status-archived: var(--color-muted);
+
+  /* Fluid type scale (≈ 1.25 → 1.33 ratio from 360px to 1600px) */
+  --step--2: clamp(0.7rem, 0.68rem + 0.08vw, 0.76rem);
+  --step--1: clamp(0.8rem, 0.77rem + 0.13vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+  --step-2: clamp(1.44rem, 1.27rem + 0.85vw, 2rem);
+  --step-3: clamp(1.73rem, 1.42rem + 1.55vw, 2.8rem);
+  --step-4: clamp(2.07rem, 1.52rem + 2.75vw, 4rem);
+  --step-5: clamp(2.49rem, 1.6rem + 4.45vw, 5.75rem);
+  --step-6: clamp(2.9rem, 1.45rem + 7.25vw, 8.5rem);
+  --step-hero: clamp(3.1rem, 0.4rem + 8.6vw, 10rem);
+
+  --leading-tight: 0.92;
+  --leading-snug: 1.15;
+  --leading-body: 1.6;
+  --tracking-tight: -0.035em;
+  --tracking-display: -0.045em;
+  --tracking-mono: 0.06em;
+
+  /* Spacing (fluid) */
+  --space-3xs: clamp(0.25rem, 0.23rem + 0.1vw, 0.31rem);
+  --space-2xs: clamp(0.5rem, 0.47rem + 0.15vw, 0.6rem);
+  --space-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.9rem);
+  --space-s: clamp(1rem, 0.93rem + 0.35vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.38rem + 0.6vw, 1.9rem);
+  --space-l: clamp(2rem, 1.8rem + 1vw, 2.6rem);
+  --space-xl: clamp(3rem, 2.6rem + 2vw, 4.4rem);
+  --space-2xl: clamp(4rem, 3.2rem + 4vw, 7rem);
+  --space-3xl: clamp(6rem, 4.5rem + 7.5vw, 11rem);
+  --section-pad: var(--space-3xl);
+
+  /* Layout */
+  --page-max: 96rem;
+  --gutter: clamp(1rem, 0.4rem + 3vw, 3.5rem);
+  --measure: 62ch;
+  --header-h: 4.25rem;
+
+  /* Shape */
+  --radius-xs: 4px;
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --radius-pill: 999px;
+  --hairline: 1px solid var(--line);
+
+  /* Depth */
+  --shadow-1: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-2: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 30px 80px -20px rgb(0 0 0 / 0.75);
+  --glow-accent: 0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent), 0 10px 40px -10px var(--accent-glow);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-1: 140ms;
+  --dur-2: 280ms;
+  --dur-3: 600ms;
+  --dur-4: 1000ms;
+
+  /* Layers */
+  --z-header: 50;
+  --z-overlay: 80;
+  --z-palette: 90;
+  --z-grain: 100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+    --dur-3: 0ms;
+    --dur-4: 0ms;
+  }
+}

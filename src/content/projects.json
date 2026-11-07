@@ -1,0 +1,1656 @@
+{
+  "$comment": "Every project, case study and Lab experiment. Technical metadata only — titles, summaries and case-study text live in locales/<lang>/projects.json under the same id. See CONTENT_GUIDE.md for every field.",
+  "filters": [
+    "all",
+    "featured",
+    "professional",
+    "personal",
+    "ai",
+    "fullstack",
+    "backend",
+    "cloud",
+    "games",
+    "mobile",
+    "experiments"
+  ],
+  "items": [
+    {
+      "id": "wave-platform",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 1,
+      "lab": false,
+      "status": "in-progress",
+      "type": "professional",
+      "categories": [
+        "fullstack",
+        "backend",
+        "cloud",
+        "ai"
+      ],
+      "technologies": [
+        "nestjs",
+        "react",
+        "typescript",
+        "kubernetes",
+        "ansible",
+        "postgresql",
+        "redis",
+        "rabbitmq",
+        "bullmq",
+        "minio",
+        "prometheus",
+        "grafana",
+        "loki",
+        "github-actions",
+        "claude-code"
+      ],
+      "period": {
+        "start": "2026-03",
+        "end": null
+      },
+      "source": "confidential",
+      "experience": "wave",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#FF5B23",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "web",
+            "label": "React app",
+            "kind": "client",
+            "x": 10,
+            "y": 30
+          },
+          {
+            "id": "api",
+            "label": "NestJS modular monolith",
+            "kind": "service",
+            "x": 40,
+            "y": 30
+          },
+          {
+            "id": "workers",
+            "label": "BullMQ workers",
+            "kind": "service",
+            "x": 40,
+            "y": 52
+          },
+          {
+            "id": "pg",
+            "label": "PostgreSQL",
+            "kind": "data",
+            "x": 72,
+            "y": 12
+          },
+          {
+            "id": "redis",
+            "label": "Redis",
+            "kind": "data",
+            "x": 72,
+            "y": 30
+          },
+          {
+            "id": "mq",
+            "label": "RabbitMQ",
+            "kind": "queue",
+            "x": 72,
+            "y": 48
+          },
+          {
+            "id": "minio",
+            "label": "MinIO",
+            "kind": "data",
+            "x": 92,
+            "y": 22
+          },
+          {
+            "id": "ai",
+            "label": "AI agents",
+            "kind": "ai",
+            "x": 40,
+            "y": 8
+          },
+          {
+            "id": "obs",
+            "label": "Prometheus · Grafana · Loki",
+            "kind": "infra",
+            "x": 88,
+            "y": 56
+          }
+        ],
+        "edges": [
+          {
+            "from": "web",
+            "to": "api"
+          },
+          {
+            "from": "api",
+            "to": "pg"
+          },
+          {
+            "from": "api",
+            "to": "redis"
+          },
+          {
+            "from": "api",
+            "to": "workers",
+            "label": "jobs"
+          },
+          {
+            "from": "workers",
+            "to": "redis"
+          },
+          {
+            "from": "api",
+            "to": "mq"
+          },
+          {
+            "from": "api",
+            "to": "minio"
+          },
+          {
+            "from": "api",
+            "to": "ai"
+          },
+          {
+            "from": "mq",
+            "to": "obs",
+            "dashed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "rickos",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 2,
+      "lab": false,
+      "status": "in-progress",
+      "type": "personal",
+      "categories": [
+        "ai",
+        "fullstack",
+        "devtools",
+        "automation"
+      ],
+      "technologies": [
+        "electron",
+        "react",
+        "typescript",
+        "vite",
+        "fastify",
+        "sqlite",
+        "zustand",
+        "claude-code",
+        "playwright",
+        "pwa"
+      ],
+      "period": {
+        "start": "2026-01",
+        "end": null
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/time-tracker"
+      },
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#8ED1FF",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "desktop",
+            "label": "Electron desktop",
+            "kind": "client",
+            "x": 10,
+            "y": 18
+          },
+          {
+            "id": "phone",
+            "label": "PWA on phone",
+            "kind": "client",
+            "x": 10,
+            "y": 44
+          },
+          {
+            "id": "server",
+            "label": "Fastify · RPC + SSE",
+            "kind": "service",
+            "x": 42,
+            "y": 30
+          },
+          {
+            "id": "db",
+            "label": "SQLite (sql.js / WASM)",
+            "kind": "data",
+            "x": 74,
+            "y": 12
+          },
+          {
+            "id": "claude",
+            "label": "Claude Code CLI",
+            "kind": "ai",
+            "x": 74,
+            "y": 32
+          },
+          {
+            "id": "ext",
+            "label": "GitHub · Calendar · Finance",
+            "kind": "external",
+            "x": 74,
+            "y": 52
+          }
+        ],
+        "edges": [
+          {
+            "from": "desktop",
+            "to": "server"
+          },
+          {
+            "from": "phone",
+            "to": "server",
+            "label": "token"
+          },
+          {
+            "from": "server",
+            "to": "db"
+          },
+          {
+            "from": "server",
+            "to": "claude",
+            "label": "child_process"
+          },
+          {
+            "from": "server",
+            "to": "ext"
+          }
+        ]
+      }
+    },
+    {
+      "id": "telecom-subscriptions",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 3,
+      "lab": false,
+      "status": "shipped",
+      "type": "professional",
+      "categories": [
+        "backend",
+        "cloud"
+      ],
+      "technologies": [
+        "node",
+        "typescript",
+        "aws",
+        "lambda",
+        "sqs",
+        "cloudwatch",
+        "redshift",
+        "serverless-framework",
+        "terraform",
+        "docker",
+        "travis-ci",
+        "robot-framework",
+        "grafana"
+      ],
+      "period": {
+        "start": "2022-03",
+        "end": "2024-05"
+      },
+      "source": "confidential",
+      "experience": "agile-content",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#FFB224",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "channels",
+            "label": "Sales channels",
+            "kind": "client",
+            "x": 8,
+            "y": 30
+          },
+          {
+            "id": "apis",
+            "label": "Node.js APIs",
+            "kind": "service",
+            "x": 32,
+            "y": 18
+          },
+          {
+            "id": "lambdas",
+            "label": "Lambda functions",
+            "kind": "service",
+            "x": 32,
+            "y": 44
+          },
+          {
+            "id": "sqs",
+            "label": "SQS",
+            "kind": "queue",
+            "x": 56,
+            "y": 44
+          },
+          {
+            "id": "rds",
+            "label": "RDS",
+            "kind": "data",
+            "x": 60,
+            "y": 12
+          },
+          {
+            "id": "s3",
+            "label": "S3 → Redshift",
+            "kind": "data",
+            "x": 84,
+            "y": 30
+          },
+          {
+            "id": "obs",
+            "label": "CloudWatch · X-Ray",
+            "kind": "infra",
+            "x": 84,
+            "y": 54
+          }
+        ],
+        "edges": [
+          {
+            "from": "channels",
+            "to": "apis",
+            "label": "purchase"
+          },
+          {
+            "from": "apis",
+            "to": "rds"
+          },
+          {
+            "from": "apis",
+            "to": "sqs"
+          },
+          {
+            "from": "sqs",
+            "to": "lambdas",
+            "label": "billing · renewal"
+          },
+          {
+            "from": "lambdas",
+            "to": "s3"
+          },
+          {
+            "from": "lambdas",
+            "to": "obs",
+            "dashed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ai-assistant-rag",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 4,
+      "lab": false,
+      "status": "shipped",
+      "type": "consulting",
+      "categories": [
+        "ai",
+        "fullstack"
+      ],
+      "technologies": [
+        "rag",
+        "vector-databases",
+        "llm-apps",
+        "design-patterns"
+      ],
+      "period": {
+        "start": "2026-04",
+        "end": "2026-09"
+      },
+      "source": "confidential",
+      "experience": "vilaverde",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#B6F36B",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "kb",
+            "label": "Knowledge base",
+            "kind": "data",
+            "x": 10,
+            "y": 14
+          },
+          {
+            "id": "ingest",
+            "label": "Chunk + embed",
+            "kind": "service",
+            "x": 36,
+            "y": 14
+          },
+          {
+            "id": "vdb",
+            "label": "Vector database",
+            "kind": "data",
+            "x": 64,
+            "y": 14
+          },
+          {
+            "id": "user",
+            "label": "User question",
+            "kind": "client",
+            "x": 10,
+            "y": 46
+          },
+          {
+            "id": "retrieve",
+            "label": "Retrieve top-k",
+            "kind": "service",
+            "x": 40,
+            "y": 46
+          },
+          {
+            "id": "llm",
+            "label": "LLM",
+            "kind": "ai",
+            "x": 70,
+            "y": 46
+          },
+          {
+            "id": "obs",
+            "label": "Monitoring",
+            "kind": "infra",
+            "x": 92,
+            "y": 30
+          }
+        ],
+        "edges": [
+          {
+            "from": "kb",
+            "to": "ingest"
+          },
+          {
+            "from": "ingest",
+            "to": "vdb"
+          },
+          {
+            "from": "user",
+            "to": "retrieve"
+          },
+          {
+            "from": "retrieve",
+            "to": "vdb"
+          },
+          {
+            "from": "retrieve",
+            "to": "llm",
+            "label": "context"
+          },
+          {
+            "from": "llm",
+            "to": "obs",
+            "dashed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "public-security-platform",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 5,
+      "lab": false,
+      "status": "shipped",
+      "type": "professional",
+      "categories": [
+        "backend",
+        "fullstack"
+      ],
+      "technologies": [
+        "node",
+        "javascript",
+        "kafka",
+        "redis",
+        "django",
+        "python",
+        "mysql",
+        "docker",
+        "microservices",
+        "event-driven"
+      ],
+      "period": {
+        "start": "2021-02",
+        "end": "2022-03"
+      },
+      "source": "confidential",
+      "experience": "ipq",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#FF5B23",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "a",
+            "label": "External systems",
+            "kind": "external",
+            "x": 8,
+            "y": 16
+          },
+          {
+            "id": "b",
+            "label": "Field systems",
+            "kind": "external",
+            "x": 8,
+            "y": 46
+          },
+          {
+            "id": "kafka",
+            "label": "Kafka · 2M+ msgs/day",
+            "kind": "queue",
+            "x": 36,
+            "y": 30
+          },
+          {
+            "id": "integr",
+            "label": "Node.js integrations",
+            "kind": "service",
+            "x": 62,
+            "y": 16
+          },
+          {
+            "id": "core",
+            "label": "Django core modules",
+            "kind": "service",
+            "x": 62,
+            "y": 46
+          },
+          {
+            "id": "maps",
+            "label": "Map layers",
+            "kind": "client",
+            "x": 90,
+            "y": 46
+          },
+          {
+            "id": "data",
+            "label": "MySQL · Redis",
+            "kind": "data",
+            "x": 90,
+            "y": 16
+          }
+        ],
+        "edges": [
+          {
+            "from": "a",
+            "to": "kafka"
+          },
+          {
+            "from": "b",
+            "to": "kafka"
+          },
+          {
+            "from": "kafka",
+            "to": "integr"
+          },
+          {
+            "from": "kafka",
+            "to": "core"
+          },
+          {
+            "from": "integr",
+            "to": "data"
+          },
+          {
+            "from": "core",
+            "to": "maps"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tindergpt",
+      "enabled": true,
+      "featured": true,
+      "featuredOrder": 6,
+      "lab": false,
+      "status": "archived",
+      "type": "personal",
+      "categories": [
+        "ai",
+        "fullstack"
+      ],
+      "technologies": [
+        "node",
+        "typescript",
+        "express",
+        "openai-api",
+        "redis",
+        "react",
+        "docker",
+        "llm-apps",
+        "prompt-engineering",
+        "design-patterns"
+      ],
+      "period": {
+        "start": "2023-06",
+        "end": "2024-02"
+      },
+      "source": "public",
+      "talks": [
+        "nodebr-63"
+      ],
+      "links": {
+        "github": "https://github.com/rickrribeiro/TinderGPT",
+        "slides": "https://docs.google.com/presentation/d/1jc-Sn5QFhB6A-trDUiPL3lmIzHPZsH3aYnciAhqrELg"
+      },
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#FF4D6D",
+      "gallery": [
+        {
+          "src": "/images/talks/nodebr-63-talk.webp",
+          "kind": "image",
+          "width": 480,
+          "height": 270,
+          "caption": "nodebr"
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "ui",
+            "label": "React dashboard",
+            "kind": "client",
+            "x": 10,
+            "y": 30
+          },
+          {
+            "id": "api",
+            "label": "Express API",
+            "kind": "service",
+            "x": 40,
+            "y": 30
+          },
+          {
+            "id": "social",
+            "label": "Social-platform factory",
+            "kind": "service",
+            "x": 70,
+            "y": 12
+          },
+          {
+            "id": "ai",
+            "label": "AI-provider factory",
+            "kind": "ai",
+            "x": 70,
+            "y": 48
+          },
+          {
+            "id": "redis",
+            "label": "Redis (auth)",
+            "kind": "data",
+            "x": 40,
+            "y": 54
+          },
+          {
+            "id": "tinder",
+            "label": "Tinder API",
+            "kind": "external",
+            "x": 92,
+            "y": 12
+          },
+          {
+            "id": "openai",
+            "label": "OpenAI",
+            "kind": "external",
+            "x": 92,
+            "y": 48
+          }
+        ],
+        "edges": [
+          {
+            "from": "ui",
+            "to": "api"
+          },
+          {
+            "from": "api",
+            "to": "social"
+          },
+          {
+            "from": "api",
+            "to": "ai"
+          },
+          {
+            "from": "api",
+            "to": "redis"
+          },
+          {
+            "from": "social",
+            "to": "tinder"
+          },
+          {
+            "from": "ai",
+            "to": "openai"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mindsight-hr",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "shipped",
+      "type": "professional",
+      "categories": [
+        "fullstack",
+        "backend"
+      ],
+      "technologies": [
+        "django",
+        "react",
+        "python",
+        "typescript",
+        "docker",
+        "oauth-sso",
+        "rest"
+      ],
+      "period": {
+        "start": "2024-05",
+        "end": "2026-02"
+      },
+      "source": "confidential",
+      "experience": "mindsight",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#8ED1FF",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "idp",
+            "label": "External IdPs (SSO)",
+            "kind": "external",
+            "x": 10,
+            "y": 14
+          },
+          {
+            "id": "web",
+            "label": "React apps",
+            "kind": "client",
+            "x": 10,
+            "y": 44
+          },
+          {
+            "id": "hr",
+            "label": "Django HR platform",
+            "kind": "service",
+            "x": 42,
+            "y": 30
+          },
+          {
+            "id": "jobs",
+            "label": "Job board",
+            "kind": "service",
+            "x": 72,
+            "y": 50
+          },
+          {
+            "id": "internal",
+            "label": "Internal services",
+            "kind": "service",
+            "x": 72,
+            "y": 12
+          },
+          {
+            "id": "journal",
+            "label": "Event journal",
+            "kind": "data",
+            "x": 92,
+            "y": 32
+          }
+        ],
+        "edges": [
+          {
+            "from": "idp",
+            "to": "hr",
+            "label": "SSO"
+          },
+          {
+            "from": "web",
+            "to": "hr"
+          },
+          {
+            "from": "hr",
+            "to": "internal",
+            "label": "OAuth2"
+          },
+          {
+            "from": "hr",
+            "to": "jobs"
+          },
+          {
+            "from": "hr",
+            "to": "journal"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trama-expedicoes",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "in-progress",
+      "type": "personal",
+      "categories": [
+        "games",
+        "mobile",
+        "ai"
+      ],
+      "technologies": [
+        "unity",
+        "csharp",
+        "python",
+        "claude-code"
+      ],
+      "period": {
+        "start": "2026-10",
+        "end": null
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#C792FF",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "client",
+            "label": "Unity client",
+            "kind": "client",
+            "x": 10,
+            "y": 30
+          },
+          {
+            "id": "host",
+            "label": "Authoritative match host",
+            "kind": "service",
+            "x": 42,
+            "y": 30
+          },
+          {
+            "id": "core",
+            "label": "Shared .NET core",
+            "kind": "service",
+            "x": 42,
+            "y": 8
+          },
+          {
+            "id": "meta",
+            "label": "Meta services (chat, clans, economy)",
+            "kind": "service",
+            "x": 76,
+            "y": 18
+          },
+          {
+            "id": "bots",
+            "label": "Bot balancing runs",
+            "kind": "ai",
+            "x": 76,
+            "y": 48
+          }
+        ],
+        "edges": [
+          {
+            "from": "client",
+            "to": "host"
+          },
+          {
+            "from": "core",
+            "to": "host",
+            "dashed": true
+          },
+          {
+            "from": "host",
+            "to": "meta"
+          },
+          {
+            "from": "bots",
+            "to": "host"
+          }
+        ]
+      }
+    },
+    {
+      "id": "smoketrack",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "shipped",
+      "type": "personal",
+      "categories": [
+        "mobile",
+        "fullstack"
+      ],
+      "technologies": [
+        "react",
+        "typescript",
+        "vite",
+        "recharts",
+        "pwa",
+        "capacitor",
+        "vitest"
+      ],
+      "period": {
+        "start": "2026-01",
+        "end": "2026-08"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/SmokeTrack",
+        "demo": "https://rickrribeiro.github.io/SmokeTrack/"
+      },
+      "cover": {
+        "kind": "image",
+        "src": "/images/projects/smoketrack/app-mobile.webp",
+        "width": 1170,
+        "height": 2532,
+        "frame": "phone"
+      },
+      "accent": "#6E6BFF",
+      "gallery": [
+        {
+          "src": "/images/projects/smoketrack/app-mobile.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "log"
+        }
+      ]
+    },
+    {
+      "id": "clanmanager",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "shipped",
+      "type": "personal",
+      "categories": [
+        "cloud",
+        "fullstack",
+        "games",
+        "automation"
+      ],
+      "technologies": [
+        "react",
+        "node",
+        "lambda",
+        "serverless-framework",
+        "dynamodb",
+        "travis-ci",
+        "design-patterns"
+      ],
+      "period": {
+        "start": "2024-03",
+        "end": "2024-05"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/ClanManager",
+        "demo": "https://a-rua-e-noiz.vercel.app"
+      },
+      "cover": {
+        "kind": "image",
+        "src": "/images/projects/clanmanager/dashboard-desktop.webp",
+        "width": 1800,
+        "height": 1125,
+        "frame": "browser"
+      },
+      "accent": "#9B7BFF",
+      "gallery": [
+        {
+          "src": "/images/projects/clanmanager/dashboard-desktop.webp",
+          "kind": "image",
+          "width": 1800,
+          "height": 1125,
+          "frame": "browser",
+          "caption": "desktop"
+        },
+        {
+          "src": "/images/projects/clanmanager/dashboard-mobile.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "mobile"
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "cron",
+            "label": "Schedule · every 23h",
+            "kind": "infra",
+            "x": 10,
+            "y": 14
+          },
+          {
+            "id": "lambda",
+            "label": "Lambda extractor",
+            "kind": "service",
+            "x": 40,
+            "y": 14
+          },
+          {
+            "id": "api",
+            "label": "Clash of Clans API",
+            "kind": "external",
+            "x": 76,
+            "y": 14
+          },
+          {
+            "id": "ddb",
+            "label": "DynamoDB",
+            "kind": "data",
+            "x": 40,
+            "y": 46
+          },
+          {
+            "id": "web",
+            "label": "React dashboard",
+            "kind": "client",
+            "x": 76,
+            "y": 46
+          }
+        ],
+        "edges": [
+          {
+            "from": "cron",
+            "to": "lambda"
+          },
+          {
+            "from": "lambda",
+            "to": "api"
+          },
+          {
+            "from": "lambda",
+            "to": "ddb",
+            "label": "war workflows"
+          },
+          {
+            "from": "ddb",
+            "to": "web"
+          }
+        ]
+      }
+    },
+    {
+      "id": "squadbusters-tournaments",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "personal",
+      "categories": [
+        "fullstack",
+        "backend",
+        "games",
+        "automation"
+      ],
+      "technologies": [
+        "django",
+        "drf",
+        "python",
+        "sqlite",
+        "docker",
+        "discord-js"
+      ],
+      "period": {
+        "start": "2025-01",
+        "end": "2025-10"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/squadbusters-tournaments"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FFB224"
+    },
+    {
+      "id": "cimatec-industrial",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "shipped",
+      "type": "professional",
+      "categories": [
+        "fullstack",
+        "backend"
+      ],
+      "technologies": [
+        "csharp",
+        "aspnet",
+        "node",
+        "javascript",
+        "firebase",
+        "sqlserver",
+        "websockets",
+        "ddd"
+      ],
+      "period": {
+        "start": "2018-08",
+        "end": "2019-08"
+      },
+      "source": "confidential",
+      "experience": "cimatec",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#8ED1FF"
+    },
+    {
+      "id": "woo-nomad-woo",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "academic",
+      "categories": [
+        "fullstack",
+        "mobile"
+      ],
+      "technologies": [
+        "node",
+        "express",
+        "prisma",
+        "sqlite",
+        "react",
+        "vite",
+        "tailwind",
+        "firebase",
+        "react-native"
+      ],
+      "period": {
+        "start": "2022-08",
+        "end": "2022-12"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/Woo-Nomad-Woo"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#5CE1E6"
+    },
+    {
+      "id": "mba-thesis",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "shipped",
+      "type": "academic",
+      "categories": [
+        "cloud",
+        "backend",
+        "ai",
+        "experiments"
+      ],
+      "technologies": [
+        "aws",
+        "lambda",
+        "python",
+        "node",
+        "docker",
+        "openai-api",
+        "gemini-api",
+        "cloudwatch",
+        "serverless-architecture",
+        "microservices"
+      ],
+      "period": {
+        "start": "2025-01",
+        "end": "2025-08"
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FFB224"
+    },
+    {
+      "id": "punk-records",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "experimental",
+      "type": "personal",
+      "categories": [
+        "ai",
+        "experiments"
+      ],
+      "technologies": [
+        "python",
+        "fastapi",
+        "postgresql",
+        "nextjs",
+        "docker",
+        "ollama",
+        "ai-agents"
+      ],
+      "period": {
+        "start": "2026-06",
+        "end": "2026-06"
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#B6F36B"
+    },
+    {
+      "id": "republica-dos-bilhoes",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "experimental",
+      "type": "personal",
+      "categories": [
+        "games",
+        "mobile",
+        "ai",
+        "experiments"
+      ],
+      "technologies": [
+        "godot",
+        "claude-code"
+      ],
+      "period": {
+        "start": "2026-09",
+        "end": "2026-09"
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FFD23F"
+    },
+    {
+      "id": "campus-party-serverless",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "archived",
+      "type": "personal",
+      "categories": [
+        "cloud",
+        "backend",
+        "experiments"
+      ],
+      "technologies": [
+        "aws",
+        "lambda",
+        "api-gateway",
+        "dynamodb",
+        "react",
+        "node"
+      ],
+      "period": {
+        "start": "2023-07",
+        "end": "2023-07"
+      },
+      "source": "public",
+      "talks": [
+        "campus-party-2023"
+      ],
+      "links": {
+        "github": "https://github.com/rickrribeiro/Campus_party_api_serverless"
+      },
+      "cover": {
+        "kind": "diagram"
+      },
+      "accent": "#FFB224",
+      "diagram": {
+        "nodes": [
+          {
+            "id": "web",
+            "label": "React to-do app",
+            "kind": "client",
+            "x": 12,
+            "y": 30
+          },
+          {
+            "id": "gw",
+            "label": "API Gateway",
+            "kind": "infra",
+            "x": 40,
+            "y": 30
+          },
+          {
+            "id": "fn",
+            "label": "Lambda handlers",
+            "kind": "service",
+            "x": 66,
+            "y": 30
+          },
+          {
+            "id": "db",
+            "label": "DynamoDB",
+            "kind": "data",
+            "x": 90,
+            "y": 30
+          }
+        ],
+        "edges": [
+          {
+            "from": "web",
+            "to": "gw"
+          },
+          {
+            "from": "gw",
+            "to": "fn"
+          },
+          {
+            "from": "fn",
+            "to": "db"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hololens-city",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "archived",
+      "type": "academic",
+      "categories": [
+        "games",
+        "experiments"
+      ],
+      "technologies": [
+        "unity",
+        "csharp",
+        "hololens"
+      ],
+      "period": {
+        "start": "2018-05",
+        "end": "2018-05"
+      },
+      "source": "public",
+      "talks": [
+        "campus-party-2018"
+      ],
+      "links": {
+        "github": "https://github.com/rickrribeiro/CityRACampusParty_Hololens"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#5CE1E6"
+    },
+    {
+      "id": "travel-buddy-finder",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "experimental",
+      "type": "personal",
+      "categories": [
+        "cloud",
+        "ai",
+        "backend",
+        "experiments"
+      ],
+      "technologies": [
+        "typescript",
+        "serverless-framework",
+        "lambda",
+        "openai-api",
+        "gemini-api",
+        "django",
+        "travis-ci"
+      ],
+      "period": {
+        "start": "2024-03",
+        "end": "2025-10"
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#8ED1FF"
+    },
+    {
+      "id": "event-driven-studies",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "experimental",
+      "type": "personal",
+      "categories": [
+        "backend",
+        "experiments"
+      ],
+      "technologies": [
+        "kafka",
+        "socket-io",
+        "express",
+        "nestjs",
+        "mongodb",
+        "rabbitmq",
+        "docker"
+      ],
+      "period": {
+        "start": "2021-10",
+        "end": "2023-06"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/Kafka_Chat",
+        "extra": [
+          {
+            "id": "nest-rabbit",
+            "url": "https://github.com/rickrribeiro/mongo_nest_rabbit"
+          }
+        ]
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FF5B23"
+    },
+    {
+      "id": "compilers",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "archived",
+      "type": "academic",
+      "categories": [
+        "experiments",
+        "backend"
+      ],
+      "technologies": [
+        "python"
+      ],
+      "period": {
+        "start": "2021-01",
+        "end": "2021-09"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/Compiladores"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#9A9893"
+    },
+    {
+      "id": "greendotsys",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "personal",
+      "categories": [
+        "fullstack"
+      ],
+      "technologies": [
+        "node",
+        "express",
+        "sequelize",
+        "redis"
+      ],
+      "period": {
+        "start": "2022-09",
+        "end": "2022-09"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/GreenDotSys1"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#B6F36B"
+    },
+    {
+      "id": "gameducation-hackathon",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "hackathon",
+      "categories": [
+        "fullstack",
+        "startup"
+      ],
+      "technologies": [
+        "node",
+        "express",
+        "sequelize",
+        "python"
+      ],
+      "period": {
+        "start": "2021-11",
+        "end": "2021-11"
+      },
+      "source": "private",
+      "talks": [
+        "hacking-rio-2021"
+      ],
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FFD23F"
+    },
+    {
+      "id": "legends-of-senai",
+      "enabled": true,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "academic",
+      "categories": [
+        "games"
+      ],
+      "technologies": [
+        "csharp"
+      ],
+      "period": {
+        "start": "2018-05",
+        "end": "2018-08"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/LegendsOfSenai"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#C792FF"
+    },
+    {
+      "id": "aleatory-scripts",
+      "enabled": true,
+      "featured": false,
+      "lab": true,
+      "status": "experimental",
+      "type": "personal",
+      "categories": [
+        "experiments",
+        "automation"
+      ],
+      "technologies": [
+        "javascript",
+        "python"
+      ],
+      "period": {
+        "start": "2022-02",
+        "end": "2025-03"
+      },
+      "source": "public",
+      "links": {
+        "github": "https://github.com/rickrribeiro/aleatory_scripts",
+        "demo": "https://aleatory-scripts.vercel.app"
+      },
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#9A9893"
+    },
+    {
+      "id": "selltime",
+      "enabled": false,
+      "featured": false,
+      "lab": false,
+      "status": "archived",
+      "type": "startup",
+      "categories": [
+        "startup",
+        "mobile"
+      ],
+      "technologies": [
+        "csharp"
+      ],
+      "period": {
+        "start": "2019-02",
+        "end": "2019-07"
+      },
+      "source": "private",
+      "links": {},
+      "cover": {
+        "kind": "type"
+      },
+      "accent": "#FF5B23"
+    }
+  ]
+}

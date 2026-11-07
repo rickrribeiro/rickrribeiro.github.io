@@ -1,0 +1,86 @@
+{
+  "$comment": "Professional experience, newest first (the order here is the display order). Text (titles, descriptions, achievements) lives in locales/<lang>/resume.json under experience.<id>. 'skills' are ids from skills.json; 'projects' are ids from projects.json.",
+  "items": [
+    {
+      "id": "wave",
+      "enabled": true,
+      "company": "Group Wave Enterprise",
+      "website": "https://groupwave.global",
+      "logo": null,
+      "workplace": "remote",
+      "location": null,
+      "roles": [{ "id": "senior", "employmentType": "contract", "start": "2026-03", "end": null }],
+      "skills": ["nestjs", "react", "typescript", "kubernetes", "docker", "ansible", "postgresql", "redis", "rabbitmq", "bullmq", "minio", "prometheus", "grafana", "loki", "github-actions", "modular-monolith", "microservices", "ai-agents", "claude-code", "rag", "prompt-engineering"],
+      "projects": ["wave-platform"],
+      "highlight": true
+    },
+    {
+      "id": "vilaverde",
+      "enabled": true,
+      "company": "Murilo Vilaverde",
+      "website": null,
+      "logo": null,
+      "workplace": "remote",
+      "location": null,
+      "roles": [{ "id": "consultant", "employmentType": "consulting", "start": "2026-04", "end": "2026-09" }],
+      "skills": ["rag", "vector-databases", "llm-apps", "design-patterns"],
+      "projects": ["ai-assistant-rag"],
+      "highlight": true
+    },
+    {
+      "id": "mindsight",
+      "enabled": true,
+      "company": "Mindsight",
+      "website": "https://mindsight.com.br",
+      "logo": null,
+      "workplace": "remote",
+      "location": null,
+      "roles": [{ "id": "fullstack", "employmentType": "full-time", "start": "2024-05", "end": "2026-02" }],
+      "skills": ["django", "react", "python", "typescript", "docker", "oauth-sso", "rest", "postgresql"],
+      "projects": ["mindsight-hr"],
+      "highlight": true
+    },
+    {
+      "id": "agile-content",
+      "enabled": true,
+      "company": "Agile Content",
+      "website": "https://www.agilecontent.com",
+      "logo": null,
+      "workplace": "remote",
+      "location": "São Paulo, Brazil",
+      "roles": [{ "id": "backend", "employmentType": "full-time", "start": "2022-03", "end": "2024-05" }],
+      "skills": ["node", "typescript", "javascript", "aws", "lambda", "sqs", "cloudwatch", "redshift", "serverless-framework", "terraform", "docker", "travis-ci", "grafana", "robot-framework", "automated-testing", "python", "csharp", "tableau", "quicksight", "microservices", "serverless-architecture"],
+      "projects": ["telecom-subscriptions"],
+      "highlight": true
+    },
+    {
+      "id": "ipq",
+      "enabled": true,
+      "company": "IPQ Tecnologia",
+      "website": "https://www.ipq.com.br",
+      "logo": null,
+      "workplace": "onsite",
+      "location": "Salvador, Brazil",
+      "roles": [{ "id": "fullstack", "employmentType": "full-time", "start": "2021-02", "end": "2022-03" }],
+      "skills": ["node", "javascript", "kafka", "redis", "django", "python", "mysql", "html-css", "docker", "microservices", "event-driven"],
+      "projects": ["public-security-platform"],
+      "highlight": true
+    },
+    {
+      "id": "cimatec",
+      "enabled": true,
+      "company": "SENAI CIMATEC",
+      "website": "https://www.senaicimatec.com.br",
+      "logo": null,
+      "workplace": "onsite",
+      "location": "Salvador, Brazil",
+      "roles": [
+        { "id": "fullstack-intern", "employmentType": "internship", "start": "2018-08", "end": "2019-08" },
+        { "id": "ar-intern", "employmentType": "volunteer", "start": "2018-02", "end": "2018-08" }
+      ],
+      "skills": ["csharp", "aspnet", "node", "javascript", "html-css", "ddd", "firebase", "sqlserver", "websockets", "unity", "hololens", "vuforia"],
+      "projects": ["cimatec-industrial"],
+      "highlight": false
+    }
+  ]
+}

@@ -1,31 +1,44 @@
-# .github/workflows/build-and-deploy.yml
-
-name: Node.js CI
+name: Build & deploy
 
 on:
   push:
     branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write # push the built site to the gh-pages branch
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
           cache: npm
 
-      - name: Build
-        run: |
-          npm ci
-          npm run build
-          npm run export
+      - name: Install
+        run: npm ci
 
-      - name: Deploy
+      - name: Test
+        run: npm test
+
+      # validate content → typecheck → client + SSR build → prerender every route,
+      # sitemap, robots.txt and Open Graph images
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build
+          folder: dist
+          clean: true

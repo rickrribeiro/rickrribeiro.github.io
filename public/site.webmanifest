@@ -1,0 +1,9 @@
+{
+  "name": "Ricardo Ribeiro — Senior Software Engineer",
+  "short_name": "Ricardo Ribeiro",
+  "icons": [{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }],
+  "theme_color": "#09090a",
+  "background_color": "#09090a",
+  "display": "browser",
+  "start_url": "/"
+}

@@ -1,0 +1,12 @@
+{
+  "$comment": "Contact / social links. Set enabled:false to hide a link without losing it. 'placements' controls where it shows.",
+  "links": [
+    { "id": "email", "enabled": true, "url": "mailto:rickribeiro99@gmail.com", "label": "rickribeiro99@gmail.com", "placements": ["contact", "footer"] },
+    { "id": "linkedin", "enabled": true, "url": "https://www.linkedin.com/in/rickrribeiro/", "label": "LinkedIn", "placements": ["contact", "footer", "hero"] },
+    { "id": "github", "enabled": true, "url": "https://github.com/rickrribeiro", "label": "GitHub", "placements": ["contact", "footer", "hero"] },
+    { "id": "medium", "enabled": true, "url": "https://medium.com/@rickrribeiro/", "label": "Medium", "placements": ["contact", "footer"] },
+    { "id": "instagram", "enabled": true, "url": "https://www.instagram.com/rickrribeiro/", "label": "Instagram", "placements": ["journey", "footer"] },
+    { "id": "facebook", "enabled": false, "url": "https://www.facebook.com/rickrribeiro/", "label": "Facebook", "placements": ["footer"] },
+    { "id": "whatsapp", "enabled": false, "url": "https://api.whatsapp.com/send?phone=5571996820764", "label": "WhatsApp", "placements": ["contact"] }
+  ]
+}

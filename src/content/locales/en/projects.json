@@ -1,0 +1,384 @@
+{
+  "wave-platform": {
+    "title": "Wave Platform",
+    "tagline": "Re-architecting a marketing-automation platform — and the cloud it runs on.",
+    "summary": "Senior engineer at Group Wave Enterprise: owned the cloud-native infrastructure, led platform engineering and helped move the product from microservices to a modular monolith.",
+    "role": "Senior Software Engineer · infrastructure owner",
+    "overview": "Group Wave Enterprise builds marketing-automation products. I joined to work across the whole stack — NestJS backend, React frontend and the infrastructure underneath — at a moment when the platform was being redesigned.",
+    "problem": "The product had grown as a set of microservices that were expensive to evolve and operate for the size of the team. Some workflows were slow, CPU-heavy work competed with request handling, and there were no shared standards for repositories, pipelines or testing.",
+    "approach": "Together with an external software-architecture consultant I helped define the new platform architecture and contributed to the migration to a modular React/NestJS monolith. In parallel I designed, deployed and maintained the cloud-native infrastructure, and led platform-engineering work so every repository shares the same CI/CD, testing and security baseline.",
+    "architecture": "Simplified view. The NestJS monolith is split into modules, pushes heavy work to BullMQ workers and runs on Kubernetes next to PostgreSQL, Redis, RabbitMQ and MinIO, all observed through Prometheus, Grafana and Loki.",
+    "challenges": [
+      "Migrating from microservices to a modular monolith while product features kept shipping.",
+      "Separating CPU-bound jobs from request handling without duplicating work — solved with background workers and BullMQ job deduplication.",
+      "Running the full stack (Kubernetes, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana, Loki) with a small team."
+    ],
+    "outcomes": [
+      "Application workflows more than 70% faster through refactoring, caching, BullMQ job deduplication and dedicated workers for CPU-bound bottlenecks.",
+      "Repository standards, GitHub Actions CI/CD, automated testing and security hardening across the platform.",
+      "A shared Claude Code RAG knowledge base and reusable LLM skills/agents for the engineering team.",
+      "Product features across backend and frontend: Meta campaign-automation workflows, a VSL Builder and AI agents that generate UI components."
+    ],
+    "lessons": [
+      "A modular monolith gives a small team most of the isolation of microservices with a fraction of the operational cost.",
+      "Platform engineering pays off fastest when it is encoded in templates and pipelines, not in documents."
+    ],
+    "note": "Client and internal details are confidential; this case study only covers what is publicly stated on my résumé."
+  },
+  "rickos": {
+    "title": "RickOS",
+    "tagline": "A local-first personal operating system with an AI layer built on Claude Code.",
+    "summary": "What started as a time tracker became a desktop + mobile command centre for time, tasks, learning, finances and projects — with AI features that run the local Claude Code CLI.",
+    "role": "Solo — design, architecture, development",
+    "overview": "RickOS is the tool I use to run my own days. It began as a simple working-time tracker and grew, one module at a time, into a single panel: a timeline time tracker with Pomodoro, inbox/TODO/habits, a Learning OS (roadmaps, Markdown notes, AI-generated flashcards with SM-2 spaced repetition, quizzes and Obsidian export), finances, a flight-price monitor, GitHub-synced projects and a worktree health scanner.",
+    "problem": "My work, study and personal planning lived in a dozen apps that didn't talk to each other, and none of them could use the AI tooling I already rely on every day.",
+    "approach": "A headless Fastify server is the only owner of the database and exposes everything through a single RPC endpoint plus server-sent events. The Electron app and a PWA I use on my phone are just clients of that server. AI features shell out to the local Claude Code CLI, stream results live and can run in the background.",
+    "architecture": "Both clients talk to one Fastify server over RPC + SSE. SQLite runs in WebAssembly (sql.js) with versioned migrations; secrets are encrypted with AES-256-GCM; remote access requires a token.",
+    "challenges": [
+      "Keeping one source of truth while serving a desktop app and a phone at the same time.",
+      "Running long AI jobs (prompt runner, brain-dump → tasks, flashcard generation) without blocking the UI.",
+      "Integrating GitHub, multi-account Google Calendar OAuth, Pluggy Open Finance and Skyscanner behind one consistent interface."
+    ],
+    "outcomes": [
+      "Daily-driver tool with 169 commits and counting.",
+      "Automated Playwright screenshot suite that captures every page at desktop and phone sizes in two skins."
+    ],
+    "lessons": [
+      "Local-first plus a thin server is a surprisingly powerful architecture for personal software.",
+      "Treating an AI CLI as a subprocess you orchestrate is more flexible than embedding a single API call."
+    ]
+  },
+  "telecom-subscriptions": {
+    "title": "Telecom Subscription Platform",
+    "tagline": "Serverless subscription management for the largest telecom company in Argentina.",
+    "summary": "Backend engineer at Agile Content on a high-volume subscription platform: purchase, billing, renewal and cancellation services on AWS, handling millions of events per month.",
+    "role": "Backend Software Engineer",
+    "overview": "At Agile Content I worked on the subscription-management platform behind the digital products of the biggest telecom company in Argentina. The platform runs critical, money-moving flows: purchase, billing, renewal and cancellation.",
+    "problem": "High-volume transactional services must be reliable, observable and cheap to operate, and every change has to be safe to deploy.",
+    "approach": "I developed and maintained microservices — Node.js APIs and serverless functions — took part in defining architecture and project patterns, and created and maintained the infrastructure with Docker, Terraform, the Serverless Framework and CI/CD.",
+    "architecture": "Simplified view. Node.js APIs and Lambda functions communicate through SQS, persist to RDS and S3, feed Redshift for analytics and are traced with CloudWatch and X-Ray.",
+    "challenges": [
+      "Designing for high availability in services where every failure affects a customer's subscription.",
+      "Making a distributed, event-driven system observable end to end.",
+      "Raising test confidence across many small services."
+    ],
+    "outcomes": [
+      "AWS-based solutions (Lambda, SQS, CloudWatch, ECS, X-Ray, Parameter Store, S3, Redshift, RDS) supporting millions of events per month.",
+      "Led internal API-testing libraries built on Robot Framework and reached 100% unit-test coverage, significantly improving deployment confidence.",
+      "Contributed to architecture decisions and service patterns that improved reliability and reduced incident frequency.",
+      "Built datasets and reports with Tableau and QuickSight."
+    ],
+    "lessons": [
+      "In serverless systems, observability is part of the architecture, not an add-on.",
+      "Shared testing libraries scale quality better than per-service heroics."
+    ],
+    "note": "Client systems are confidential; details are limited to what is on my public résumé."
+  },
+  "ai-assistant-rag": {
+    "title": "AI Assistant Re-architecture",
+    "tagline": "Redesigning an AI product around retrieval — and cutting its AI bill by more than 90%.",
+    "summary": "Consulting project: replaced an expensive AI setup with a RAG pipeline on a vector database, fixed critical security issues in an AI-generated codebase and made the product configurable without developers.",
+    "role": "Software Consultant",
+    "overview": "Murilo Vilaverde's product included an AI assistant built quickly, largely with AI-generated code. It worked, but it was costly, limited in how much knowledge it could use, and had security and reliability problems.",
+    "problem": "Monthly AI infrastructure costs were high, the knowledge base had size limits, responses were slow, and the codebase had unauthorized access to admin pages, sensitive-data exposure, Service Worker caching issues and inconsistent data from multiple sources of truth.",
+    "approach": "I redesigned the AI architecture as a Retrieval-Augmented Generation pipeline backed by a vector database, then refactored the application: modularised it, extracted reusable components, applied design patterns and replaced hard-coded values with an admin-configurable system. Finally I added monitoring and observability.",
+    "architecture": "Simplified view. Knowledge is chunked and embedded into a vector database; each question retrieves only the most relevant context before calling the LLM.",
+    "challenges": [
+      "Fixing security issues in a codebase nobody had fully designed.",
+      "Keeping answers good while sending far less context to the model.",
+      "Removing hard-coded configuration without breaking a live product."
+    ],
+    "outcomes": [
+      "Monthly AI infrastructure costs reduced by over 90%.",
+      "Better response quality, no more knowledge-base size limit and significantly lower latency.",
+      "Critical security and reliability issues resolved.",
+      "Configuration changes no longer require a developer.",
+      "Detailed error tracking and faster root-cause analysis in production."
+    ],
+    "lessons": [
+      "AI-generated code ships fast; architecture and security review is what makes it last.",
+      "Retrieval is usually cheaper and better than a bigger prompt."
+    ],
+    "note": "Client details are confidential; figures come from my résumé."
+  },
+  "public-security-platform": {
+    "title": "Public Security Intelligence Platform",
+    "tagline": "High-throughput integrations for a police intelligence platform used by government agencies.",
+    "summary": "At IPQ Tecnologia I helped develop and scale a public-security platform, building Kafka integrations that process more than 2 million messages a day.",
+    "role": "Full Stack Software Engineer",
+    "overview": "IPQ Tecnologia builds a public-security and police-intelligence platform used by government agencies. I worked on integrations, map layers and confidential core operational modules.",
+    "problem": "Critical systems needed to exchange data in real time, in an environment with strict reliability and confidentiality requirements.",
+    "approach": "I architected and implemented high-throughput integrations on Kafka, built map layers and integrations between systems, and worked on core operational modules. I also worked on a CMS for registering electronic components, monitoring and an equipment map.",
+    "architecture": "Deliberately abstract. External and field systems publish to Kafka; Node.js integration services and Django modules consume, store and present the data on maps.",
+    "challenges": [
+      "Sustaining millions of messages per day without losing data.",
+      "Working inside strict confidentiality constraints."
+    ],
+    "outcomes": [
+      "Integrations processing more than 2 million messages per day.",
+      "Part of the team behind a platform associated with a reported crime reduction of over 30%."
+    ],
+    "lessons": [
+      "Message-driven integration is what lets very different critical systems evolve independently."
+    ],
+    "note": "Confidential government system — no internal details are shown."
+  },
+  "tindergpt": {
+    "title": "TinderGPT",
+    "tagline": "An LLM that writes your openers — my most-starred open-source project and a NodeBR talk.",
+    "summary": "Generates ChatGPT replies and openers for dating-app matches and sends them automatically, with pluggable AI providers and social platforms.",
+    "role": "Solo — idea, architecture, development, talk",
+    "overview": "TinderGPT started as a playful question — could an LLM keep a dating-app conversation going? — and became an open-source project with 22 stars and the subject of my talk at NodeBR #63 in São Paulo.",
+    "problem": "Starting and sustaining conversations is repetitive. The technical question was how to build it so the AI provider and the platform could be swapped without rewriting the app.",
+    "approach": "A TypeScript Express API uses factory patterns for both AI providers and social platforms, a dependency container and auth middleware, with Redis for auth storage. A React (Ant Design) dashboard controls targeting filters such as distance and bio. Everything runs with Docker Compose.",
+    "architecture": "The API routes every action through two factories — one for social platforms, one for AI providers — so new integrations are additive.",
+    "challenges": [
+      "Respecting the platform's rate limits (HTTP 429) with deliberate pacing.",
+      "Designing prompts that produce natural, context-aware messages."
+    ],
+    "outcomes": [
+      "22 GitHub stars — my most-starred repository.",
+      "Presented at NodeBR #63 (São Paulo, 2023)."
+    ],
+    "lessons": [
+      "Abstractions around LLM providers pay off immediately — the model landscape changes monthly."
+    ],
+    "captions": {
+      "nodebr": "Talk card for NodeBR #63, São Paulo"
+    }
+  },
+  "mindsight-hr": {
+    "title": "Mindsight HR Platforms",
+    "tagline": "Multi-tenant HR systems, enterprise SSO and a job board built end to end.",
+    "summary": "Full-stack engineer on multi-tenant HR platforms used by tens of thousands of people a month: SSO with external IdPs, OAuth2 between services and a Django + React job board.",
+    "role": "Full Stack Engineer",
+    "overview": "Mindsight builds HR software for recruitment and hiring. I designed and delivered features, refactored legacy services and improved stability across multi-tenant platforms.",
+    "problem": "Enterprise customers needed to sign in with their own identity providers, internal systems needed secure service-to-service communication, and some critical processing flows were too heavy.",
+    "approach": "I developed authentication and system-communication features — SSO login with external IdPs, OAuth2 for internal communication and event journaling for compliance — and, in a team of two, built a job-board application end to end.",
+    "architecture": "Simplified view. The Django platform authenticates users through external IdPs, talks to internal services over OAuth2 and records events in a journal.",
+    "challenges": [
+      "Adding SSO to a multi-tenant system without breaking existing tenants.",
+      "Refactoring critical flows while they served real users."
+    ],
+    "outcomes": [
+      "Critical processing flows refactored, reducing memory consumption and execution time by over 50%.",
+      "Job board delivered end to end with a key role in architecture, data modelling, API design, testing and deployment.",
+      "SSO, OAuth2 and event journaling supporting compliance."
+    ],
+    "lessons": [
+      "In multi-tenant systems, authentication is product work, not plumbing."
+    ],
+    "note": "Internal details are confidential."
+  },
+  "trama-expedicoes": {
+    "title": "Trama de Expedições",
+    "tagline": "A 3D mobile squad game prototype — built with an AI-agent-driven workflow.",
+    "summary": "Unity PvPvE squad game in active development: offline PvE, recruiting and fusing units, an authoritative-networking spike and bot-driven balancing.",
+    "role": "Solo — game design, engineering, tooling",
+    "overview": "Trama de Expedições is a personal game project and an experiment in building something large with AI agents as collaborators. It is honest about where it is: offline PvE, movement and local-network movement work; networked combat, PvP and a validated mobile build do not exist yet.",
+    "problem": "Can one person, working with AI agents, build the technical foundations of a multiplayer mobile game — networking, balancing, content pipeline — to a professional standard?",
+    "approach": "A Unity client sits on a shared .NET core library, with an authoritative match-host spike for networking and meta-services (chat, clans, economy, friends) covered by tests. Blender Python scripts generate LODs, portraits and UI icons. Project state, decisions and hand-offs are documented for agents in dedicated files.",
+    "architecture": "Prototype architecture: the Unity client talks to an authoritative match host; a shared .NET core keeps rules identical on both sides; bots drive automated balancing runs.",
+    "challenges": [
+      "Keeping game rules deterministic between client and host.",
+      "Balancing maps without a player base."
+    ],
+    "outcomes": [
+      "72 bot matches per map kept each of 6 maps between 35% and 65% win rate.",
+      "Stress test with 400 units at a p95 frame time of about 3.3–3.5 ms (headless, Mac).",
+      "Skeletal animation with LOD for 18 characters.",
+      "500+ commits, including 190+ pull requests from AI-agent branches."
+    ],
+    "lessons": [
+      "AI agents are productive when the project's state and decisions are written down for them."
+    ],
+    "note": "Source is private while the game is in development."
+  },
+  "smoketrack": {
+    "title": "SmokeTrack",
+    "tagline": "A private, offline quantified-self app to understand — and quit — smoking.",
+    "summary": "Log every cigarette with context, then see patterns: moving averages, hour × day heatmaps, longest gaps, triggers and mood. Runs as a PWA and as an iOS app.",
+    "role": "Solo — product, design, development",
+    "overview": "SmokeTrack is a small product with a personal purpose: help people (me first) notice the patterns behind their smoking. Everything stays on the device.",
+    "problem": "Quitting apps either nag or demand accounts. I wanted something private that turns a simple log into insight.",
+    "approach": "React + TypeScript + Vite, local-first storage, Recharts for analysis and a PWA plus a Capacitor iOS build. Additive JSON import/export with validation and data migration keeps data portable.",
+    "challenges": [
+      "Making analysis useful with only a few data points a day.",
+      "Evolving the data model safely on users' devices."
+    ],
+    "outcomes": [
+      "Shipped as a PWA on GitHub Pages and packaged for iOS with Capacitor.",
+      "Analysis filters by period or month, weekday vs weekend, totals vs daily averages."
+    ],
+    "lessons": [
+      "Privacy is a feature: no account means no friction to start."
+    ],
+    "captions": {
+      "log": "Logging screen (live demo, mobile)"
+    }
+  },
+  "clanmanager": {
+    "title": "ClanManager",
+    "tagline": "A serverless war dashboard for a Clash of Clans clan.",
+    "summary": "A scheduled AWS Lambda pulls clan-war data from the official game API into DynamoDB, and a React dashboard ranks every member.",
+    "role": "Solo",
+    "overview": "Built for my own clan: who attacked, how much destruction, who missed attacks — across normal and league wars.",
+    "problem": "The game shows wars one at a time; leaders need history to decide who plays.",
+    "approach": "A Serverless Framework Lambda runs every 23 hours, executes different workflows for league wars and normal wars, and stores results through a data-service factory that can switch between DynamoDB and local storage. Custom error types handle cases like a war in progress or API maintenance.",
+    "architecture": "A scheduled Lambda extracts data from the official API and writes to DynamoDB; the React dashboard reads the aggregated results.",
+    "outcomes": [
+      "Live dashboard used by the clan."
+    ],
+    "lessons": [
+      "Serverless + a schedule is the cheapest possible way to run a data pipeline for a community."
+    ],
+    "captions": {
+      "desktop": "Live dashboard — desktop",
+      "mobile": "Live dashboard — mobile"
+    }
+  },
+  "squadbusters-tournaments": {
+    "title": "Squad Busters Community Hub",
+    "tagline": "Tournaments, records and leaderboards for a game community — plus a Discord bot.",
+    "summary": "Django + DRF platform with tournaments, clan records and leaderboards fed by external game APIs, and a discord.js bot that answers player-stat queries.",
+    "role": "Solo",
+    "overview": "A community platform for Squad Busters players with separate Django apps for core, records, leaderboard and integrations.",
+    "approach": "Integration services model players, heroes and units across nine migrations; a Discord bot calls the site's API and replies with sorted totals.",
+    "outcomes": [
+      "Platform and bot built and run for a player community."
+    ]
+  },
+  "cimatec-industrial": {
+    "title": "Industrial Systems at SENAI CIMATEC",
+    "tagline": "Greenhouse automation, fleet management and wind-tower traceability for startups.",
+    "summary": "As an intern I worked on three outsourced systems: greenhouse sensor monitoring, a vehicle fleet and reservation API I designed, and traceability for wind-tower manufacturing parts.",
+    "role": "Full Stack Software Developer (intern)",
+    "overview": "SENAI CIMATEC develops systems for startups and industry. Over a year I worked on three of them.",
+    "approach": "I owned, under supervision, the architecture and development of a fleet-management and reservation API, collaborated on a greenhouse monitoring and automation system, and on a traceability system for wind-tower parts that tracks parts through manufacturing and reports what is needed to complete a tower.",
+    "outcomes": [
+      "Fleet API optimised logistics and resource allocation.",
+      "Traceability software enabled seamless tracking of parts and supported a large increase in production output."
+    ],
+    "note": "Client systems — no screenshots available."
+  },
+  "woo-nomad-woo": {
+    "title": "Woo Nomad Woo",
+    "tagline": "A social network for digital nomads — my Computer Science capstone.",
+    "summary": "Cities, countries, reviews, ratings and articles for nomads, with an Express + Prisma API, a React web app and an Expo mobile app.",
+    "role": "Solo",
+    "overview": "A palindrome name for a platform about travelling and coming back: nomads rate and review cities, share recommendations and write articles.",
+    "approach": "Express with Prisma and SQLite (migrations and seeds), a React + Vite + Tailwind + Redux Toolkit web app with Firebase, and an Expo / React Native mobile client.",
+    "outcomes": [
+      "Presented as my Computer Science final project."
+    ]
+  },
+  "mba-thesis": {
+    "title": "Serverless × Microservices (MBA research)",
+    "tagline": "MBA thesis: integrating serverless computing with a microservices architecture.",
+    "summary": "Research and experiments for my USP MBA thesis — cold starts, tracing and state with Lambda, X-Ray, CloudWatch, DynamoDB and SQS, using an AI chat-bot simulation as the workload.",
+    "role": "Author",
+    "overview": "My MBA in Software Engineering at USP ended with a thesis on integrating serverless computing with microservices architecture.",
+    "approach": "Python Lambdas (an AI bot simulation using ChatGPT or Gemini behind a provider factory, and a notification service) work alongside Node.js chat-management services in Docker Compose. Latency-test scripts measure the effects of cold starts and the hybrid design.",
+    "outcomes": [
+      "Thesis completed; MBA concluded with a final grade of 8.5."
+    ]
+  },
+  "punk-records": {
+    "title": "Punk Records",
+    "tagline": "A knowledge-centric platform where entities own knowledge and agents are disposable.",
+    "summary": "Experiment in multi-agent systems: knowledge stored as Markdown + Git, AI output through a staging → review pipeline, and a CEO-agent orchestrating specialist agents.",
+    "role": "Solo",
+    "overview": "Two iterations. v1 is a Python monorepo (FastAPI, SQLAlchemy + Alembic, embeddings, a Next.js web app, Postgres in Docker) with replaceable agent runtimes. v2, the \"startup factory\", uses a containerised agent engine as executor and Punk Records as the knowledge layer, with local models via Ollama and a Telegram interface.",
+    "outcomes": [
+      "Working prototypes of both iterations."
+    ],
+    "lessons": [
+      "Agents are cheap; curated knowledge is the asset."
+    ],
+    "note": "Private repository. Third-party projects vendored in the repo are not my work and are not shown."
+  },
+  "republica-dos-bilhoes": {
+    "title": "República dos Bilhões",
+    "tagline": "A satirical Brazilian tycoon roguelite for mobile.",
+    "summary": "Godot 4 prototype: start with R$100k and build an empire through decision cards, influence, risk and crises — with balancing simulations and fully data-driven content.",
+    "role": "Solo — design and engineering (AI-assisted)",
+    "overview": "A portrait, tap-only mobile game. About 100 events, contacts, news templates and empire tables are pure JSON content packs; no real people or companies are named.",
+    "approach": "Save/restore preserves the random-number state; unit tests, headless UI smoke tests and a balancing simulation (4 bots × 300 runs) run from a Makefile. The build followed a documented 8-prompt plan with AI agents.",
+    "outcomes": [
+      "Playable prototype with automated balancing."
+    ]
+  },
+  "campus-party-serverless": {
+    "title": "Serverless API in an hour",
+    "tagline": "Live-coding demo for my Campus Party workshop on AWS.",
+    "summary": "Lambda handlers behind API Gateway with DynamoDB, plus a React to-do client — the code I built live with the audience.",
+    "role": "Workshop instructor",
+    "overview": "Companion code for the workshop \"Building a serverless API on AWS\" at Campus Party (2023).",
+    "outcomes": [
+      "Workshop delivered at Campus Party's Supernova workshop arena."
+    ]
+  },
+  "hololens-city": {
+    "title": "HoloLens City",
+    "tagline": "A mixed-reality city you place on a table — for Campus Party 2018.",
+    "summary": "Air-tap to place a 3D city; highlighted buildings open panels about tourism, rentals, restaurants, events and news.",
+    "role": "Developer (student team)",
+    "overview": "Built at SENAI CIMATEC with Unity, C# and HoloToolkit as one of the HoloLens projects we took to Campus Party 2018.",
+    "outcomes": [
+      "Demo built for Campus Party 2018."
+    ]
+  },
+  "travel-buddy-finder": {
+    "title": "Travel Buddy Finder",
+    "tagline": "Learning project: microservices for a digital-nomad social network.",
+    "summary": "A Serverless AI-bot Lambda (ChatGPT and Gemini behind a provider factory), shared TypeScript packages and a Django locations service — with most of the product still on the drawing board.",
+    "role": "Solo",
+    "overview": "A deliberately over-architected sandbox to practise microservices around a product I care about. Notification and bot workflows are designed and diagrammed; only part is implemented.",
+    "note": "Private repository."
+  },
+  "event-driven-studies": {
+    "title": "Event-driven studies",
+    "tagline": "Kafka chat and a NestJS + RabbitMQ service — small systems to learn messaging properly.",
+    "summary": "A real-time chat on Express, Socket.IO and KafkaJS, and a NestJS service with MongoDB image storage, RabbitMQ and an email worker.",
+    "role": "Solo",
+    "extraLinks": {
+      "nest-rabbit": "NestJS + RabbitMQ repo"
+    }
+  },
+  "compilers": {
+    "title": "Compiler front-end",
+    "tagline": "From Wirth notation to automata, lexical and syntactic analysis.",
+    "summary": "University project in Python: builds an automaton from simplified Wirth notation, removes empty, non-deterministic, inaccessible and equivalent transitions, then performs lexical and partial syntactic analysis.",
+    "role": "Developer (team project)"
+  },
+  "greendotsys": {
+    "title": "GreenDotSys",
+    "tagline": "Energy monitoring and CO₂ awareness for hotels.",
+    "summary": "Team project: reads room energy sensors, alerts when energy is used while guests are away and estimates avoided CO₂, with a sensor simulator.",
+    "role": "Developer (team of 3)"
+  },
+  "gameducation-hackathon": {
+    "title": "Gameducation",
+    "tagline": "Hackathon prototype — course recommendations and a motivation bot for students.",
+    "summary": "Built in a weekend at Hacking.Rio 2021: a profile survey that recommends courses, a bot that follows progress and a gamified dashboard.",
+    "role": "Developer (hackathon team)"
+  },
+  "legends-of-senai": {
+    "title": "Legends of SENAI",
+    "tagline": "A turn-based strategy game built by five students.",
+    "summary": "C# / UWP game with characters, skills, a battle map and a world map, built for a programming-languages course.",
+    "role": "Developer (team of 5)"
+  },
+  "aleatory-scripts": {
+    "title": "Aleatory scripts",
+    "tagline": "A drawer of small tools and automations.",
+    "summary": "Scripts written to test, study or automate: a Three.js secret-Santa draw, a Vigenère cipher break, game calculators, exporters and more.",
+    "role": "Solo"
+  },
+  "selltime": {
+    "title": "SellTime",
+    "tagline": "Early startup attempt — a cross-platform app.",
+    "summary": "Xamarin.Forms app prototype for a startup idea. Story to be written.",
+    "role": "To be confirmed"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "experience": {
+    "wave": {
+      "summary": "Infraestructura, ingeniería de plataforma y desarrollo full-stack de producto en una plataforma de automatización de marketing.",
+      "roles": {
+        "senior": {
+          "title": "Ingeniero de Software Sénior",
+          "achievements": [
+            "Optimicé los flujos de la aplicación en más de un 70% mediante refactorización y caché, deduplicación de jobs en BullMQ y workers en segundo plano para los cuellos de botella intensivos en CPU.",
+            "Fui responsable del diseño, el deploy y el mantenimiento de la infraestructura cloud-native: Kubernetes, Docker, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana y Loki.",
+            "Lideré iniciativas de ingeniería de plataforma: estándares de repositorio, CI/CD con GitHub Actions, skills/agentes de LLM reutilizables, una base de conocimiento RAG compartida para Claude Code, tests automatizados y refuerzo de la seguridad.",
+            "Trabajé con un consultor externo de arquitectura de software para definir la nueva arquitectura de la plataforma y contribuí a la migración de microservicios a un monolito modular en React/NestJS.",
+            "Desarrollé funcionalidades de producto en NestJS y React, entre ellas flujos de automatización de campañas de Meta, un VSL Builder y agentes de IA que generan componentes de UI."
+          ]
+        }
+      }
+    },
+    "vilaverde": {
+      "summary": "Consultoría de arquitectura de IA, seguridad y refactorización para un producto en producción.",
+      "roles": {
+        "consultant": {
+          "title": "Consultor de Software",
+          "achievements": [
+            "Reduje los costes mensuales de infraestructura de IA en más de un 90% rediseñando la arquitectura de IA en torno a un pipeline RAG sobre una base de datos vectorial: mejores respuestas, sin límite de tamaño para la base de conocimiento y una latencia mucho menor.",
+            "Resolví problemas críticos de seguridad y fiabilidad en un código generado por IA: acceso no autorizado al panel de administración, exposición de datos sensibles, problemas de caché del Service Worker y datos inconsistentes por múltiples fuentes de verdad.",
+            "Lideré una gran refactorización: modularicé la aplicación, extraje componentes reutilizables, apliqué patrones de diseño y sustituí valores fijos en el código por un sistema configurable desde el panel de administración.",
+            "Implementé monitorización y observabilidad para un seguimiento detallado de errores y un análisis de causa raíz más rápido."
+          ]
+        }
+      }
+    },
+    "mindsight": {
+      "summary": "Plataformas de RR. HH. multi-tenant para reclutamiento y contratación.",
+      "roles": {
+        "fullstack": {
+          "title": "Ingeniero Full Stack",
+          "achievements": [
+            "Diseñé y entregué funcionalidades, refactoricé servicios legacy y mejoré la estabilidad de plataformas de RR. HH. multi-tenant con decenas de miles de usuarios mensuales.",
+            "Refactoricé flujos de procesamiento críticos, reduciendo el consumo de memoria y el tiempo de ejecución en más de un 50%.",
+            "Desarrollé funcionalidades de autenticación y comunicación entre sistemas: SSO con IdPs externos, OAuth2 entre sistemas internos y registro de eventos (journaling) para cumplimiento normativo.",
+            "Creé de principio a fin una aplicación de bolsa de empleo (Django + React) en un equipo de dos personas, con un papel clave en arquitectura, modelado de datos, diseño de APIs, testing y deploy."
+          ]
+        }
+      }
+    },
+    "agile-content": {
+      "summary": "Gestión de suscripciones para la mayor empresa de telecomunicaciones de Argentina.",
+      "roles": {
+        "backend": {
+          "title": "Ingeniero de Software Backend",
+          "achievements": [
+            "Desarrollé y mantuve microservicios (APIs en Node.js y funciones serverless) para flujos críticos y de alto volumen: compra, facturación, renovación y cancelación.",
+            "Diseñé y evolucioné soluciones en AWS (Lambda, SQS, CloudWatch, ECS, X-Ray, Parameter Store, S3, Redshift, RDS) que soportan millones de eventos al mes con alta disponibilidad y observabilidad.",
+            "Contribuí a decisiones de arquitectura y patrones de servicio que mejoraron la fiabilidad y redujeron la frecuencia de incidentes.",
+            "Creé y mantuve infraestructura con Docker, Terraform, Serverless Framework y CI/CD.",
+            "Lideré librerías internas de testing de APIs en Robot Framework y alcancé un 100% de cobertura de tests unitarios.",
+            "Construí datasets e informes con Tableau y QuickSight."
+          ]
+        }
+      }
+    },
+    "ipq": {
+      "summary": "Plataforma de seguridad pública e inteligencia policial para organismos gubernamentales.",
+      "roles": {
+        "fullstack": {
+          "title": "Ingeniero de Software Full Stack",
+          "achievements": [
+            "Desarrollé y escalé una plataforma de seguridad pública e inteligencia policial utilizada por organismos gubernamentales, contribuyendo a una reducción de la criminalidad reportada de más del 30%.",
+            "Diseñé e implementé integraciones de alto rendimiento con Kafka que procesan más de 2 millones de mensajes al día.",
+            "Construí capas de mapas, integraciones entre sistemas y módulos centrales confidenciales bajo estrictos requisitos de fiabilidad y confidencialidad.",
+            "Trabajé en un CMS para el registro de componentes electrónicos, monitorización y un mapa de equipos."
+          ]
+        }
+      }
+    },
+    "cimatec": {
+      "summary": "Sistemas para startups e industria, e investigación en realidad mixta.",
+      "roles": {
+        "fullstack-intern": {
+          "title": "Desarrollador Full Stack en prácticas",
+          "achievements": [
+            "Colaboré en un sistema de monitorización, automatización y gestión de sensores de invernaderos.",
+            "Me encargué, bajo supervisión, de la arquitectura y el desarrollo de una API de gestión y reservas de flotas de vehículos.",
+            "Colaboré en un sistema de trazabilidad para la fabricación de torres eólicas que hace seguimiento de las piezas e informa de lo que falta para completar cada torre."
+          ]
+        },
+        "ar-intern": {
+          "title": "Becario voluntario de Realidad Aumentada",
+          "achievements": [
+            "Funcionalidades y corrección de bugs en una aplicación de realidad mixta para Microsoft HoloLens.",
+            "Creé una librería de i18n para la aplicación."
+          ]
+        }
+      }
+    }
+  },
+  "education": {
+    "unipds": {
+      "degree": "Posgrado",
+      "field": "Ingeniería de Inteligencia Artificial Aplicada",
+      "description": "Especialización en agentes de IA y sistemas inteligentes."
+    },
+    "vanderbilt": {
+      "degree": "Especializaciones",
+      "field": "Ingeniería de Software con IA Generativa · Desarrollo de Agentes de IA",
+      "description": "Orquestación de agentes de IA, ingeniería de prompts, arquitecturas AI-first y automatización de flujos de varios pasos."
+    },
+    "usp": {
+      "degree": "MBA",
+      "field": "Ingeniería de Software",
+      "description": "Tesis: integración de la computación serverless con la arquitectura de microservicios. La USP figura entre las 100 mejores universidades del ranking QS."
+    },
+    "unifacs": {
+      "degree": "Licenciatura",
+      "field": "Ciencias de la Computación",
+      "description": "Me trasladé desde Ingeniería Informática para centrarme en el software en lugar del hardware."
+    },
+    "cimatec": {
+      "degree": "Ingeniería Informática (traslado)",
+      "field": "Ingeniería Informática",
+      "description": "Me trasladé a Ciencias de la Computación al final de la carrera.",
+      "activities": [
+        "Coordinador del grupo de Programación Competitiva: entrené a más de 15 estudiantes y organicé competiciones",
+        "Coordinador académico de la asociación de estudiantes de Ingeniería Informática",
+        "Grupo de investigación en RA, RV y visión por computador aplicadas a la innovación industrial",
+        "Proyectos de HoloLens para Campus Party",
+        "Representante de Ingeniería Informática en CREA Jr-BA"
+      ]
+    },
+    "griffith": {
+      "degree": "Inglés general",
+      "field": "Inglés (C1)",
+      "description": "Curso de inglés mientras vivía en Cork, Irlanda."
+    }
+  },
+  "certifications": {},
+  "languages": {
+    "pt": "Portugués",
+    "en": "Inglés",
+    "es": "Español",
+    "zh": "Chino (mandarín)",
+    "ja": "Japonés"
+  }
+}

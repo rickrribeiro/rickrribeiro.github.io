@@ -1,0 +1,29 @@
+{
+  "devfest-cerrado-2024": {
+    "title": "Trabalhando online enquanto viajo pelo mundo",
+    "description": "Como vivo como nômade digital: o dia a dia, os momentos mais difíceis, onde trabalhar, como fazer amigos viajando sozinho — e o que realmente é preciso para manter uma carreira de engenharia remota funcionando na estrada.",
+    "mediaAlt": ["Ricardo palestrando no palco do DevFest Cerrado 2024"]
+  },
+  "campus-party-2023": {
+    "title": "Construindo uma API serverless na AWS",
+    "description": "Workshop prático: do zero a uma API funcionando com Lambda, API Gateway e DynamoDB, mais um cliente em React — construído ao vivo com o público.",
+    "mediaAlt": ["Ricardo apresentando na arena de workshops da Campus Party", "Slide do workshop: \"Criando uma API serverless na AWS\""]
+  },
+  "nodebr-63": {
+    "title": "Automatizando conversas no Tinder com ChatGPT",
+    "description": "Um dos casos de uso mais divertidos para LLMs: um app que escreve e envia mensagens automaticamente. Arquitetura, design de prompts e os aprendizados de construir o TinderGPT.",
+    "mediaAlt": ["Card da palestra no NodeBR #63", "Programação do evento NodeBR #63"]
+  },
+  "hacking-rio-2021": {
+    "title": "Gameducation — Hacking.Rio",
+    "description": "Fim de semana de hackathon: um protótipo que recomenda cursos a partir do perfil do estudante, um bot de motivação e um painel de progresso gamificado."
+  },
+  "competitive-programming": {
+    "title": "Grupo de Programação Competitiva",
+    "description": "Coordenei o grupo de programação competitiva da universidade: treinei mais de 15 estudantes e organizei competições."
+  },
+  "campus-party-2018": {
+    "title": "Projetos de HoloLens na Campus Party",
+    "description": "Demos de realidade mista construídas pelo grupo de pesquisa da nossa universidade, incluindo uma cidade que você pode posicionar sobre qualquer mesa."
+  }
+}

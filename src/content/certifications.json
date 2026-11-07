@@ -1,0 +1,11 @@
+{
+  "$comment": "Certifications, courses, workshops and awards. kind: certification | course | workshop | award | exam. Names/notes are translatable in locales/<lang>/resume.json under certifications.<id> (optional — 'name' here is the fallback).",
+  "items": [
+    { "id": "vanderbilt-agents", "enabled": true, "kind": "certification", "name": "AI Agent Developer", "issuer": "Vanderbilt University (Coursera)", "date": "2026-04", "credentialId": "MSLV1XF37Q88", "url": "https://www.coursera.org/account/accomplishments/specialization/MSLV1XF37Q88" },
+    { "id": "vanderbilt-genai", "enabled": true, "kind": "certification", "name": "Generative AI Software Engineering", "issuer": "Vanderbilt University (Coursera)", "date": "2026-03", "credentialId": "3EBQWAH02ABF", "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/3EBQWAH02ABF" },
+    { "id": "hsk", "enabled": true, "kind": "exam", "name": "Chinese Proficiency Test (HSK)", "issuer": "Hanban / Confucius Institute", "date": "2022-07", "credentialId": "H12236509020000022", "url": "https://drive.google.com/file/d/185sETr6xMi9XgM-fFHj9GkETM33nUbNu/view" },
+    { "id": "hackatruck", "enabled": true, "kind": "course", "name": "HackaTruck — Cloud services with Swift and IoT (120h)", "issuer": "Instituto de Pesquisas ELDORADO", "date": "2019-03", "credentialId": null, "url": "https://drive.google.com/file/d/1__DLrjURvtNyFtpFCysSFW_ZBcK4iJr-/view" },
+    { "id": "alpha-reading", "enabled": true, "kind": "course", "name": "Alpha reading method (17 weeks)", "issuer": "Vencer Leitura", "date": "2023-12", "credentialId": null, "url": null },
+    { "id": "nihongo", "enabled": true, "kind": "course", "name": "Nihongo Premium (Japanese)", "issuer": "Nihongo Premium", "date": "2024-05", "credentialId": null, "url": null, "inProgress": true }
+  ]
+}

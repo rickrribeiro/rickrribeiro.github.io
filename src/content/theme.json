@@ -1,0 +1,19 @@
+{
+  "$comment": "Brand tokens. These become CSS custom properties (--color-*, --font-*). Everything else in src/styles/tokens.css derives from them.",
+  "colors": {
+    "bg": "#09090A",
+    "bgElevated": "#111113",
+    "surface": "#16161A",
+    "line": "#26262B",
+    "text": "#EDEBE6",
+    "muted": "#9A9893",
+    "accent": "#FF5B23",
+    "accentInk": "#140700",
+    "signal": "#8ED1FF"
+  },
+  "fonts": {
+    "display": "'Bricolage Grotesque Variable', 'Helvetica Neue', Arial, sans-serif",
+    "serif": "'Instrument Serif', 'Times New Roman', serif",
+    "mono": "'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$comment": "Spoken languages (NOT the website's interface languages — those are in site.json). level: native | fluent | advanced | intermediate | elementary | learning. Optional 'cefr' and 'evidence' (certification id).",
+  "items": [
+    { "id": "pt", "enabled": true, "level": "native" },
+    { "id": "en", "enabled": true, "level": "fluent", "cefr": "C1", "evidence": null },
+    { "id": "es", "enabled": true, "level": "fluent" },
+    { "id": "zh", "enabled": true, "level": "elementary", "evidence": "hsk" },
+    { "id": "ja", "enabled": true, "level": "learning", "evidence": "nihongo" }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "devfest-cerrado-2024": {
+    "title": "Working online while travelling the world",
+    "description": "How I live as a digital nomad: the day-to-day, the hardest moments, where to work, how to make friends travelling solo — and what it really takes to keep a remote engineering career running on the road.",
+    "mediaAlt": ["Ricardo speaking on stage at DevFest Cerrado 2024"]
+  },
+  "campus-party-2023": {
+    "title": "Building a serverless API on AWS",
+    "description": "Hands-on workshop: from zero to a working API with Lambda, API Gateway and DynamoDB, plus a React client — built live with the audience.",
+    "mediaAlt": ["Ricardo presenting at the Campus Party workshop arena", "Workshop slide: \"Creating a serverless API on AWS\""]
+  },
+  "nodebr-63": {
+    "title": "Automating Tinder conversations with ChatGPT",
+    "description": "One of the most fun use cases for LLMs: an app that writes and sends messages automatically. Architecture, prompt design and the lessons from building TinderGPT.",
+    "mediaAlt": ["NodeBR #63 talk card", "NodeBR #63 event line-up"]
+  },
+  "hacking-rio-2021": {
+    "title": "Gameducation — Hacking.Rio",
+    "description": "Hackathon weekend: a prototype that recommends courses from a student profile, a motivation bot and a gamified progress dashboard."
+  },
+  "competitive-programming": {
+    "title": "Competitive Programming group",
+    "description": "Coordinated the university's competitive-programming group: coached 15+ students and organised competitions."
+  },
+  "campus-party-2018": {
+    "title": "HoloLens projects at Campus Party",
+    "description": "Mixed-reality demos built by our university research group, including a city you can place on any table."
+  }
+}

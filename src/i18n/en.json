@@ -1,0 +1,313 @@
+{
+  "meta": {
+    "siteTitle": "Ricardo Ribeiro — Senior Software Engineer",
+    "titleTemplate": "{title} — Ricardo Ribeiro"
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "mainNav": "Main navigation",
+    "home": "Ricardo Ribeiro — home",
+    "external": "(opens in a new tab)",
+    "commandPalette": "Quick navigation",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "diagram": "Architecture diagram of {title}",
+    "globe": "Globe showing places in Ricardo's journey. Drag to rotate.",
+    "constellation": "Animated constellation of the technologies Ricardo works with"
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "about": "About",
+    "lab": "Lab",
+    "talks": "Talks",
+    "journey": "Journey",
+    "contact": "Contact",
+    "resume": "Résumé",
+    "quick": "Quick nav"
+  },
+  "fastTrack": {
+    "label": "Hiring? Fast track",
+    "work": "Selected work",
+    "experience": "Experience",
+    "stack": "Stack",
+    "resume": "Download résumé",
+    "email": "Email me"
+  },
+  "hero": {
+    "now": "Now",
+    "at": "at",
+    "scroll": "Scroll to the work"
+  },
+  "home": {
+    "featured": {
+      "kicker": "Selected work",
+      "title": "Things I've built",
+      "all": "All projects"
+    },
+    "experience": {
+      "kicker": "Career",
+      "title": "Where I've shipped",
+      "all": "Full résumé"
+    },
+    "more": {
+      "kicker": "Index",
+      "title": "More work",
+      "all": "Browse every project"
+    },
+    "skills": {
+      "kicker": "Capabilities",
+      "title": "The stack, with receipts",
+      "all": "Every skill and where I used it"
+    },
+    "lab": {
+      "kicker": "The Lab",
+      "title": "Experiments",
+      "all": "Enter the Lab"
+    },
+    "talks": {
+      "kicker": "Community",
+      "title": "On stage",
+      "all": "All talks"
+    },
+    "journey": {
+      "kicker": "Beyond the code",
+      "all": "The journey"
+    }
+  },
+  "project": {
+    "caseStudy": "Case study",
+    "viewCase": "View case study",
+    "role": "Role",
+    "period": "Period",
+    "status": "Status",
+    "type": "Type",
+    "stack": "Stack",
+    "links": "Links",
+    "overview": "Overview",
+    "problem": "The problem",
+    "approach": "What I did",
+    "architecture": "Architecture",
+    "challenges": "Engineering challenges",
+    "outcomes": "Outcomes",
+    "lessons": "Lessons",
+    "ending": "Why it ended",
+    "gallery": "Gallery",
+    "relatedTalks": "Related talks",
+    "experience": "Built at",
+    "next": "Next project",
+    "back": "All work",
+    "sourcePrivate": "Source code is private",
+    "sourceConfidential": "Confidential — client or employer work",
+    "noMedia": "No screenshots — this is a backend or confidential system, so the architecture tells the story.",
+    "present": "present"
+  },
+  "links": {
+    "github": "Source on GitHub",
+    "demo": "Live demo",
+    "website": "Website",
+    "slides": "Slides",
+    "docs": "Documentation",
+    "video": "Video",
+    "code": "Code",
+    "event": "Event page",
+    "credential": "Credential"
+  },
+  "status": {
+    "shipped": "Shipped",
+    "in-progress": "In progress",
+    "experimental": "Experimental",
+    "archived": "Archived"
+  },
+  "type": {
+    "professional": "Professional",
+    "consulting": "Consulting",
+    "personal": "Personal",
+    "startup": "Startup",
+    "academic": "Academic",
+    "hackathon": "Hackathon",
+    "open-source": "Open source"
+  },
+  "category": {
+    "ai": "AI",
+    "fullstack": "Full-stack",
+    "backend": "Backend",
+    "cloud": "Cloud / Infra",
+    "games": "Games",
+    "mobile": "Mobile",
+    "startup": "Startup",
+    "experiments": "Experiments",
+    "devtools": "Dev tools",
+    "automation": "Automation"
+  },
+  "filter": {
+    "label": "Filter projects",
+    "all": "All",
+    "featured": "Featured",
+    "lab": "Lab",
+    "count": "{count} projects",
+    "empty": "Nothing here yet."
+  },
+  "work": {
+    "title": "Work",
+    "kicker": "Projects & case studies",
+    "intro": "Professional systems, products and experiments. Confidential work is described at the level my résumé allows; everything else links to the code."
+  },
+  "about": {
+    "title": "About",
+    "kicker": "Résumé",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "certifications": "Certifications & courses",
+    "languages": "Languages",
+    "download": "Download résumé (PDF)",
+    "downloadLang": "PDF · {lang}",
+    "currently": "Currently",
+    "achievements": "Highlights",
+    "technologies": "Technologies",
+    "relatedProjects": "Related projects",
+    "activities": "Activities",
+    "grade": "Grade {grade}",
+    "website": "Website"
+  },
+  "experience": {
+    "remote": "Remote",
+    "onsite": "On-site",
+    "hybrid": "Hybrid",
+    "employment": {
+      "full-time": "Full-time",
+      "part-time": "Part-time",
+      "contract": "Contract",
+      "consulting": "Consulting",
+      "freelance": "Freelance",
+      "internship": "Internship",
+      "volunteer": "Volunteer"
+    },
+    "duration": {
+      "years_one": "{n} yr",
+      "years_other": "{n} yrs",
+      "months_one": "{n} mo",
+      "months_other": "{n} mos"
+    }
+  },
+  "education": {
+    "status": {
+      "completed": "Completed",
+      "in-progress": "In progress",
+      "transferred": "Transferred"
+    },
+    "expected": "expected"
+  },
+  "skills": {
+    "intro": "No percentage bars. Each skill shows the year I started using it and — where it applies — the jobs I used it in.",
+    "since": "since {year}",
+    "usedAt": "Used at",
+    "personal": "Personal & study projects",
+    "core": "Daily driver",
+    "viewByGroup": "By area",
+    "viewByYear": "By year",
+    "year": "{year}",
+    "groups": {
+      "languages": "Languages",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "data": "Databases",
+      "messaging": "Messaging & queues",
+      "cloud": "Cloud & DevOps",
+      "observability": "Observability",
+      "testing": "Testing",
+      "ai": "AI engineering",
+      "architecture": "Architecture",
+      "games": "Games & XR",
+      "analytics": "Data & BI"
+    }
+  },
+  "certifications": {
+    "kind": {
+      "certification": "Certification",
+      "course": "Course",
+      "workshop": "Workshop",
+      "award": "Award",
+      "exam": "Exam"
+    },
+    "id": "ID {id}",
+    "inProgress": "In progress"
+  },
+  "languages": {
+    "level": {
+      "native": "Native",
+      "fluent": "Full professional",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "elementary": "Elementary",
+      "learning": "Learning"
+    }
+  },
+  "lab": {
+    "title": "The Lab",
+    "kicker": "Prototypes · research · experiments",
+    "intro": "Where ideas get tested before they earn a case study: AI agents, research, games and small tools. Some are rough on purpose."
+  },
+  "talks": {
+    "title": "Talks & community",
+    "kicker": "Speaking · workshops · community",
+    "intro": "Sharing what I learn — on stage, in workshops and in the communities that taught me.",
+    "kind": {
+      "talk": "Talk",
+      "workshop": "Workshop",
+      "showcase": "Showcase",
+      "hackathon": "Hackathon",
+      "community": "Community"
+    },
+    "organizer": "by {organizer}",
+    "related": "Related project"
+  },
+  "journey": {
+    "kicker": "Personal",
+    "kind": {
+      "home": "Home",
+      "lived": "Lived",
+      "studied": "Studied",
+      "spoke": "Spoke",
+      "visited": "Visited"
+    },
+    "places": "Places",
+    "months": "{n} months",
+    "languagesTitle": "Languages I live in",
+    "follow": "More photos on Instagram"
+  },
+  "contact": {
+    "kicker": "Contact",
+    "copy": "Copy email",
+    "copied": "Copied!",
+    "write": "Write me an email",
+    "elsewhere": "Elsewhere",
+    "resume": "Prefer paper? Download my résumé."
+  },
+  "footer": {
+    "built": "Designed and built by Ricardo Ribeiro with React, TypeScript and Vite. Content lives in JSON.",
+    "updated": "Last build {date}",
+    "top": "Back to top",
+    "source": "Source"
+  },
+  "palette": {
+    "placeholder": "Jump to a page, project or action…",
+    "hint": "Press {key} anytime",
+    "pages": "Pages",
+    "projects": "Projects",
+    "actions": "Actions",
+    "empty": "No matches",
+    "copyEmail": "Copy email address",
+    "switchLanguage": "Switch language to {lang}"
+  },
+  "notFound": {
+    "title": "This page doesn't exist yet.",
+    "body": "Which is ironic, given the headline. Try the work instead.",
+    "home": "Go home"
+  }
+}

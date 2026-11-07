@@ -1,0 +1,50 @@
+{
+  "$comment": "Turn sections on/off and reorder them. A disabled section disappears from the homepage, the navigation and (for pages) its route.",
+  "sections": {
+    "featuredProjects": true,
+    "intro": true,
+    "experience": true,
+    "moreProjects": true,
+    "skills": true,
+    "education": true,
+    "languages": true,
+    "certifications": true,
+    "experiments": true,
+    "talks": true,
+    "journey": true,
+    "contact": true
+  },
+  "homeOrder": [
+    "featuredProjects",
+    "intro",
+    "experience",
+    "moreProjects",
+    "skills",
+    "experiments",
+    "talks",
+    "journey",
+    "contact"
+  ],
+  "aboutOrder": [
+    "experience",
+    "skills",
+    "education",
+    "certifications",
+    "languages"
+  ],
+  "navigation": [
+    "work",
+    "about",
+    "lab",
+    "talks",
+    "journey",
+    "contact"
+  ],
+  "homeLimits": {
+    "featuredProjects": 6,
+    "moreProjects": 8,
+    "experience": 4,
+    "experiments": 3,
+    "talks": 3
+  }
+}

@@ -1,0 +1,384 @@
+{
+  "wave-platform": {
+    "title": "Wave Platform",
+    "tagline": "Rediseñando la arquitectura de una plataforma de automatización de marketing, y la nube sobre la que corre.",
+    "summary": "Ingeniero sénior en Group Wave Enterprise: responsable de la infraestructura cloud-native, lideré la ingeniería de plataforma y ayudé a migrar el producto de microservicios a un monolito modular.",
+    "role": "Ingeniero de Software Sénior · responsable de infraestructura",
+    "overview": "Group Wave Enterprise desarrolla productos de automatización de marketing. Me incorporé para trabajar en todo el stack —backend en NestJS, frontend en React y la infraestructura que hay debajo— en un momento en que la plataforma se estaba rediseñando.",
+    "problem": "El producto había crecido como un conjunto de microservicios caros de evolucionar y operar para el tamaño del equipo. Algunos flujos eran lentos, el trabajo intensivo en CPU competía con la atención de peticiones y no había estándares compartidos para repositorios, pipelines ni testing.",
+    "approach": "Junto a un consultor externo de arquitectura de software ayudé a definir la nueva arquitectura de la plataforma y contribuí a la migración a un monolito modular en React/NestJS. En paralelo diseñé, desplegué y mantuve la infraestructura cloud-native, y lideré el trabajo de ingeniería de plataforma para que todos los repositorios compartan la misma base de CI/CD, testing y seguridad.",
+    "architecture": "Vista simplificada. El monolito NestJS está dividido en módulos, delega el trabajo pesado a workers de BullMQ y corre en Kubernetes junto a PostgreSQL, Redis, RabbitMQ y MinIO, todo ello observado con Prometheus, Grafana y Loki.",
+    "challenges": [
+      "Migrar de microservicios a un monolito modular sin dejar de entregar funcionalidades de producto.",
+      "Separar los jobs intensivos en CPU de la atención de peticiones sin duplicar trabajo, resuelto con workers en segundo plano y deduplicación de jobs en BullMQ.",
+      "Operar todo el stack (Kubernetes, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana, Loki) con un equipo pequeño."
+    ],
+    "outcomes": [
+      "Flujos de la aplicación más de un 70% más rápidos gracias a refactorización, caché, deduplicación de jobs en BullMQ y workers dedicados para los cuellos de botella intensivos en CPU.",
+      "Estándares de repositorio, CI/CD con GitHub Actions, tests automatizados y refuerzo de la seguridad en toda la plataforma.",
+      "Una base de conocimiento RAG compartida para Claude Code y skills/agentes de LLM reutilizables para el equipo de ingeniería.",
+      "Funcionalidades de producto en backend y frontend: flujos de automatización de campañas de Meta, un VSL Builder y agentes de IA que generan componentes de UI."
+    ],
+    "lessons": [
+      "Un monolito modular le da a un equipo pequeño la mayor parte del aislamiento de los microservicios con una fracción del coste operativo.",
+      "La ingeniería de plataforma da frutos más rápido cuando queda plasmada en plantillas y pipelines, no en documentos."
+    ],
+    "note": "Los detalles internos y de clientes son confidenciales; este caso de estudio solo cubre lo que figura públicamente en mi CV."
+  },
+  "rickos": {
+    "title": "RickOS",
+    "tagline": "Un sistema operativo personal local-first con una capa de IA construida sobre Claude Code.",
+    "summary": "Lo que empezó como un registro de horas se convirtió en un centro de mando de escritorio + móvil para tiempo, tareas, aprendizaje, finanzas y proyectos, con funciones de IA que ejecutan la CLI local de Claude Code.",
+    "role": "En solitario: diseño, arquitectura, desarrollo",
+    "overview": "RickOS es la herramienta con la que organizo mis días. Empezó como un simple registro de horas de trabajo y fue creciendo, módulo a módulo, hasta convertirse en un único panel: registro de tiempo en línea temporal con Pomodoro, inbox/TODO/hábitos, un Learning OS (roadmaps, notas en Markdown, flashcards generadas por IA con repetición espaciada SM-2, cuestionarios y exportación a Obsidian), finanzas, un monitor de precios de vuelos, proyectos sincronizados con GitHub y un escáner del estado de los worktrees.",
+    "problem": "Mi planificación de trabajo, estudio y vida personal estaba repartida en una docena de apps que no se comunicaban entre sí, y ninguna podía usar las herramientas de IA en las que ya me apoyo a diario.",
+    "approach": "Un servidor Fastify headless es el único dueño de la base de datos y lo expone todo a través de un único endpoint RPC más server-sent events. La app de Electron y una PWA que uso en el móvil son simples clientes de ese servidor. Las funciones de IA invocan la CLI local de Claude Code, transmiten los resultados en directo y pueden ejecutarse en segundo plano.",
+    "architecture": "Ambos clientes hablan con un único servidor Fastify mediante RPC + SSE. SQLite corre en WebAssembly (sql.js) con migraciones versionadas; los secretos se cifran con AES-256-GCM; el acceso remoto requiere un token.",
+    "challenges": [
+      "Mantener una única fuente de verdad sirviendo a la vez a una app de escritorio y a un móvil.",
+      "Ejecutar tareas largas de IA (prompt runner, brain-dump → tareas, generación de flashcards) sin bloquear la UI.",
+      "Integrar GitHub, OAuth de Google Calendar con varias cuentas, Pluggy Open Finance y Skyscanner detrás de una interfaz coherente."
+    ],
+    "outcomes": [
+      "Herramienta de uso diario con 169 commits y sumando.",
+      "Suite automatizada de capturas con Playwright que fotografía cada página en tamaños de escritorio y móvil con dos skins."
+    ],
+    "lessons": [
+      "Local-first más un servidor ligero es una arquitectura sorprendentemente potente para software personal.",
+      "Tratar una CLI de IA como un subproceso que orquestas es más flexible que incrustar una única llamada a una API."
+    ]
+  },
+  "telecom-subscriptions": {
+    "title": "Plataforma de Suscripciones de Telecom",
+    "tagline": "Gestión de suscripciones serverless para la mayor empresa de telecomunicaciones de Argentina.",
+    "summary": "Ingeniero backend en Agile Content en una plataforma de suscripciones de alto volumen: servicios de compra, facturación, renovación y cancelación en AWS que gestionan millones de eventos al mes.",
+    "role": "Ingeniero de Software Backend",
+    "overview": "En Agile Content trabajé en la plataforma de gestión de suscripciones que hay detrás de los productos digitales de la mayor empresa de telecomunicaciones de Argentina. La plataforma ejecuta flujos críticos que mueven dinero: compra, facturación, renovación y cancelación.",
+    "problem": "Los servicios transaccionales de alto volumen tienen que ser fiables, observables y baratos de operar, y cada cambio debe poder desplegarse con seguridad.",
+    "approach": "Desarrollé y mantuve microservicios —APIs en Node.js y funciones serverless—, participé en la definición de la arquitectura y los patrones del proyecto, y creé y mantuve la infraestructura con Docker, Terraform, Serverless Framework y CI/CD.",
+    "architecture": "Vista simplificada. Las APIs en Node.js y las funciones Lambda se comunican a través de SQS, persisten en RDS y S3, alimentan Redshift para analítica y se trazan con CloudWatch y X-Ray.",
+    "challenges": [
+      "Diseñar para alta disponibilidad en servicios donde cada fallo afecta a la suscripción de un cliente.",
+      "Hacer observable de extremo a extremo un sistema distribuido y orientado a eventos.",
+      "Aumentar la confianza en los tests a lo largo de muchos servicios pequeños."
+    ],
+    "outcomes": [
+      "Soluciones en AWS (Lambda, SQS, CloudWatch, ECS, X-Ray, Parameter Store, S3, Redshift, RDS) que soportan millones de eventos al mes.",
+      "Lideré librerías internas de testing de APIs basadas en Robot Framework y alcancé un 100% de cobertura de tests unitarios, lo que mejoró notablemente la confianza en los deploys.",
+      "Contribuí a decisiones de arquitectura y patrones de servicio que mejoraron la fiabilidad y redujeron la frecuencia de incidentes.",
+      "Construí datasets e informes con Tableau y QuickSight."
+    ],
+    "lessons": [
+      "En los sistemas serverless, la observabilidad forma parte de la arquitectura, no es un añadido.",
+      "Las librerías de testing compartidas escalan la calidad mejor que los esfuerzos heroicos servicio por servicio."
+    ],
+    "note": "Los sistemas del cliente son confidenciales; los detalles se limitan a lo que figura en mi CV público."
+  },
+  "ai-assistant-rag": {
+    "title": "Rediseño de Arquitectura de un Asistente de IA",
+    "tagline": "Rediseñar un producto de IA en torno a la recuperación de información y reducir su factura de IA en más de un 90%.",
+    "summary": "Proyecto de consultoría: sustituí una configuración de IA cara por un pipeline RAG sobre una base de datos vectorial, corregí problemas de seguridad críticos en un código generado por IA e hice que el producto fuera configurable sin necesidad de desarrolladores.",
+    "role": "Consultor de Software",
+    "overview": "El producto de Murilo Vilaverde incluía un asistente de IA construido rápidamente, en gran parte con código generado por IA. Funcionaba, pero era caro, limitado en la cantidad de conocimiento que podía usar y tenía problemas de seguridad y fiabilidad.",
+    "problem": "Los costes mensuales de infraestructura de IA eran altos, la base de conocimiento tenía límites de tamaño, las respuestas eran lentas y el código presentaba acceso no autorizado a páginas de administración, exposición de datos sensibles, problemas de caché del Service Worker y datos inconsistentes por múltiples fuentes de verdad.",
+    "approach": "Rediseñé la arquitectura de IA como un pipeline de Retrieval-Augmented Generation respaldado por una base de datos vectorial y después refactoricé la aplicación: la modularicé, extraje componentes reutilizables, apliqué patrones de diseño y sustituí los valores fijos en el código por un sistema configurable desde el panel de administración. Por último, añadí monitorización y observabilidad.",
+    "architecture": "Vista simplificada. El conocimiento se divide en fragmentos y se convierte en embeddings dentro de una base de datos vectorial; cada pregunta recupera solo el contexto más relevante antes de llamar al LLM.",
+    "challenges": [
+      "Corregir problemas de seguridad en un código que nadie había diseñado del todo.",
+      "Mantener la calidad de las respuestas enviando mucho menos contexto al modelo.",
+      "Eliminar la configuración fija en el código sin romper un producto en producción."
+    ],
+    "outcomes": [
+      "Costes mensuales de infraestructura de IA reducidos en más de un 90%.",
+      "Mejor calidad de respuesta, sin límite de tamaño en la base de conocimiento y una latencia notablemente menor.",
+      "Problemas críticos de seguridad y fiabilidad resueltos.",
+      "Los cambios de configuración ya no requieren un desarrollador.",
+      "Seguimiento detallado de errores y análisis de causa raíz más rápido en producción."
+    ],
+    "lessons": [
+      "El código generado por IA se entrega rápido; la revisión de arquitectura y seguridad es lo que lo hace durar.",
+      "Recuperar información suele ser más barato y mejor que un prompt más grande."
+    ],
+    "note": "Los detalles del cliente son confidenciales; las cifras proceden de mi CV."
+  },
+  "public-security-platform": {
+    "title": "Plataforma de Inteligencia para Seguridad Pública",
+    "tagline": "Integraciones de alto rendimiento para una plataforma de inteligencia policial utilizada por organismos gubernamentales.",
+    "summary": "En IPQ Tecnologia ayudé a desarrollar y escalar una plataforma de seguridad pública, construyendo integraciones con Kafka que procesan más de 2 millones de mensajes al día.",
+    "role": "Ingeniero de Software Full Stack",
+    "overview": "IPQ Tecnologia desarrolla una plataforma de seguridad pública e inteligencia policial utilizada por organismos gubernamentales. Trabajé en integraciones, capas de mapas y módulos operativos centrales confidenciales.",
+    "problem": "Sistemas críticos necesitaban intercambiar datos en tiempo real, en un entorno con estrictos requisitos de fiabilidad y confidencialidad.",
+    "approach": "Diseñé e implementé integraciones de alto rendimiento sobre Kafka, construí capas de mapas e integraciones entre sistemas y trabajé en módulos operativos centrales. También trabajé en un CMS para el registro de componentes electrónicos, monitorización y un mapa de equipos.",
+    "architecture": "Deliberadamente abstracta. Los sistemas externos y de campo publican en Kafka; los servicios de integración en Node.js y los módulos en Django consumen, almacenan y presentan los datos en mapas.",
+    "challenges": [
+      "Sostener millones de mensajes al día sin perder datos.",
+      "Trabajar dentro de estrictas restricciones de confidencialidad."
+    ],
+    "outcomes": [
+      "Integraciones que procesan más de 2 millones de mensajes al día.",
+      "Formé parte del equipo detrás de una plataforma asociada a una reducción de la criminalidad reportada de más del 30%."
+    ],
+    "lessons": [
+      "La integración basada en mensajes es lo que permite que sistemas críticos muy distintos evolucionen de forma independiente."
+    ],
+    "note": "Sistema gubernamental confidencial: no se muestran detalles internos."
+  },
+  "tindergpt": {
+    "title": "TinderGPT",
+    "tagline": "Un LLM que escribe tus primeros mensajes: mi proyecto open source con más estrellas y una charla en NodeBR.",
+    "summary": "Genera con ChatGPT respuestas y mensajes de apertura para matches de apps de citas y los envía automáticamente, con proveedores de IA y plataformas sociales intercambiables.",
+    "role": "En solitario: idea, arquitectura, desarrollo, charla",
+    "overview": "TinderGPT empezó como una pregunta en broma —¿podría un LLM mantener viva una conversación en una app de citas?— y se convirtió en un proyecto open source con 22 estrellas y en el tema de mi charla en NodeBR #63 en São Paulo.",
+    "problem": "Iniciar y mantener conversaciones es repetitivo. La pregunta técnica era cómo construirlo para poder cambiar el proveedor de IA y la plataforma sin reescribir la app.",
+    "approach": "Una API en Express con TypeScript usa patrones factory tanto para los proveedores de IA como para las plataformas sociales, un contenedor de dependencias y middleware de autenticación, con Redis para guardar la autenticación. Un panel en React (Ant Design) controla filtros de segmentación como la distancia y la bio. Todo corre con Docker Compose.",
+    "architecture": "La API enruta cada acción a través de dos factories —una para plataformas sociales y otra para proveedores de IA—, de modo que las nuevas integraciones solo suman.",
+    "challenges": [
+      "Respetar los límites de peticiones de la plataforma (HTTP 429) con un ritmo deliberado.",
+      "Diseñar prompts que produzcan mensajes naturales y adaptados al contexto."
+    ],
+    "outcomes": [
+      "22 estrellas en GitHub: mi repositorio con más estrellas.",
+      "Presentado en NodeBR #63 (São Paulo, 2023)."
+    ],
+    "lessons": [
+      "Las abstracciones sobre los proveedores de LLM se amortizan de inmediato: el panorama de modelos cambia cada mes."
+    ],
+    "captions": {
+      "nodebr": "Tarjeta de la charla en NodeBR #63, São Paulo"
+    }
+  },
+  "mindsight-hr": {
+    "title": "Plataformas de RR. HH. de Mindsight",
+    "tagline": "Sistemas de RR. HH. multi-tenant, SSO empresarial y una bolsa de empleo construida de principio a fin.",
+    "summary": "Ingeniero full-stack en plataformas de RR. HH. multi-tenant utilizadas por decenas de miles de personas al mes: SSO con IdPs externos, OAuth2 entre servicios y una bolsa de empleo en Django + React.",
+    "role": "Ingeniero Full Stack",
+    "overview": "Mindsight desarrolla software de RR. HH. para reclutamiento y contratación. Diseñé y entregué funcionalidades, refactoricé servicios legacy y mejoré la estabilidad en plataformas multi-tenant.",
+    "problem": "Los clientes empresariales necesitaban iniciar sesión con sus propios proveedores de identidad, los sistemas internos necesitaban una comunicación segura entre servicios y algunos flujos de procesamiento críticos eran demasiado pesados.",
+    "approach": "Desarrollé funcionalidades de autenticación y comunicación entre sistemas —inicio de sesión SSO con IdPs externos, OAuth2 para la comunicación interna y registro de eventos (journaling) para cumplimiento normativo— y, en un equipo de dos personas, construí de principio a fin una aplicación de bolsa de empleo.",
+    "architecture": "Vista simplificada. La plataforma Django autentica a los usuarios mediante IdPs externos, se comunica con servicios internos por OAuth2 y registra eventos en un journal.",
+    "challenges": [
+      "Añadir SSO a un sistema multi-tenant sin romper los tenants existentes.",
+      "Refactorizar flujos críticos mientras atendían a usuarios reales."
+    ],
+    "outcomes": [
+      "Flujos de procesamiento críticos refactorizados, con una reducción del consumo de memoria y del tiempo de ejecución de más del 50%.",
+      "Bolsa de empleo entregada de principio a fin con un papel clave en arquitectura, modelado de datos, diseño de APIs, testing y deploy.",
+      "SSO, OAuth2 y registro de eventos al servicio del cumplimiento normativo."
+    ],
+    "lessons": [
+      "En los sistemas multi-tenant, la autenticación es trabajo de producto, no fontanería."
+    ],
+    "note": "Los detalles internos son confidenciales."
+  },
+  "trama-expedicoes": {
+    "title": "Trama de Expedições",
+    "tagline": "Prototipo de juego móvil 3D de escuadras, construido con un flujo de trabajo guiado por agentes de IA.",
+    "summary": "Juego de escuadras PvPvE en Unity en desarrollo activo: PvE offline, reclutamiento y fusión de unidades, un spike de networking autoritativo y balanceo mediante bots.",
+    "role": "En solitario: diseño de juego, ingeniería, herramientas",
+    "overview": "Trama de Expedições es un proyecto personal de videojuego y un experimento para construir algo grande con agentes de IA como colaboradores. Es honesto sobre su estado: el PvE offline, el movimiento y el movimiento en red local funcionan; el combate en red, el PvP y una build móvil validada todavía no existen.",
+    "problem": "¿Puede una sola persona, trabajando con agentes de IA, construir los cimientos técnicos de un juego móvil multijugador —networking, balanceo, pipeline de contenido— con un estándar profesional?",
+    "approach": "Un cliente de Unity se apoya en una librería core compartida de .NET, con un spike de match host autoritativo para el networking y meta-servicios (chat, clanes, economía, amigos) cubiertos por tests. Scripts de Python para Blender generan LODs, retratos e iconos de UI. El estado del proyecto, las decisiones y los traspasos están documentados para los agentes en archivos dedicados.",
+    "architecture": "Arquitectura de prototipo: el cliente de Unity se comunica con un match host autoritativo; un core compartido de .NET mantiene las reglas idénticas en ambos lados; los bots ejecutan rondas de balanceo automatizadas.",
+    "challenges": [
+      "Mantener las reglas del juego deterministas entre cliente y host.",
+      "Balancear mapas sin una base de jugadores."
+    ],
+    "outcomes": [
+      "72 partidas de bots por mapa mantuvieron cada uno de los 6 mapas entre un 35% y un 65% de tasa de victorias.",
+      "Prueba de estrés con 400 unidades a un frame time p95 de unos 3,3–3,5 ms (headless, Mac).",
+      "Animación esquelética con LOD para 18 personajes.",
+      "Más de 500 commits, incluidos más de 190 pull requests desde ramas de agentes de IA."
+    ],
+    "lessons": [
+      "Los agentes de IA son productivos cuando el estado y las decisiones del proyecto están por escrito para ellos."
+    ],
+    "note": "El código es privado mientras el juego está en desarrollo."
+  },
+  "smoketrack": {
+    "title": "SmokeTrack",
+    "tagline": "Una app de quantified self privada y offline para entender el hábito de fumar y dejarlo.",
+    "summary": "Registra cada cigarrillo con su contexto y descubre patrones: medias móviles, mapas de calor hora × día, intervalos más largos, desencadenantes y estado de ánimo. Funciona como PWA y como app de iOS.",
+    "role": "En solitario: producto, diseño, desarrollo",
+    "overview": "SmokeTrack es un producto pequeño con un propósito personal: ayudar a la gente (empezando por mí) a detectar los patrones detrás de su consumo de tabaco. Todo se queda en el dispositivo.",
+    "problem": "Las apps para dejar de fumar o te agobian con avisos o te exigen crear una cuenta. Yo quería algo privado que convirtiera un simple registro en información útil.",
+    "approach": "React + TypeScript + Vite, almacenamiento local-first, Recharts para el análisis y una PWA más una build de iOS con Capacitor. La importación/exportación aditiva en JSON, con validación y migración de datos, mantiene los datos portables.",
+    "challenges": [
+      "Hacer útil el análisis con solo unos pocos datos al día.",
+      "Evolucionar el modelo de datos de forma segura en los dispositivos de los usuarios."
+    ],
+    "outcomes": [
+      "Publicada como PWA en GitHub Pages y empaquetada para iOS con Capacitor.",
+      "Filtros de análisis por periodo o mes, entre semana vs. fin de semana, totales vs. medias diarias."
+    ],
+    "lessons": [
+      "La privacidad es una funcionalidad: sin cuenta no hay fricción para empezar."
+    ],
+    "captions": {
+      "log": "Pantalla de registro (demo en vivo, móvil)"
+    }
+  },
+  "clanmanager": {
+    "title": "ClanManager",
+    "tagline": "Un panel de guerras serverless para un clan de Clash of Clans.",
+    "summary": "Una AWS Lambda programada extrae los datos de las guerras de clanes de la API oficial del juego a DynamoDB, y un panel en React clasifica a cada miembro.",
+    "role": "En solitario",
+    "overview": "Creado para mi propio clan: quién atacó, cuánta destrucción causó, quién se dejó ataques sin hacer, tanto en guerras normales como de liga.",
+    "problem": "El juego muestra las guerras de una en una; los líderes necesitan el historial para decidir quién juega.",
+    "approach": "Una Lambda con Serverless Framework se ejecuta cada 23 horas, sigue flujos distintos para las guerras de liga y las normales, y guarda los resultados mediante una factory de servicios de datos que puede alternar entre DynamoDB y almacenamiento local. Tipos de error personalizados gestionan casos como una guerra en curso o el mantenimiento de la API.",
+    "architecture": "Una Lambda programada extrae los datos de la API oficial y los escribe en DynamoDB; el panel en React lee los resultados agregados.",
+    "outcomes": [
+      "Panel en producción utilizado por el clan."
+    ],
+    "lessons": [
+      "Serverless + una ejecución programada es la forma más barata posible de mantener un pipeline de datos para una comunidad."
+    ],
+    "captions": {
+      "desktop": "Panel en vivo — escritorio",
+      "mobile": "Panel en vivo — móvil"
+    }
+  },
+  "squadbusters-tournaments": {
+    "title": "Squad Busters Community Hub",
+    "tagline": "Torneos, récords y clasificaciones para una comunidad de jugadores, además de un bot de Discord.",
+    "summary": "Plataforma en Django + DRF con torneos, récords de clanes y clasificaciones alimentados por APIs externas del juego, y un bot en discord.js que responde consultas de estadísticas de jugadores.",
+    "role": "En solitario",
+    "overview": "Una plataforma comunitaria para jugadores de Squad Busters con apps de Django separadas para el core, los récords, la clasificación y las integraciones.",
+    "approach": "Los servicios de integración modelan jugadores, héroes y unidades a lo largo de nueve migraciones; un bot de Discord llama a la API del sitio y responde con los totales ordenados.",
+    "outcomes": [
+      "Plataforma y bot construidos y operados para una comunidad de jugadores."
+    ]
+  },
+  "cimatec-industrial": {
+    "title": "Sistemas Industriales en SENAI CIMATEC",
+    "tagline": "Automatización de invernaderos, gestión de flotas y trazabilidad de torres eólicas para startups.",
+    "summary": "Como becario trabajé en tres sistemas desarrollados para terceros: monitorización de sensores de invernaderos, una API de flotas de vehículos y reservas que diseñé yo, y trazabilidad de piezas para la fabricación de torres eólicas.",
+    "role": "Desarrollador de Software Full Stack (prácticas)",
+    "overview": "SENAI CIMATEC desarrolla sistemas para startups y la industria. A lo largo de un año trabajé en tres de ellos.",
+    "approach": "Me encargué, bajo supervisión, de la arquitectura y el desarrollo de una API de gestión de flotas y reservas, y colaboré en un sistema de monitorización y automatización de invernaderos y en un sistema de trazabilidad para piezas de torres eólicas que sigue las piezas a lo largo de la fabricación e informa de lo que falta para completar una torre.",
+    "outcomes": [
+      "La API de flotas optimizó la logística y la asignación de recursos.",
+      "El software de trazabilidad permitió un seguimiento fluido de las piezas y contribuyó a un gran aumento de la producción."
+    ],
+    "note": "Sistemas de clientes: no hay capturas de pantalla disponibles."
+  },
+  "woo-nomad-woo": {
+    "title": "Woo Nomad Woo",
+    "tagline": "Una red social para nómadas digitales: mi trabajo de fin de grado en Ciencias de la Computación.",
+    "summary": "Ciudades, países, reseñas, valoraciones y artículos para nómadas, con una API en Express + Prisma, una app web en React y una app móvil en Expo.",
+    "role": "En solitario",
+    "overview": "Un nombre palíndromo para una plataforma sobre viajar y volver: los nómadas valoran y reseñan ciudades, comparten recomendaciones y escriben artículos.",
+    "approach": "Express con Prisma y SQLite (migraciones y seeds), una app web en React + Vite + Tailwind + Redux Toolkit con Firebase, y un cliente móvil en Expo / React Native.",
+    "outcomes": [
+      "Presentado como mi proyecto final de Ciencias de la Computación."
+    ]
+  },
+  "mba-thesis": {
+    "title": "Serverless × Microservicios (investigación del MBA)",
+    "tagline": "Tesis del MBA: integración de la computación serverless con una arquitectura de microservicios.",
+    "summary": "Investigación y experimentos para mi tesis del MBA en la USP: cold starts, trazabilidad y estado con Lambda, X-Ray, CloudWatch, DynamoDB y SQS, usando como carga de trabajo la simulación de un chatbot de IA.",
+    "role": "Autor",
+    "overview": "Mi MBA en Ingeniería de Software en la USP terminó con una tesis sobre la integración de la computación serverless con la arquitectura de microservicios.",
+    "approach": "Lambdas en Python (una simulación de bot de IA con ChatGPT o Gemini detrás de una factory de proveedores, y un servicio de notificaciones) funcionan junto a servicios de gestión de chat en Node.js con Docker Compose. Scripts de pruebas de latencia miden los efectos de los cold starts y del diseño híbrido.",
+    "outcomes": [
+      "Tesis finalizada; MBA concluido con una nota final de 8,5."
+    ]
+  },
+  "punk-records": {
+    "title": "Punk Records",
+    "tagline": "Una plataforma centrada en el conocimiento, donde las entidades son dueñas del conocimiento y los agentes son desechables.",
+    "summary": "Experimento en sistemas multiagente: conocimiento almacenado como Markdown + Git, salida de la IA a través de un pipeline staging → revisión y un agente CEO que orquesta agentes especialistas.",
+    "role": "En solitario",
+    "overview": "Dos iteraciones. La v1 es un monorepo en Python (FastAPI, SQLAlchemy + Alembic, embeddings, una app web en Next.js, Postgres en Docker) con runtimes de agentes reemplazables. La v2, la \"fábrica de startups\", usa un motor de agentes en contenedores como ejecutor y Punk Records como capa de conocimiento, con modelos locales vía Ollama y una interfaz en Telegram.",
+    "outcomes": [
+      "Prototipos funcionales de ambas iteraciones."
+    ],
+    "lessons": [
+      "Los agentes son baratos; el conocimiento curado es el activo."
+    ],
+    "note": "Repositorio privado. Los proyectos de terceros incluidos en el repositorio no son trabajo mío y no se muestran."
+  },
+  "republica-dos-bilhoes": {
+    "title": "República dos Bilhões",
+    "tagline": "Un roguelite satírico de magnates brasileños para móvil.",
+    "summary": "Prototipo en Godot 4: empiezas con R$100k y construyes un imperio mediante cartas de decisión, influencia, riesgo y crisis, con simulaciones de balanceo y contenido totalmente basado en datos.",
+    "role": "En solitario: diseño e ingeniería (asistido por IA)",
+    "overview": "Un juego móvil en vertical que se controla solo con toques. Unos 100 eventos, contactos, plantillas de noticias y tablas del imperio son paquetes de contenido en JSON puro; no se nombra a personas ni empresas reales.",
+    "approach": "El guardado y la restauración conservan el estado del generador de números aleatorios; los tests unitarios, los smoke tests de UI en modo headless y una simulación de balanceo (4 bots × 300 partidas) se ejecutan desde un Makefile. El desarrollo siguió un plan documentado de 8 prompts con agentes de IA.",
+    "outcomes": [
+      "Prototipo jugable con balanceo automatizado."
+    ]
+  },
+  "campus-party-serverless": {
+    "title": "API serverless en una hora",
+    "tagline": "Demo de live coding de mi taller sobre AWS en Campus Party.",
+    "summary": "Handlers de Lambda detrás de API Gateway con DynamoDB, más un cliente de tareas en React: el código que construí en vivo con el público.",
+    "role": "Instructor del taller",
+    "overview": "Código de acompañamiento del taller \"Construyendo una API serverless en AWS\" en Campus Party (2023).",
+    "outcomes": [
+      "Taller impartido en la arena de talleres Supernova de Campus Party."
+    ]
+  },
+  "hololens-city": {
+    "title": "HoloLens City",
+    "tagline": "Una ciudad en realidad mixta que colocas sobre una mesa, para Campus Party 2018.",
+    "summary": "Con un air-tap colocas una ciudad en 3D; los edificios destacados abren paneles sobre turismo, alquileres, restaurantes, eventos y noticias.",
+    "role": "Desarrollador (equipo de estudiantes)",
+    "overview": "Construido en SENAI CIMATEC con Unity, C# y HoloToolkit como uno de los proyectos de HoloLens que llevamos a Campus Party 2018.",
+    "outcomes": [
+      "Demo creada para Campus Party 2018."
+    ]
+  },
+  "travel-buddy-finder": {
+    "title": "Travel Buddy Finder",
+    "tagline": "Proyecto de aprendizaje: microservicios para una red social de nómadas digitales.",
+    "summary": "Una Lambda serverless con un bot de IA (ChatGPT y Gemini detrás de una factory de proveedores), paquetes compartidos en TypeScript y un servicio de ubicaciones en Django, con la mayor parte del producto todavía sobre el papel.",
+    "role": "En solitario",
+    "overview": "Un sandbox deliberadamente sobrediseñado para practicar microservicios en torno a un producto que me importa. Los flujos de notificaciones y del bot están diseñados y diagramados; solo una parte está implementada.",
+    "note": "Repositorio privado."
+  },
+  "event-driven-studies": {
+    "title": "Estudios de arquitectura orientada a eventos",
+    "tagline": "Chat con Kafka y un servicio NestJS + RabbitMQ: sistemas pequeños para aprender mensajería como es debido.",
+    "summary": "Un chat en tiempo real con Express, Socket.IO y KafkaJS, y un servicio NestJS con almacenamiento de imágenes en MongoDB, RabbitMQ y un worker de emails.",
+    "role": "En solitario",
+    "extraLinks": {
+      "nest-rabbit": "Repositorio NestJS + RabbitMQ"
+    }
+  },
+  "compilers": {
+    "title": "Front-end de compilador",
+    "tagline": "De la notación de Wirth a los autómatas y el análisis léxico y sintáctico.",
+    "summary": "Proyecto universitario en Python: construye un autómata a partir de la notación de Wirth simplificada, elimina transiciones vacías, no deterministas, inaccesibles y equivalentes, y luego realiza un análisis léxico y un análisis sintáctico parcial.",
+    "role": "Desarrollador (proyecto en equipo)"
+  },
+  "greendotsys": {
+    "title": "GreenDotSys",
+    "tagline": "Monitorización energética y concienciación sobre el CO₂ para hoteles.",
+    "summary": "Proyecto en equipo: lee los sensores de energía de las habitaciones, avisa cuando se consume energía con los huéspedes fuera y estima el CO₂ evitado, con un simulador de sensores.",
+    "role": "Desarrollador (equipo de 3)"
+  },
+  "gameducation-hackathon": {
+    "title": "Gameducation",
+    "tagline": "Prototipo de hackathon: recomendaciones de cursos y un bot de motivación para estudiantes.",
+    "summary": "Construido en un fin de semana en Hacking.Rio 2021: un cuestionario de perfil que recomienda cursos, un bot que sigue el progreso y un panel gamificado.",
+    "role": "Desarrollador (equipo de hackathon)"
+  },
+  "legends-of-senai": {
+    "title": "Legends of SENAI",
+    "tagline": "Un juego de estrategia por turnos creado por cinco estudiantes.",
+    "summary": "Juego en C# / UWP con personajes, habilidades, un mapa de batalla y un mapa del mundo, creado para una asignatura de lenguajes de programación.",
+    "role": "Desarrollador (equipo de 5)"
+  },
+  "aleatory-scripts": {
+    "title": "Aleatory scripts",
+    "tagline": "Un cajón de pequeñas herramientas y automatizaciones.",
+    "summary": "Scripts escritos para probar, estudiar o automatizar: un sorteo de amigo invisible con Three.js, la ruptura de un cifrado Vigenère, calculadoras para juegos, exportadores y más.",
+    "role": "En solitario"
+  },
+  "selltime": {
+    "title": "SellTime",
+    "tagline": "Un primer intento de startup: una app multiplataforma.",
+    "summary": "Prototipo de app en Xamarin.Forms para una idea de startup. Historia pendiente de escribir.",
+    "role": "Por confirmar"
+  }
+}
