@@ -36,3 +36,21 @@ describe('journey', () => {
     expect(t.km).toBeGreaterThan(10_000);
   });
 });
+
+describe('journey overrides', () => {
+  it('splits a country by city and replaces day totals', () => {
+    const c = parsed();
+    c.trips.trips = [trip('London', 'GB', '2019-01-01', '2019-01-11', 10), trip('Edinburgh', 'GB', '2019-02-01', '2019-02-04', 3), trip('Lisbon', 'PT', '2020-01-01', '2020-01-01', 0)];
+    c.journey.places = [];
+    c.journey.overrides = { cityCountry: { London: 'ENG', Edinburgh: 'SCT' }, regions: {}, countryDays: { PT: 7 } };
+    const stats = countryStats(c, new Date('2026-01-01'));
+    expect(stats.map((s) => [s.country, s.days])).toEqual([['ENG', 10], ['PT', 7], ['SCT', 3]]);
+    expect(journeyTotals(c, new Date('2026-01-01')).countries).toBe(3);
+  });
+
+  it('shows city counts as a lower bound', async () => {
+    const { atLeast } = await import('../lib/content');
+    expect(atLeast(53)).toBe('50+');
+    expect(atLeast(7)).toBe('7');
+  });
+});

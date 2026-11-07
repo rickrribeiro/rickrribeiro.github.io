@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useSite } from '../app/SiteContext';
 import { Seo } from '../app/seo';
-import { countryName, countryStats, formatDays, formatRange, formatYm, journeyTotals, pastTrips } from '../lib/content';
+import { atLeast, countryName, countryStats, formatDays, formatRange, formatYm, journeyTotals, pastTrips } from '../lib/content';
 import type { PlaceKind } from '../lib/schema';
 import { PageHeader } from '../components/ui';
 import { ExternalLink } from '../components/Links';
@@ -58,7 +58,7 @@ export function JourneyPage() {
             </div>
             <div>
               <dt className="label">{t('journey.stats.cities')}</dt>
-              <dd>{totals.cities}</dd>
+              <dd>{atLeast(totals.cities)}</dd>
             </div>
             <div>
               <dt className="label">{t('journey.stats.trips')}</dt>

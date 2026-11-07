@@ -2,6 +2,7 @@ import { Fragment, type ReactNode } from 'react';
 import { useSite } from '../app/SiteContext';
 import { Seo, personJsonLd } from '../app/seo';
 import {
+  atLeast,
   countryName,
   countryStats,
   formatDays,
@@ -146,7 +147,7 @@ export function HomePage() {
               <p className="journey-teaser__lead serif">{text.journey?.intro}</p>
               <div className="journey-teaser__side">
                 <p className="label">
-                  {t('journey.teaserTotals', { countries: totals.countries, cities: totals.cities })}
+                  {t('journey.teaserTotals', { countries: totals.countries, cities: atLeast(totals.cities) })}
                 </p>
                 <ol role="list" className="journey-teaser__places">
                   {topCountries.map((c) => (

@@ -206,6 +206,13 @@ export function validateContent(raw: RawContent, assetExists?: (path: string) =>
   for (const d of duplicates(sections.aboutOrder)) err('sections.json', `aboutOrder lists "${d}" twice`);
   for (const d of duplicates(sections.navigation)) err('sections.json', `navigation lists "${d}" twice`);
 
+  // ── journey overrides ──────────────────────────────────────────────────
+  const tripCities = new Set(trips.trips.map((t) => t.city));
+  for (const [city, code] of Object.entries(journey.overrides.cityCountry)) {
+    if (!tripCities.has(city)) warn('journey.json', `overrides.cityCountry: no trip in "${city}" (check the spelling in trips.json)`);
+    if (code.length !== 2 && !journey.overrides.regions[code]) err('journey.json', `overrides.cityCountry maps "${city}" to "${code}" but overrides.regions has no names for it`);
+  }
+
   // ── locales ────────────────────────────────────────────────────────────
   const codes = site.locales.map((l) => l.code);
   if (!codes.includes(site.defaultLocale)) err('site.json', `defaultLocale "${site.defaultLocale}" is not in locales`);

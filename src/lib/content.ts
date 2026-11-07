@@ -288,8 +288,10 @@ const DAY = 86_400_000;
 /** Trips that have already started; an ongoing stay counts up to `now`. */
 export function pastTrips(content: ParsedContent, now: Date = buildNow()): Trip[] {
   const today = now.toISOString().slice(0, 10);
+  const cityCountry = content.journey.overrides?.cityCountry ?? {};
   return content.trips.trips
     .filter((t) => t.start <= today)
+    .map((t) => (cityCountry[t.city] ? { ...t, country: cityCountry[t.city] } : t))
     .map((t) => (t.end > today ? { ...t, end: today, days: Math.max(0, Math.round((Date.parse(today) - Date.parse(t.start)) / DAY)) } : t));
 }
 
@@ -329,6 +331,10 @@ export function countryStats(content: ParsedContent, now: Date = buildNow()): Co
     for (const k of p.kinds) if (!c.kinds.includes(k)) c.kinds.push(k);
     map.set(p.country, c);
   }
+  for (const [code, days] of Object.entries(content.journey.overrides?.countryDays ?? {})) {
+    const c = map.get(code);
+    if (c) c.days = days; // nomads.com dates are sometimes off; the curated total wins
+  }
   for (const c of map.values()) c.cities.sort((a, b) => b.days - a.days || a.city.localeCompare(b.city));
   return [...map.values()].sort((a, b) => b.days - a.days || b.last.localeCompare(a.last));
 }
@@ -363,4 +369,9 @@ export function formatDays(days: number, t: TFunction, tag: string): string {
 /** Country display name, resolved at build time (see vite-plugin-content); falls back to the code. */
 export function countryName(content: ParsedContent, locale: string, code: string): string {
   return content.countries?.[locale]?.[code] ?? content.countries?.[content.site.defaultLocale]?.[code] ?? code;
+}
+
+/** Lower-bound display for counts that are probably incomplete: 53 → "50+", 7 → "7". */
+export function atLeast(n: number): string {
+  return n >= 20 ? `${Math.floor(n / 10) * 10}+` : String(n);
 }

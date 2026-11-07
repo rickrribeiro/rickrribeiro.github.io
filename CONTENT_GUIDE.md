@@ -265,6 +265,10 @@ Two sources:
    `kinds` can be `home`, `lived`, `studied`, `spoke` or `visited`; the first one is primary. They become
    badges on the place *and* on its country in the ranking (studied and spoke are highlighted).
    Notes go in `locales/<lang>/site.json` → `journey.places.<id>`.
+3. **Corrections** live in `journey.json` → `overrides`, which `sync:nomads` never touches:
+   - `cityCountry: { "Edinburgh": "SCT" }` moves a city into another country or region code.
+     Name custom codes in `regions: { "SCT": { "en": "Scotland", "pt": "Escócia", "es": "Escocia" } }`.
+   - `countryDays: { "US": 90 }` replaces the total days for a country when nomads.com dates are off.
 
 ## Homepage, navigation and sections
 
