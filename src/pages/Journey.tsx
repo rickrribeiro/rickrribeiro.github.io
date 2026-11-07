@@ -150,7 +150,7 @@ export function JourneyPage() {
                               .map((v) => (v.start.slice(0, 7) === v.end.slice(0, 7) ? formatYm(v.start.slice(0, 7), tag) : formatRange(v.start.slice(0, 7), v.end.slice(0, 7), tag, '')))
                               .join(' · ')}
                           </span>
-                          <span className="mono">{city.days > 0 ? formatDays(city.days, t, tag) : '—'}</span>
+                          <span className="mono">{city.days > 0 ? formatDays(city.days, t, tag) : t('journey.passingThrough')}</span>
                         </li>
                       ))}
                     </ul>
