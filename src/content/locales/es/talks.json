@@ -2,17 +2,25 @@
   "devfest-cerrado-2024": {
     "title": "Trabajar online mientras viajas por el mundo",
     "description": "Cómo vivo como nómada digital: el día a día, los momentos más difíciles, dónde trabajar, cómo hacer amigos viajando solo y lo que realmente hace falta para mantener una carrera de ingeniería en remoto mientras estás en la carretera.",
-    "mediaAlt": ["Ricardo dando una charla en el escenario de DevFest Cerrado 2024"]
+    "mediaAlt": [
+      "Ricardo dando una charla en el escenario de DevFest Cerrado 2024"
+    ]
   },
   "campus-party-2023": {
     "title": "Construyendo una API serverless en AWS",
     "description": "Taller práctico: de cero a una API funcional con Lambda, API Gateway y DynamoDB, más un cliente en React, construida en vivo con el público.",
-    "mediaAlt": ["Ricardo presentando en la arena de talleres de Campus Party", "Diapositiva del taller: \"Creando una API serverless en AWS\""]
+    "mediaAlt": [
+      "Ricardo presentando en la arena de talleres de Campus Party",
+      "Diapositiva del taller: \"Creando una API serverless en AWS\""
+    ]
   },
   "nodebr-63": {
     "title": "Automatizando conversaciones de Tinder con ChatGPT",
     "description": "Uno de los casos de uso más divertidos de los LLM: una app que escribe y envía mensajes automáticamente. Arquitectura, diseño de prompts y lo aprendido construyendo TinderGPT.",
-    "mediaAlt": ["Tarjeta de la charla en NodeBR #63", "Programa del evento NodeBR #63"]
+    "mediaAlt": [
+      "Tarjeta de la charla en NodeBR #63",
+      "Programa del evento NodeBR #63"
+    ]
   },
   "hacking-rio-2021": {
     "title": "Gameducation — Hacking.Rio",
@@ -24,6 +32,16 @@
   },
   "campus-party-2018": {
     "title": "Proyectos de HoloLens en Campus Party",
-    "description": "Demos de realidad mixta creadas por nuestro grupo de investigación universitario, entre ellas una ciudad que puedes colocar sobre cualquier mesa."
+    "description": "Demos de realidad mixta creadas por nuestro grupo de investigación universitario, entre ellas una ciudad que puedes colocar sobre cualquier mesa.",
+    "mediaAlt": [
+      "Ricardo presentando el proyecto de HoloLens en la Campus Party, con camisa negra, mientras lo graban"
+    ]
+  },
+  "campus-party-ar-unity-vuforia": {
+    "title": "Desarrollo de aplicaciones de realidad aumentada con Unity y Vuforia",
+    "description": "Charla sobre el desarrollo de aplicaciones de realidad aumentada con Unity y el SDK de Vuforia.",
+    "mediaAlt": [
+      "Ricardo dando una charla sobre realidad aumentada en la Campus Party, presentando desde su portátil"
+    ]
   }
 }

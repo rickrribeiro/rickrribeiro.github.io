@@ -78,6 +78,7 @@ export function parseYm(ym: string): Date {
 }
 
 export function formatYm(ym: string, tag: string, withDay = false): string {
+  if (/^\d{4}$/.test(ym)) return ym;
   const hasDay = ym.split('-').length === 3;
   return new Intl.DateTimeFormat(tag, {
     month: 'short',

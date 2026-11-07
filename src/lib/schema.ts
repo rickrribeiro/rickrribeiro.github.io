@@ -9,6 +9,8 @@ import { z } from 'zod';
 const yearMonth = z
   .string()
   .regex(/^\d{4}-(0[1-9]|1[0-2])(-\d{2})?$/, 'Use "YYYY-MM" or "YYYY-MM-DD"');
+/** Talks may only know the year: "YYYY", "YYYY-MM" or "YYYY-MM-DD". */
+const yearOrYm = z.string().regex(/^\d{4}(-(0[1-9]|1[0-2])(-\d{2})?)?$/, 'Use "YYYY", "YYYY-MM" or "YYYY-MM-DD"');
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/, 'Ids must be kebab-case (a-z, 0-9, -)');
 const url = z.url();
 const localPath = z.string().startsWith('/', 'Local assets must start with "/" (relative to /public)');
@@ -275,8 +277,8 @@ export const talksSchema = z.object({
       id,
       enabled: z.boolean(),
       kind: z.enum(talkKinds),
-      date: yearMonth,
-      endDate: yearMonth.optional(),
+      date: yearOrYm,
+      endDate: yearOrYm.optional(),
       event: z.string(),
       organizer: z.string().nullable().optional(),
       location: z.string().nullable().optional(),

@@ -32,7 +32,8 @@ Where the PDF and LinkedIn disagreed, **LinkedIn (more recent) won**:
 6. **Talks**:
    - Campus Party 2023: the city and edition are unknown (`location: null`).
      Date taken from the slide timestamp, 26/07/2023.
-   - Campus Party 2018: listed as a *showcase* of the HoloLens projects. Was it a talk?
+   - Campus Party 2018 (HoloLens showcase): date from the repo (May 2018); city unknown.
+   - Campus Party AR talk (Unity + Vuforia): year assumed **2018** (same period as the AR internship) — confirm year/edition.
    - DevFest Cerrado 2024: the exact day is unknown (month only).
    - Hacking.Rio 2021: no location or placement info.
    - NodeBR #63 slides link: taken from the TinderGPT README. Confirm it's the right deck.

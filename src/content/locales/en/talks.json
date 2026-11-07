@@ -2,17 +2,25 @@
   "devfest-cerrado-2024": {
     "title": "Working online while travelling the world",
     "description": "How I live as a digital nomad: the day-to-day, the hardest moments, where to work, how to make friends travelling solo — and what it really takes to keep a remote engineering career running on the road.",
-    "mediaAlt": ["Ricardo speaking on stage at DevFest Cerrado 2024"]
+    "mediaAlt": [
+      "Ricardo speaking on stage at DevFest Cerrado 2024"
+    ]
   },
   "campus-party-2023": {
     "title": "Building a serverless API on AWS",
     "description": "Hands-on workshop: from zero to a working API with Lambda, API Gateway and DynamoDB, plus a React client — built live with the audience.",
-    "mediaAlt": ["Ricardo presenting at the Campus Party workshop arena", "Workshop slide: \"Creating a serverless API on AWS\""]
+    "mediaAlt": [
+      "Ricardo presenting at the Campus Party workshop arena",
+      "Workshop slide: \"Creating a serverless API on AWS\""
+    ]
   },
   "nodebr-63": {
     "title": "Automating Tinder conversations with ChatGPT",
     "description": "One of the most fun use cases for LLMs: an app that writes and sends messages automatically. Architecture, prompt design and the lessons from building TinderGPT.",
-    "mediaAlt": ["NodeBR #63 talk card", "NodeBR #63 event line-up"]
+    "mediaAlt": [
+      "NodeBR #63 talk card",
+      "NodeBR #63 event line-up"
+    ]
   },
   "hacking-rio-2021": {
     "title": "Gameducation — Hacking.Rio",
@@ -24,6 +32,16 @@
   },
   "campus-party-2018": {
     "title": "HoloLens projects at Campus Party",
-    "description": "Mixed-reality demos built by our university research group, including a city you can place on any table."
+    "description": "Mixed-reality demos built by our university research group, including a city you can place on any table.",
+    "mediaAlt": [
+      "Ricardo presenting the HoloLens project at Campus Party, wearing a black shirt, while being filmed"
+    ]
+  },
+  "campus-party-ar-unity-vuforia": {
+    "title": "Building augmented-reality apps with Unity and Vuforia",
+    "description": "Talk on developing augmented-reality applications with Unity and the Vuforia SDK.",
+    "mediaAlt": [
+      "Ricardo giving a talk on augmented reality at Campus Party, presenting from his laptop"
+    ]
   }
 }

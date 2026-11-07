@@ -9,7 +9,13 @@
       "event": "DevFest Cerrado 2024",
       "organizer": "GDG Goiânia",
       "location": "Goiânia, Brazil",
-      "media": [{ "src": "/images/talks/devfest-cerrado-2024.webp", "width": 480, "height": 640 }],
+      "media": [
+        {
+          "src": "/images/talks/devfest-cerrado-2024.webp",
+          "width": 480,
+          "height": 640
+        }
+      ],
       "links": {},
       "projects": []
     },
@@ -22,11 +28,23 @@
       "organizer": "Instituto Campus Party",
       "location": null,
       "media": [
-        { "src": "/images/talks/campus-party-2023-stage.webp", "width": 704, "height": 746 },
-        { "src": "/images/talks/campus-party-2023-workshop.webp", "width": 480, "height": 360 }
+        {
+          "src": "/images/talks/campus-party-2023-stage.webp",
+          "width": 704,
+          "height": 746
+        },
+        {
+          "src": "/images/talks/campus-party-2023-workshop.webp",
+          "width": 480,
+          "height": 360
+        }
       ],
-      "links": { "code": "https://github.com/rickrribeiro/Campus_party_api_serverless" },
-      "projects": ["campus-party-serverless"]
+      "links": {
+        "code": "https://github.com/rickrribeiro/Campus_party_api_serverless"
+      },
+      "projects": [
+        "campus-party-serverless"
+      ]
     },
     {
       "id": "nodebr-63",
@@ -37,14 +55,24 @@
       "organizer": "NodeBR",
       "location": "São Paulo, Brazil",
       "media": [
-        { "src": "/images/talks/nodebr-63-talk.webp", "width": 480, "height": 270 },
-        { "src": "/images/talks/nodebr-63-lineup.webp", "width": 480, "height": 270 }
+        {
+          "src": "/images/talks/nodebr-63-talk.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/images/talks/nodebr-63-lineup.webp",
+          "width": 480,
+          "height": 270
+        }
       ],
       "links": {
         "slides": "https://docs.google.com/presentation/d/1jc-Sn5QFhB6A-trDUiPL3lmIzHPZsH3aYnciAhqrELg",
         "code": "https://github.com/rickrribeiro/TinderGPT"
       },
-      "projects": ["tindergpt"]
+      "projects": [
+        "tindergpt"
+      ]
     },
     {
       "id": "hacking-rio-2021",
@@ -56,7 +84,9 @@
       "location": null,
       "media": [],
       "links": {},
-      "projects": ["gameducation-hackathon"]
+      "projects": [
+        "gameducation-hackathon"
+      ]
     },
     {
       "id": "competitive-programming",
@@ -68,7 +98,27 @@
       "organizer": null,
       "location": "Salvador, Brazil",
       "media": [],
-      "links": { "code": "https://github.com/rickrribeiro/CompetitiveProgramming" },
+      "links": {
+        "code": "https://github.com/rickrribeiro/CompetitiveProgramming"
+      },
+      "projects": []
+    },
+    {
+      "id": "campus-party-ar-unity-vuforia",
+      "enabled": true,
+      "kind": "talk",
+      "date": "2018",
+      "event": "Campus Party",
+      "organizer": null,
+      "location": null,
+      "media": [
+        {
+          "src": "/images/talks/campus-party-ar-unity-vuforia.webp",
+          "width": 1024,
+          "height": 1001
+        }
+      ],
+      "links": {},
       "projects": []
     },
     {
@@ -79,9 +129,19 @@
       "event": "Campus Party 2018",
       "organizer": null,
       "location": null,
-      "media": [],
-      "links": { "code": "https://github.com/rickrribeiro/CityRACampusParty_Hololens" },
-      "projects": ["hololens-city"]
+      "media": [
+        {
+          "src": "/images/talks/campus-party-hololens.webp",
+          "width": 1024,
+          "height": 1010
+        }
+      ],
+      "links": {
+        "code": "https://github.com/rickrribeiro/CityRACampusParty_Hololens"
+      },
+      "projects": [
+        "hololens-city"
+      ]
     }
   ]
 }
