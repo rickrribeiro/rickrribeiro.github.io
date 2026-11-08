@@ -79,7 +79,7 @@
     "tagline": "Redesigning an AI product around retrieval — and cutting its AI bill by more than 90%.",
     "summary": "Consulting project: replaced an expensive AI setup with a RAG pipeline on a vector database, fixed critical security issues in an AI-generated codebase and made the product configurable without developers.",
     "role": "Software Consultant",
-    "overview": "Murilo Vilaverde's product included an AI assistant built quickly, largely with AI-generated code. It worked, but it was costly, limited in how much knowledge it could use, and had security and reliability problems.",
+    "overview": "ErosAI's product included an AI assistant built quickly, largely with AI-generated code. It worked, but it was costly, limited in how much knowledge it could use, and had security and reliability problems.",
     "problem": "Monthly AI infrastructure costs were high, the knowledge base had size limits, responses were slow, and the codebase had unauthorized access to admin pages, sensitive-data exposure, Service Worker caching issues and inconsistent data from multiple sources of truth.",
     "approach": "I redesigned the AI architecture as a Retrieval-Augmented Generation pipeline backed by a vector database, then refactored the application: modularised it, extracted reusable components, applied design patterns and replaced hard-coded values with an admin-configurable system. Finally I added monitoring and observability.",
     "architecture": "Simplified view. Knowledge is chunked and embedded into a vector database; each question retrieves only the most relevant context before calling the LLM.",

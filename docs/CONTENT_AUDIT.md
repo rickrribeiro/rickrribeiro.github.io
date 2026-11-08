@@ -25,8 +25,7 @@ Where the PDF and LinkedIn disagreed, **LinkedIn (more recent) won**:
 2. **Availability line is off.** LinkedIn "Open to work" is *recruiters-only*, so the site
    doesn't say you are looking. Set `site.json` → `availability.open: true` if you want it shown.
 3. **Wave Group website**: `https://groupwave.global` was inferred from your e-mail domain.
-4. **Murilo Vilaverde**: confirm you're comfortable naming the client, and the employment type
-   (set to `consulting`).
+4. **ErosAI (MV)** (previously "Murilo Vilaverde" on the PDF résumé): renamed at your request. Employment type is `consulting`.
 5. **Skill "since" years** are estimates from the earliest evidence (jobs and repositories).
    Adjust them in `skills.json`.
 6. **Talks**:
