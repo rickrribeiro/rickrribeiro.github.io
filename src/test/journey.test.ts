@@ -9,6 +9,7 @@ describe('journey', () => {
     const c = parsed();
     c.trips.trips = [trip('Lima', 'PE', '2024-01-01', '2024-01-11', 10), trip('Cusco', 'PE', '2024-02-01', '2024-02-06', 5), trip('Tokyo', 'JP', '2025-01-01', '2025-01-21', 20), trip('Lima', 'PE', '2024-03-01', '2024-03-04', 3)];
     c.journey.places = [];
+    c.journey.overrides = { cityCountry: {}, regions: {}, countryDays: {}, countryLabel: {} };
     const stats = countryStats(c, new Date('2026-01-01'));
     expect(stats.map((s) => [s.country, s.days])).toEqual([['JP', 20], ['PE', 18]]);
     expect(stats[1].cities.map((x) => [x.city, x.days, x.visits.length])).toEqual([['Lima', 13, 2], ['Cusco', 5, 1]]);

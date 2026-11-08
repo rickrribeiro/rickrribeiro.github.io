@@ -15,9 +15,9 @@
     "contact": true
   },
   "homeOrder": [
+    "experience",
     "featuredProjects",
     "intro",
-    "experience",
     "moreProjects",
     "skills",
     "experiments",
@@ -41,7 +41,7 @@
     "contact"
   ],
   "homeLimits": {
-    "featuredProjects": 6,
+    "featuredProjects": 4,
     "moreProjects": 8,
     "experience": 6,
     "experiments": 3,

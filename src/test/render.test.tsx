@@ -27,7 +27,7 @@ const at = (url: string) =>
   );
 
 describe('rendering', () => {
-  it('renders the homepage with featured projects first', () => {
+  it('renders the homepage with the career list and featured projects', () => {
     at('/');
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(content.site.name);
     const work = document.getElementById('work')!;

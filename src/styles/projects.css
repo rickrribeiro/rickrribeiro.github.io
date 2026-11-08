@@ -602,3 +602,7 @@
 .section--work {
   padding-top: var(--space-2xl);
 }
+/* Whichever section comes first after the hero sits a little closer to it. */
+.hero + .section {
+  padding-top: var(--space-2xl);
+}
