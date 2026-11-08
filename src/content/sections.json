@@ -9,18 +9,17 @@
     "education": true,
     "languages": true,
     "certifications": true,
-    "experiments": true,
+    "experiments": false,
     "talks": true,
     "journey": true,
     "contact": true
   },
   "homeOrder": [
     "experience",
-    "featuredProjects",
     "intro",
+    "featuredProjects",
     "moreProjects",
     "skills",
-    "experiments",
     "talks",
     "journey",
     "contact"
@@ -35,7 +34,6 @@
   "navigation": [
     "work",
     "about",
-    "lab",
     "talks",
     "journey",
     "contact"

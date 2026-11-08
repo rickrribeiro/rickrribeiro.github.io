@@ -141,7 +141,7 @@ Caption text goes in `locales/<lang>/projects.json` → `my-project.captions.des
 | Limit how many are featured on the homepage | `sections.json` → `homeLimits.featuredProjects` |
 | Order non-featured projects | They sort by most recent `period`. Add `"order": -1` to push one up (lower comes first) |
 | Hide it | `"enabled": false`. It disappears from lists, search and the sitemap, and its URL returns the 404 |
-| Put it in the Lab | `"lab": true` |
+| Put it in the Lab | `"lab": true`. With the Lab page turned off (`sections.json` → `experiments: false`, the current setting) Lab items are listed in Work under the *Experiments* filter. Set it to `true` to bring back the separate Lab page and nav item |
 | Promote a Lab experiment | Keep `"lab": true` and add `"featured": true, "featuredOrder": n`. It moves to the featured list and the Work page |
 | Mark a failed or ended startup | `"type": "startup"`, `"status": "archived"`, and write the story in `ending` / `lessons` |
 

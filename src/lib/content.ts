@@ -179,12 +179,17 @@ export function featuredProjects(content: ParsedContent): Project[] {
     .sort((a, b) => (a.featuredOrder ?? 0) - (b.featuredOrder ?? 0));
 }
 
-/** Projects for the Work page: everything except pure Lab experiments that are not featured. */
+/**
+ * Projects for the Work page: everything except Lab experiments that aren't featured —
+ * unless the Lab is turned off (sections.json → experiments: false), then they live in Work too.
+ */
 export function workProjects(content: ParsedContent): Project[] {
+  if (!isPageEnabled(content, 'lab')) return visibleProjects(content);
   return visibleProjects(content).filter((p) => !p.lab || p.featured);
 }
 
 export function labProjects(content: ParsedContent): Project[] {
+  if (!isPageEnabled(content, 'lab')) return [];
   return visibleProjects(content).filter((p) => p.lab && !p.featured);
 }
 

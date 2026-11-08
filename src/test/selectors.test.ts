@@ -70,6 +70,7 @@ describe('projects', () => {
 
   it('keeps Lab experiments out of Work unless promoted to featured', () => {
     const c = parsed();
+    c.sections.sections.experiments = true;
     expect(workProjects(c).some((p) => p.lab)).toBe(false);
     const lab = labProjects(c)[0];
     lab.featured = true;
@@ -77,6 +78,14 @@ describe('projects', () => {
     expect(workProjects(c).map((p) => p.id)).toContain(lab.id);
     expect(labProjects(c).map((p) => p.id)).not.toContain(lab.id);
     expect(featuredProjects(c).at(-1)!.id).toBe(lab.id);
+  });
+
+  it('folds Lab experiments into Work when the Lab is turned off', () => {
+    const c = parsed();
+    c.sections.sections.experiments = false;
+    expect(labProjects(c)).toEqual([]);
+    expect(workProjects(c).some((p) => p.lab)).toBe(true);
+    expect(navItems(c)).not.toContain('lab');
   });
 
   it('filters by featured, type and category', () => {
