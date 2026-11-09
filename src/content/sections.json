@@ -26,10 +26,10 @@
   ],
   "aboutOrder": [
     "experience",
-    "skills",
     "education",
-    "certifications",
-    "languages"
+    "languages",
+    "skills",
+    "certifications"
   ],
   "navigation": [
     "work",
