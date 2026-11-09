@@ -76,7 +76,7 @@
     },
     {
       "id": "hacking-rio-2021",
-      "enabled": true,
+      "enabled": false,
       "kind": "hackathon",
       "date": "2021-11",
       "event": "Hacking.Rio",
