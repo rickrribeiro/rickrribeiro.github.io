@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import { useSite } from '../../app/SiteContext';
 import { resumeText, resumeUrl, skillGroups, visibleExperience } from '../../lib/content';
 import { Icon } from '../../components/Icon';
@@ -98,7 +98,7 @@ export function Hero() {
             </li>
           </ul>
         </nav>
-        <ul role="list" className="hero__stats">
+        <ul role="list" className="hero__stats" style={{ '--stats': content.site.stats.length } as CSSProperties}>
           {content.site.stats.map((s) => (
             <li key={s.id} className="hero__stat">
               <span className="hero__stat-value">{s.value}</span>

@@ -1,5 +1,5 @@
 {
-  "role": "Engenheiro de Software Sênior",
+  "role": "Engenheiro de Software Sênior · Full-Stack & Plataforma",
   "location": "Bahia, Brasil · trabalhando remotamente para o mundo todo",
   "hero": {
     "eyebrow": "Full-stack · sistemas distribuídos · engenharia de IA",
@@ -14,13 +14,14 @@
     "years": "anos entregando software em produção",
     "kafka": "mensagens Kafka por dia, plataforma de segurança pública",
     "ai-cost": "custo de infraestrutura de IA após o redesenho com RAG",
-    "workflows": "workflows da aplicação mais rápidos na Wave"
+    "workflows": "workflows da aplicação mais rápidos na Wave",
+    "prs": "PRs mergeados em 6 meses na Wave — produto e plataforma"
   },
   "availability": "Aberto a vagas sênior de engenharia — remoto, híbrido ou presencial.",
   "intro": {
     "title": "Engenheiro, arquiteto, construtor.",
     "paragraphs": [
-      "Projeto, construo e escalo sistemas de software — backend e frontend, sistemas distribuídos, infraestrutura em cloud e, cada vez mais, IA. Já trabalhei com plataformas de inteligência policial, billing de assinaturas para a maior operadora de telecom da Argentina, software de RH multi-tenant, plataformas de CMS, realidade aumentada e monitoramento ambiental.",
+      "Projeto, construo e opero sistemas de software de ponta a ponta — das funcionalidades do produto à plataforma por baixo: CI/CD, Kubernetes, observabilidade, bancos de dados e segurança — e, cada vez mais, IA. Já trabalhei com plataformas de inteligência policial, billing de assinaturas para a maior operadora de telecom da Argentina, sistemas financeiros internos, automação de marketing, software de RH multi-tenant, plataformas de CMS, realidade aumentada e monitoramento ambiental.",
       "Sou formado em Ciência da Computação, tenho MBA em Engenharia de Software pela USP e atualmente faço uma pós-graduação em Engenharia de IA Aplicada, com foco em agentes de IA e sistemas inteligentes.",
       "Me sinto mais à vontade onde decisões de arquitetura e problemas de escala pedem respostas pragmáticas. Morei em vários países, o que me tornou adaptável, um comunicador claro e confortável em times remotos e multiculturais."
     ]

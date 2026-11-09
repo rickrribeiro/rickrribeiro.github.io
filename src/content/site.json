@@ -60,6 +60,11 @@
       "id": "workflows",
       "value": "70%+",
       "experience": "wave"
+    },
+    {
+      "id": "prs",
+      "value": "1000+",
+      "experience": "wave"
     }
   ]
 }

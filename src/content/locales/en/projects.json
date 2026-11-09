@@ -1,29 +1,68 @@
 {
   "wave-platform": {
     "title": "Wave Platform",
-    "tagline": "Re-architecting a marketing-automation platform — and the cloud it runs on.",
-    "summary": "Senior engineer at Group Wave Enterprise: owned the cloud-native infrastructure, led platform engineering and helped move the product from microservices to a modular monolith.",
-    "role": "Senior Software Engineer · infrastructure owner",
-    "overview": "Group Wave Enterprise builds marketing-automation products. I joined to work across the whole stack — NestJS backend, React frontend and the infrastructure underneath — at a moment when the platform was being redesigned.",
-    "problem": "The product had grown as a set of microservices that were expensive to evolve and operate for the size of the team. Some workflows were slow, CPU-heavy work competed with request handling, and there were no shared standards for repositories, pipelines or testing.",
-    "approach": "Together with an external software-architecture consultant I helped define the new platform architecture and contributed to the migration to a modular React/NestJS monolith. In parallel I designed, deployed and maintained the cloud-native infrastructure, and led platform-engineering work so every repository shares the same CI/CD, testing and security baseline.",
-    "architecture": "Simplified view. The NestJS monolith is split into modules, pushes heavy work to BullMQ workers and runs on Kubernetes next to PostgreSQL, Redis, RabbitMQ and MinIO, all observed through Prometheus, Grafana and Loki.",
+    "tagline": "One marketing-automation SaaS — the product, the platform it runs on and an internal financial system.",
+    "summary": "Senior engineer at Group Wave Enterprise, owning both product and platform: 1,000+ merged PRs in six months across infrastructure, backend and frontend.",
+    "role": "Senior Software Engineer · product & platform owner",
+    "overview": "Group Wave Enterprise builds marketing-automation products. I joined to work across the whole stack — NestJS backend, React frontend and the infrastructure underneath — while the platform was being redesigned, and ended up owning three areas: the platform itself, the campaign-automation engine and an internal financial system.",
+    "problem": "The product had grown as a set of microservices that were expensive to evolve and operate for the size of the team. Some workflows were slow, CPU-heavy work competed with request handling, builds shared resources with production, and there were no shared standards for repositories, pipelines, testing or observability.",
+    "approach": "Together with an external software-architecture consultant I helped define the new platform architecture and contributed to the migration to a modular React/NestJS monolith. In parallel I took ownership of the platform — Kubernetes, CI/CD, databases, observability and security — and built the product areas described below, each change small and documented (decisions as ADRs, operations as runbooks).",
+    "architecture": "Simplified view. The NestJS monolith pushes heavy work to workers — one deployment per queue, scaled on queue depth by KEDA — and reaches PostgreSQL through PgBouncer. Redis, RabbitMQ and MinIO run next to it on Kubernetes; Jenkins builds and deploys; OpenTelemetry, Prometheus, Grafana and Loki observe everything.",
     "challenges": [
       "Migrating from microservices to a modular monolith while product features kept shipping.",
-      "Separating CPU-bound jobs from request handling without duplicating work — solved with background workers and BullMQ job deduplication.",
-      "Running the full stack (Kubernetes, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana, Loki) with a small team."
+      "Separating CPU-bound jobs from request handling without duplicating work — solved with per-queue workers, autoscaling and BullMQ job deduplication.",
+      "Keeping database connections under control as the number of workers grew.",
+      "Building a financial system where a security mistake is expensive, without slowing the finance team down."
     ],
     "outcomes": [
-      "Application workflows more than 70% faster through refactoring, caching, BullMQ job deduplication and dedicated workers for CPU-bound bottlenecks.",
-      "Repository standards, GitHub Actions CI/CD, automated testing and security hardening across the platform.",
-      "A shared Claude Code RAG knowledge base and reusable LLM skills/agents for the engineering team.",
-      "Product features across backend and frontend: Meta campaign-automation workflows, a VSL Builder and AI agents that generate UI components."
+      "Application workflows more than 70% faster through refactoring, caching, BullMQ job deduplication and dedicated workers.",
+      "1,000+ merged pull requests in about six months across infrastructure, backend and frontend.",
+      "CI isolated from production, faster feedback on PRs and every pipeline change documented as an ADR.",
+      "Observability with SLOs and alerts that are tied to runbooks and post-mortems.",
+      "An internal financial platform in daily use, plus a campaign-automation engine and an external API.",
+      "A shared Claude Code RAG knowledge base and reusable LLM skills/agents for the engineering team."
     ],
     "lessons": [
       "A modular monolith gives a small team most of the isolation of microservices with a fraction of the operational cost.",
-      "Platform engineering pays off fastest when it is encoded in templates and pipelines, not in documents."
+      "Platform engineering pays off fastest when it is encoded in templates and pipelines, not in documents.",
+      "Writing each decision down as an ADR is what made it possible to change CI three times without losing the reasoning."
     ],
-    "note": "Client and internal details are confidential; this case study only covers what is publicly stated on my résumé."
+    "note": "Internal and client details are confidential. This case study stays at the level of my résumé: no vendors, internal names or security specifics.",
+    "chapters": [
+      {
+        "id": "platform",
+        "title": "Platform & reliability",
+        "body": "Most of my work happened below the product: making the platform cheaper to run, safer to change and observable.",
+        "points": [
+          "CI/CD rebuilt in three phases — GitHub Actions → self-hosted ephemeral runners on Kubernetes → standalone Jenkins provisioned with Ansible and configured as code — with CI isolated from production, priority per branch and only the affected tests (with diff coverage) on pull requests.",
+          "Workers split into one deployment per queue, each with its own resources and connection budget, autoscaled on queue depth with KEDA.",
+          "A PostgreSQL connection-management project: PgBouncer, per-worker connection budgets, cleanup of idle transactions and memory tuning — plus automated, encrypted off-site backups and audited, least-privilege database access for engineers.",
+          "Observability end to end: OpenTelemetry traces correlated with logs (and a copyable trace ID in the UI), Prometheus with Thanos, Loki, Grafana dashboards, Grafana Faro for real-user monitoring, SLOs with multi-window burn-rate alerts, runbooks and post-mortems.",
+          "Security baseline: secrets out of the repositories, secret scanning and static analysis in CI and pre-commit, SSO for internal tools and a hardened ingress."
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "Campaign automation engine",
+        "body": "Media buyers describe rules — when a campaign's metrics cross a threshold, change its budget or status — and the platform runs them on a schedule.",
+        "points": [
+          "A rules engine with conditions on sales, spend and checkout data, budget and status actions, time-window scheduling and manual or automatic target selection.",
+          "Execution runs on dedicated workers; every run records the rule version in force, what happened to each target and why nothing happened when a rule was skipped.",
+          "A versioned external API with per-tenant keys, rate limiting and a published OpenAPI contract, so other systems can read the same data."
+        ]
+      },
+      {
+        "id": "finance",
+        "title": "Internal financial platform",
+        "body": "An internal system that replaced spreadsheets for the group's finance team. I designed and built it end to end, backend and frontend. Security details are deliberately kept general here.",
+        "points": [
+          "Ledger and ERP: bank and card-account sync through queues with per-account progress, multi-currency P&L at daily exchange rates, CSV import and export, and automatic matching of internal transfers.",
+          "A categorization rules engine where the most specific rule wins and conflicts are shown before saving, plus bulk categorization and suggestions.",
+          "Finance operations: commissions with monthly close snapshots, contractor payroll, invoices, tax forecasting, performance bonuses, accounting documents, a partner registry and an activities suite.",
+          "Defense in depth: tenant isolation enforced by the database as well as the application, encrypted and masked sensitive data with audited access, a tamper-evident audit trail, step-up authentication for critical actions, time-bound access with reports and alerts, and security checks in CI."
+        ]
+      }
+    ]
   },
   "rickos": {
     "title": "RickOS",

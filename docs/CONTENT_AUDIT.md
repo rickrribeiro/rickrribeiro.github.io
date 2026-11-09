@@ -67,3 +67,11 @@ While reading your private repositories:
 - `punk-records` has a committed `.env`.
 
 Rotate those credentials and purge them from git history.
+
+## 2026-11-09 — Wave content from the PRs (infra, backend, frontend)
+
+- Source: PR titles in the three Wave repositories (~861 merged PRs, May–Nov 2026). The user stated **1000+ PRs** in total, which is the figure shown in the hero and the résumé.
+- **Confidentiality rule for the internal financial platform:** describe *what* exists (domains, kinds of controls), never *how*. No vendors, internal names, table or role names, parameters (timeouts, limits, windows), MFA/crypto/permission mechanics, or vulnerabilities that were fixed.
+- New skills are dated `since: 2026`. **Jest** may go back further (Agile Content / Mindsight?). Confirm with the user.
+- Still open: the CI time before and after, and other impact numbers. Are the "Feat/financeiro dan" PRs someone else's work that the user only merged?
+- The résumé PDF on the site is still the old one. A new PDF was generated locally (CURRICULO_ATUALIZADO.pdf, gitignored) and is waiting for the user's approval.

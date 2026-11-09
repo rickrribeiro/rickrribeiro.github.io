@@ -40,10 +40,12 @@ export function ProjectPage() {
     { id: 'lessons', title: t('project.lessons'), items: text.lessons, ordered: false },
   ].filter((l) => l.items?.length);
   const showArchitecture = !!project.diagram;
+  const chapters = text.chapters ?? [];
   const gallery = project.gallery;
   const toc = [
     ...blocks.map((b) => ({ id: b.id, title: b.title })),
     ...(showArchitecture ? [{ id: 'architecture', title: t('project.architecture') }] : []),
+    ...chapters.map((c) => ({ id: c.id, title: c.title })),
     ...lists.map((l) => ({ id: l.id, title: l.title })),
     ...(text.ending ? [{ id: 'ending', title: t('project.ending') }] : []),
     ...(gallery.length ? [{ id: 'gallery', title: t('project.gallery') }] : []),
@@ -182,6 +184,23 @@ export function ProjectPage() {
               </ul>
             </Reveal>
           )}
+
+          {chapters.map((c) => (
+            <Reveal as="section" key={c.id} className={`case__section case__section--chapter`} aria-labelledby={`h-${c.id}`}>
+              <h2 className="case__h" id={`h-${c.id}`}>
+                <span id={c.id} className="case__anchor" />
+                {c.title}
+              </h2>
+              {c.body && <p className="case__text">{c.body}</p>}
+              {!!c.points?.length && (
+                <ul className="case__list case__list--chapter">
+                  {c.points.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </Reveal>
+          ))}
 
           {lists.map((l) => {
             const Tag = l.ordered ? 'ol' : 'ul';

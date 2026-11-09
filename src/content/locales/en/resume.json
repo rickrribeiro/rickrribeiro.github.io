@@ -1,16 +1,21 @@
 {
   "experience": {
     "wave": {
-      "summary": "Infrastructure, platform engineering and full-stack product work on a marketing-automation platform.",
+      "summary": "Product and platform owner on a marketing-automation SaaS: infrastructure, CI/CD, observability, an internal financial platform and product features.",
       "roles": {
         "senior": {
           "title": "Senior Software Engineer",
           "achievements": [
-            "Optimised application workflows by more than 70% through refactoring and caching, BullMQ job deduplication and background workers for CPU-bound bottlenecks.",
-            "Owned the design, deployment and maintenance of the cloud-native infrastructure: Kubernetes, Docker, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana and Loki.",
-            "Led platform-engineering initiatives: repository standards, GitHub Actions CI/CD, reusable LLM skills/agents, a shared Claude Code RAG knowledge base, automated testing and security hardening.",
-            "Worked with an external software-architecture consultant to define the new platform architecture and contributed to the migration from microservices to a modular React/NestJS monolith.",
-            "Built product features across NestJS and React, including Meta campaign-automation workflows, a VSL Builder and AI agents that generate UI components."
+            "Made application workflows more than 70% faster through refactoring, caching, BullMQ job deduplication and background workers for CPU-bound work.",
+            "Delivered 1,000+ merged pull requests in about six months across backend, frontend and infrastructure.",
+            "Owned the cloud-native platform — Kubernetes (k3s), Kustomize, Ansible, PostgreSQL, Redis, RabbitMQ and MinIO — with workers split into one deployment per queue and autoscaled on queue depth with KEDA.",
+            "Rebuilt CI/CD in three phases (GitHub Actions → self-hosted ephemeral runners on Kubernetes → standalone Jenkins as code), isolating CI from production and running only the affected tests on PRs with diff-coverage gates — each step documented in ADRs.",
+            "Led a PostgreSQL connection-management project (PgBouncer, per-worker connection budgets, tuning) and added encrypted off-site backups and audited, least-privilege database access.",
+            "Built the observability stack — OpenTelemetry tracing from backend to UI, Prometheus/Thanos, Loki, Grafana and Grafana Faro — with SLO burn-rate alerting, runbooks, post-mortems and load tests.",
+            "Designed and built an internal financial platform end to end — ledger and ERP, multi-currency P&L, commissions with monthly close, payroll, invoices, tax forecasting and a categorization rules engine — with defense-in-depth security: database-enforced tenant isolation, encrypted and masked sensitive data with audited access, a tamper-evident audit trail and step-up authentication.",
+            "Built a campaign-automation rules engine (conditions, budget actions, scheduling, rule versioning, execution history) and a versioned external API with per-tenant keys and a published OpenAPI contract.",
+            "Led security hardening: secrets management, secret scanning and static analysis in CI, SSO for internal tools.",
+            "Worked with an external architecture consultant on the move from microservices to a modular React/NestJS monolith, and built reusable LLM agents/skills and a shared Claude Code knowledge base for the team."
           ]
         }
       }

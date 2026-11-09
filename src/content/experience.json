@@ -38,7 +38,24 @@
         "ai-agents",
         "claude-code",
         "rag",
-        "prompt-engineering"
+        "prompt-engineering",
+        "k3s",
+        "kustomize",
+        "keda",
+        "jenkins",
+        "pgbouncer",
+        "prisma",
+        "opentelemetry",
+        "thanos",
+        "grafana-faro",
+        "sre",
+        "gitleaks",
+        "semgrep",
+        "oauth-sso",
+        "jest",
+        "vitest",
+        "load-testing",
+        "openapi"
       ],
       "projects": [
         "wave-platform"

@@ -43,7 +43,12 @@
         "grafana",
         "loki",
         "github-actions",
-        "claude-code"
+        "claude-code",
+        "keda",
+        "jenkins",
+        "pgbouncer",
+        "prisma",
+        "opentelemetry"
       ],
       "period": {
         "start": "2026-03",
@@ -58,6 +63,20 @@
       "accent": "#FF5B23",
       "diagram": {
         "nodes": [
+          {
+            "id": "ci",
+            "label": "Jenkins CI/CD",
+            "kind": "infra",
+            "x": 12,
+            "y": 8
+          },
+          {
+            "id": "ai",
+            "label": "AI agents",
+            "kind": "ai",
+            "x": 40,
+            "y": 8
+          },
           {
             "id": "web",
             "label": "React app",
@@ -74,52 +93,59 @@
           },
           {
             "id": "workers",
-            "label": "BullMQ workers",
+            "label": "Workers · per queue",
             "kind": "service",
             "x": 40,
             "y": 52
           },
           {
+            "id": "keda",
+            "label": "KEDA autoscaler",
+            "kind": "infra",
+            "x": 13,
+            "y": 44
+          },
+          {
+            "id": "pgb",
+            "label": "PgBouncer",
+            "kind": "data",
+            "x": 66,
+            "y": 10
+          },
+          {
             "id": "pg",
             "label": "PostgreSQL",
             "kind": "data",
-            "x": 72,
-            "y": 12
+            "x": 90,
+            "y": 10
           },
           {
             "id": "redis",
             "label": "Redis",
             "kind": "data",
-            "x": 72,
-            "y": 30
-          },
-          {
-            "id": "mq",
-            "label": "RabbitMQ",
-            "kind": "queue",
-            "x": 72,
-            "y": 48
+            "x": 70,
+            "y": 26
           },
           {
             "id": "minio",
             "label": "MinIO",
             "kind": "data",
-            "x": 92,
-            "y": 22
+            "x": 93,
+            "y": 34
           },
           {
-            "id": "ai",
-            "label": "AI agents",
-            "kind": "ai",
-            "x": 40,
-            "y": 8
+            "id": "mq",
+            "label": "RabbitMQ",
+            "kind": "queue",
+            "x": 70,
+            "y": 42
           },
           {
             "id": "obs",
-            "label": "Prometheus · Grafana · Loki",
+            "label": "OTel · Grafana stack",
             "kind": "infra",
-            "x": 88,
-            "y": 56
+            "x": 76,
+            "y": 57
           }
         ],
         "edges": [
@@ -129,10 +155,22 @@
           },
           {
             "from": "api",
+            "to": "pgb"
+          },
+          {
+            "from": "workers",
+            "to": "pgb"
+          },
+          {
+            "from": "pgb",
             "to": "pg"
           },
           {
             "from": "api",
+            "to": "redis"
+          },
+          {
+            "from": "workers",
             "to": "redis"
           },
           {
@@ -141,12 +179,12 @@
             "label": "jobs"
           },
           {
-            "from": "workers",
-            "to": "redis"
-          },
-          {
             "from": "api",
             "to": "mq"
+          },
+          {
+            "from": "mq",
+            "to": "workers"
           },
           {
             "from": "api",
@@ -157,7 +195,18 @@
             "to": "ai"
           },
           {
-            "from": "mq",
+            "from": "keda",
+            "to": "workers",
+            "dashed": true
+          },
+          {
+            "from": "ci",
+            "to": "api",
+            "label": "deploy",
+            "dashed": true
+          },
+          {
+            "from": "workers",
             "to": "obs",
             "dashed": true
           }

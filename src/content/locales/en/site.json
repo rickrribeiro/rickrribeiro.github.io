@@ -1,5 +1,5 @@
 {
-  "role": "Senior Software Engineer",
+  "role": "Senior Software Engineer · Full-Stack & Platform",
   "location": "Bahia, Brazil · working remotely worldwide",
   "hero": {
     "eyebrow": "Full-stack · distributed systems · AI engineering",
@@ -14,13 +14,14 @@
     "years": "years shipping production software",
     "kafka": "Kafka messages a day, public-security platform",
     "ai-cost": "AI infrastructure cost after a RAG redesign",
-    "workflows": "faster application workflows at Wave"
+    "workflows": "faster application workflows at Wave",
+    "prs": "merged PRs in 6 months at Wave — product and platform"
   },
   "availability": "Open to senior engineering roles — remote, hybrid or on-site.",
   "intro": {
     "title": "Engineer, architect, builder.",
     "paragraphs": [
-      "I design, build and scale software systems — backend and frontend, distributed systems, cloud infrastructure and, more and more, AI. I've worked on police-intelligence platforms, subscription billing for the largest telecom in Argentina, multi-tenant HR software, CMS platforms, augmented reality and environmental monitoring.",
+      "I design, build and run software systems end to end — from product features to the platform underneath: CI/CD, Kubernetes, observability, databases and security — and, more and more, AI. I've worked on police-intelligence platforms, subscription billing for the largest telecom in Argentina, internal financial systems, marketing automation, multi-tenant HR software, CMS platforms, augmented reality and environmental monitoring.",
       "I hold a degree in Computer Science and an MBA in Software Engineering from USP, and I'm currently doing a postgraduate degree in Applied AI Engineering focused on AI agents and intelligent systems.",
       "I'm most at home where architecture decisions and scaling problems need pragmatic answers. I've lived in several countries, which made me adaptable, a clear communicator and comfortable in remote, multicultural teams."
     ]

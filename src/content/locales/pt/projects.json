@@ -1,29 +1,68 @@
 {
   "wave-platform": {
     "title": "Wave Platform",
-    "tagline": "Rearquitetando uma plataforma de automação de marketing — e a cloud onde ela roda.",
-    "summary": "Engenheiro sênior na Group Wave Enterprise: responsável pela infraestrutura cloud-native, liderei a engenharia de plataforma e ajudei a migrar o produto de microsserviços para um monólito modular.",
-    "role": "Engenheiro de Software Sênior · responsável pela infraestrutura",
-    "overview": "A Group Wave Enterprise desenvolve produtos de automação de marketing. Entrei para atuar em toda a stack — backend em NestJS, frontend em React e a infraestrutura por baixo — em um momento em que a plataforma estava sendo redesenhada.",
-    "problem": "O produto tinha crescido como um conjunto de microsserviços caros de evoluir e operar para o tamanho do time. Alguns workflows eram lentos, o processamento pesado de CPU competia com o atendimento de requisições e não havia padrões compartilhados para repositórios, pipelines ou testes.",
-    "approach": "Junto com um consultor externo de arquitetura de software, ajudei a definir a nova arquitetura da plataforma e contribuí para a migração para um monólito modular em React/NestJS. Em paralelo, projetei, fiz o deploy e mantive a infraestrutura cloud-native, e liderei o trabalho de engenharia de plataforma para que todos os repositórios compartilhassem a mesma base de CI/CD, testes e segurança.",
-    "architecture": "Visão simplificada. O monólito NestJS é dividido em módulos, envia o trabalho pesado para workers do BullMQ e roda no Kubernetes ao lado de PostgreSQL, Redis, RabbitMQ e MinIO, tudo monitorado com Prometheus, Grafana e Loki.",
+    "tagline": "Um SaaS de automação de marketing — o produto, a plataforma onde ele roda e um sistema financeiro interno.",
+    "summary": "Engenheiro sênior na Group Wave Enterprise, responsável pelo produto e pela plataforma: mais de 1.000 PRs mergeados em seis meses entre infraestrutura, backend e frontend.",
+    "role": "Engenheiro de Software Sênior · responsável por produto e plataforma",
+    "overview": "A Group Wave Enterprise cria produtos de automação de marketing. Entrei para trabalhar na stack inteira — backend em NestJS, frontend em React e a infraestrutura por baixo — enquanto a plataforma era redesenhada, e acabei responsável por três áreas: a própria plataforma, o motor de automação de campanhas e um sistema financeiro interno.",
+    "problem": "O produto tinha crescido como um conjunto de microsserviços caro de evoluir e operar para o tamanho do time. Alguns workflows eram lentos, trabalho pesado de CPU competia com o atendimento das requisições, os builds dividiam recursos com a produção e não havia padrões comuns de repositório, pipelines, testes ou observabilidade.",
+    "approach": "Junto com um consultor externo de arquitetura de software, ajudei a definir a nova arquitetura e contribuí para a migração para um monólito modular em React/NestJS. Em paralelo, assumi a plataforma — Kubernetes, CI/CD, bancos, observabilidade e segurança — e construí as áreas de produto descritas abaixo, sempre em mudanças pequenas e documentadas (decisões em ADRs, operação em runbooks).",
+    "architecture": "Visão simplificada. O monólito NestJS manda o trabalho pesado para workers — um deployment por fila, escalado pela profundidade da fila com KEDA — e chega ao PostgreSQL pelo PgBouncer. Redis, RabbitMQ e MinIO rodam ao lado no Kubernetes; o Jenkins faz build e deploy; OpenTelemetry, Prometheus, Grafana e Loki observam tudo.",
     "challenges": [
-      "Migrar de microsserviços para um monólito modular enquanto novas funcionalidades continuavam sendo entregues.",
-      "Separar jobs de CPU do atendimento de requisições sem duplicar trabalho — resolvido com workers em background e deduplicação de jobs no BullMQ.",
-      "Operar a stack completa (Kubernetes, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana, Loki) com um time pequeno."
+      "Migrar de microsserviços para um monólito modular enquanto as funcionalidades continuavam sendo entregues.",
+      "Separar jobs pesados de CPU do atendimento das requisições sem duplicar trabalho — resolvido com workers por fila, autoscaling e deduplicação de jobs no BullMQ.",
+      "Manter as conexões com o banco sob controle à medida que o número de workers crescia.",
+      "Construir um sistema financeiro, onde um erro de segurança custa caro, sem atrasar o time financeiro."
     ],
     "outcomes": [
-      "Workflows da aplicação mais de 70% mais rápidos com refatoração, cache, deduplicação de jobs no BullMQ e workers dedicados para gargalos de CPU.",
-      "Padrões de repositório, CI/CD com GitHub Actions, testes automatizados e hardening de segurança em toda a plataforma.",
-      "Uma base de conhecimento RAG compartilhada para o Claude Code e skills/agentes de LLM reutilizáveis para o time de engenharia.",
-      "Funcionalidades de produto no backend e no frontend: workflows de automação de campanhas na Meta, um VSL Builder e agentes de IA que geram componentes de UI."
+      "Workflows da aplicação mais de 70% mais rápidos com refatoração, cache, deduplicação de jobs no BullMQ e workers dedicados.",
+      "Mais de 1.000 pull requests mergeados em cerca de seis meses entre infraestrutura, backend e frontend.",
+      "CI isolado da produção, feedback mais rápido nos PRs e cada mudança de pipeline documentada em ADR.",
+      "Observabilidade com SLOs e alertas ligados a runbooks e post-mortems.",
+      "Uma plataforma financeira interna em uso diário, além do motor de automação de campanhas e de uma API externa.",
+      "Uma base de conhecimento RAG compartilhada para o Claude Code e skills/agentes de LLM reutilizáveis para o time."
     ],
     "lessons": [
-      "Um monólito modular dá a um time pequeno a maior parte do isolamento dos microsserviços com uma fração do custo operacional.",
-      "Engenharia de plataforma se paga mais rápido quando está codificada em templates e pipelines, não em documentos."
+      "Um monólito modular dá a um time pequeno boa parte do isolamento dos microsserviços com uma fração do custo operacional.",
+      "Engenharia de plataforma dá retorno mais rápido quando vira template e pipeline, não documento.",
+      "Registrar cada decisão em um ADR foi o que permitiu mudar o CI três vezes sem perder o raciocínio."
     ],
-    "note": "Detalhes internos e de clientes são confidenciais; este estudo de caso cobre apenas o que consta publicamente no meu currículo."
+    "note": "Detalhes internos e de clientes são confidenciais. Este estudo de caso fica no nível do meu currículo: sem fornecedores, nomes internos nem detalhes de segurança.",
+    "chapters": [
+      {
+        "id": "platform",
+        "title": "Plataforma e confiabilidade",
+        "body": "A maior parte do meu trabalho foi abaixo do produto: deixar a plataforma mais barata de operar, mais segura de mudar e observável.",
+        "points": [
+          "CI/CD reconstruído em três fases — GitHub Actions → runners efêmeros self-hosted no Kubernetes → Jenkins standalone provisionado com Ansible e configurado como código — com o CI isolado da produção, prioridade por branch e só os testes afetados (com cobertura do diff) nos pull requests.",
+          "Workers separados em um deployment por fila, cada um com recursos e orçamento de conexões próprios, com autoscaling pela profundidade da fila via KEDA.",
+          "Um projeto de gestão de conexões do PostgreSQL: PgBouncer, orçamento de conexões por worker, limpeza de transações ociosas e ajuste de memória — além de backups externos automáticos e criptografados e acesso ao banco auditado e com privilégio mínimo para o time.",
+          "Observabilidade de ponta a ponta: traces do OpenTelemetry correlacionados aos logs (com um trace ID copiável na UI), Prometheus com Thanos, Loki, dashboards no Grafana, Grafana Faro para monitorar usuários reais, SLOs com alertas de burn rate em múltiplas janelas, runbooks e post-mortems.",
+          "Base de segurança: segredos fora dos repositórios, varredura de segredos e análise estática no CI e no pre-commit, SSO nas ferramentas internas e ingress endurecido."
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "Motor de automação de campanhas",
+        "body": "Os media buyers descrevem regras — quando as métricas de uma campanha passam de um limite, mude o orçamento ou o status — e a plataforma as executa de forma agendada.",
+        "points": [
+          "Um motor de regras com condições sobre vendas, gasto e checkout, ações de orçamento e status, agendamento por janela de horário e seleção manual ou automática de alvos.",
+          "A execução roda em workers dedicados; cada execução registra a versão da regra em vigor, o que aconteceu com cada alvo e por que nada aconteceu quando a regra foi pulada.",
+          "Uma API externa versionada com chaves por tenant, rate limit e contrato OpenAPI publicado, para outros sistemas lerem os mesmos dados."
+        ]
+      },
+      {
+        "id": "finance",
+        "title": "Plataforma financeira interna",
+        "body": "Um sistema interno que substituiu planilhas do time financeiro do grupo. Projetei e construí de ponta a ponta, backend e frontend. Os detalhes de segurança ficam propositalmente genéricos aqui.",
+        "points": [
+          "Ledger e ERP: sincronização de contas bancárias e de cartão por filas com progresso por conta, DRE multimoeda pela cotação do dia, importação e exportação CSV e pareamento automático de transferências internas.",
+          "Um motor de regras de categorização em que a regra mais específica vence e os conflitos aparecem antes de salvar, além de categorização em lote e sugestões.",
+          "Operações financeiras: comissões com fechamento mensal, folha de prestadores, invoices, previsão de impostos, bonificações, documentos contábeis, cadastro de parceiros e uma suíte de atividades.",
+          "Segurança em camadas: isolamento de tenant garantido pelo banco além da aplicação, dados sensíveis criptografados e mascarados com acesso auditado, trilha de auditoria à prova de adulteração, autenticação reforçada nas ações críticas, acessos com prazo, relatórios e alertas, e verificações de segurança no CI."
+        ]
+      }
+    ]
   },
   "rickos": {
     "title": "RickOS",

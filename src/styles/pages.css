@@ -906,3 +906,13 @@
     grid-row: 2;
   }
 }
+
+/* Case-study chapters: an intro sentence followed by a plain list. */
+.case__section--chapter .case__text + .case__list {
+  margin-top: var(--space-m);
+}
+.case__list--chapter li::before {
+  content: '→';
+  font-size: 0.9rem;
+  top: calc(var(--space-s) + 0.15em);
+}

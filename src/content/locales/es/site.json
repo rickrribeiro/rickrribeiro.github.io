@@ -1,5 +1,5 @@
 {
-  "role": "Ingeniero de Software Sénior",
+  "role": "Ingeniero de Software Sénior · Full-Stack y Plataforma",
   "location": "Bahía, Brasil · trabajo en remoto para todo el mundo",
   "hero": {
     "eyebrow": "Full-stack · sistemas distribuidos · ingeniería de IA",
@@ -14,13 +14,14 @@
     "years": "años entregando software en producción",
     "kafka": "mensajes de Kafka al día, plataforma de seguridad pública",
     "ai-cost": "coste de infraestructura de IA tras un rediseño con RAG",
-    "workflows": "flujos de la aplicación más rápidos en Wave"
+    "workflows": "flujos de la aplicación más rápidos en Wave",
+    "prs": "PRs integrados en 6 meses en Wave — producto y plataforma"
   },
   "availability": "Abierto a puestos de ingeniería sénior: remoto, híbrido o presencial.",
   "intro": {
     "title": "Ingeniero, arquitecto, constructor.",
     "paragraphs": [
-      "Diseño, construyo y escalo sistemas de software: backend y frontend, sistemas distribuidos, infraestructura cloud y, cada vez más, IA. He trabajado en plataformas de inteligencia policial, facturación de suscripciones para la mayor empresa de telecomunicaciones de Argentina, software de RR. HH. multi-tenant, plataformas CMS, realidad aumentada y monitorización ambiental.",
+      "Diseño, construyo y opero sistemas de software de punta a punta: desde las funcionalidades del producto hasta la plataforma que hay debajo (CI/CD, Kubernetes, observabilidad, bases de datos y seguridad) y, cada vez más, IA. He trabajado en plataformas de inteligencia policial, facturación de suscripciones para la mayor empresa de telecomunicaciones de Argentina, sistemas financieros internos, automatización de marketing, software de RR. HH. multi-tenant, plataformas CMS, realidad aumentada y monitorización ambiental.",
       "Soy licenciado en Ciencias de la Computación, tengo un MBA en Ingeniería de Software por la USP y actualmente curso un posgrado en Ingeniería de IA Aplicada centrado en agentes de IA y sistemas inteligentes.",
       "Donde más cómodo me siento es allí donde las decisiones de arquitectura y los problemas de escala necesitan respuestas pragmáticas. He vivido en varios países, lo que me ha hecho adaptable, claro al comunicar y cómodo en equipos remotos y multiculturales."
     ]

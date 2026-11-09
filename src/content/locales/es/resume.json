@@ -1,16 +1,21 @@
 {
   "experience": {
     "wave": {
-      "summary": "Infraestructura, ingeniería de plataforma y desarrollo full-stack de producto en una plataforma de automatización de marketing.",
+      "summary": "Responsable del producto y de la plataforma de un SaaS de automatización de marketing: infraestructura, CI/CD, observabilidad, una plataforma financiera interna y funcionalidades de producto.",
       "roles": {
         "senior": {
           "title": "Ingeniero de Software Sénior",
           "achievements": [
-            "Optimicé los flujos de la aplicación en más de un 70% mediante refactorización y caché, deduplicación de jobs en BullMQ y workers en segundo plano para los cuellos de botella intensivos en CPU.",
-            "Fui responsable del diseño, el deploy y el mantenimiento de la infraestructura cloud-native: Kubernetes, Docker, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana y Loki.",
-            "Lideré iniciativas de ingeniería de plataforma: estándares de repositorio, CI/CD con GitHub Actions, skills/agentes de LLM reutilizables, una base de conocimiento RAG compartida para Claude Code, tests automatizados y refuerzo de la seguridad.",
-            "Trabajé con un consultor externo de arquitectura de software para definir la nueva arquitectura de la plataforma y contribuí a la migración de microservicios a un monolito modular en React/NestJS.",
-            "Desarrollé funcionalidades de producto en NestJS y React, entre ellas flujos de automatización de campañas de Meta, un VSL Builder y agentes de IA que generan componentes de UI."
+            "Hice los flujos de la aplicación más de un 70% más rápidos mediante refactorización, caché, deduplicación de jobs en BullMQ y workers en segundo plano para el trabajo intensivo en CPU.",
+            "Entregué más de 1.000 pull requests integrados en unos seis meses, entre backend, frontend e infraestructura.",
+            "Fui responsable de la plataforma cloud-native —Kubernetes (k3s), Kustomize, Ansible, PostgreSQL, Redis, RabbitMQ y MinIO—, con los workers separados en un deployment por cola y autoescalado según la profundidad de la cola con KEDA.",
+            "Reconstruí el CI/CD en tres fases (GitHub Actions → runners efímeros self-hosted en Kubernetes → Jenkins independiente como código), aislando el CI de producción y ejecutando solo los tests afectados en los PRs con umbral de cobertura del diff; cada paso documentado en ADRs.",
+            "Lideré un proyecto de gestión de conexiones de PostgreSQL (PgBouncer, presupuesto de conexiones por worker, ajuste) e implanté backups externos cifrados y acceso a la base de datos auditado y con mínimo privilegio.",
+            "Construí el stack de observabilidad —tracing con OpenTelemetry del backend a la UI, Prometheus/Thanos, Loki, Grafana y Grafana Faro— con alertas de SLO por burn rate, runbooks, post-mortems y pruebas de carga.",
+            "Diseñé y construí de punta a punta una plataforma financiera interna —ledger y ERP, cuenta de resultados multimoneda, comisiones con cierre mensual, nóminas, facturas, previsión de impuestos y un motor de reglas de categorización— con seguridad en capas: aislamiento de tenants garantizado por la base de datos, datos sensibles cifrados y enmascarados con acceso auditado, un registro de auditoría a prueba de manipulaciones y autenticación reforzada (step-up).",
+            "Construí un motor de reglas de automatización de campañas (condiciones, acciones de presupuesto, programación, versionado de reglas, historial de ejecuciones) y una API externa versionada con claves por tenant y contrato OpenAPI publicado.",
+            "Lideré el refuerzo de la seguridad: gestión de secretos, escaneo de secretos y análisis estático en el CI, SSO en las herramientas internas.",
+            "Trabajé con un consultor externo de arquitectura en la migración de microservicios a un monolito modular en React/NestJS, y creé agentes/skills de LLM reutilizables y una base de conocimiento compartida para Claude Code."
           ]
         }
       }

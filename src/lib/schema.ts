@@ -351,6 +351,10 @@ export const projectTextSchema = z
     problem: z.string().optional(),
     approach: z.string().optional(),
     architecture: z.string().optional(),
+    /** Optional deep-dive sections shown after the architecture, one TOC entry each. */
+    chapters: z
+      .array(z.object({ id: z.string(), title: z.string(), body: z.string().optional(), points: textList.optional() }).strict())
+      .optional(),
     challenges: textList.optional(),
     outcomes: textList.optional(),
     lessons: textList.optional(),

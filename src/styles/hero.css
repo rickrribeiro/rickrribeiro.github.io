@@ -141,7 +141,7 @@
 
 .hero__stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--stats, 4), 1fr);
   margin: 0;
   border-top: var(--hairline);
   animation: rise-in var(--dur-4) var(--ease-out) 0.7s both;
@@ -231,9 +231,12 @@
   .hero__stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero__stat:nth-child(3) {
+  .hero__stat:nth-child(odd) {
     border-left: 0;
     padding-left: 0;
+  }
+  .hero__stat:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
   .hero__stat:nth-child(n + 3) {
     border-top: var(--hairline);

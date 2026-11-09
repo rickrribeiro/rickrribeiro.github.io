@@ -1,29 +1,68 @@
 {
   "wave-platform": {
     "title": "Wave Platform",
-    "tagline": "Rediseñando la arquitectura de una plataforma de automatización de marketing, y la nube sobre la que corre.",
-    "summary": "Ingeniero sénior en Group Wave Enterprise: responsable de la infraestructura cloud-native, lideré la ingeniería de plataforma y ayudé a migrar el producto de microservicios a un monolito modular.",
-    "role": "Ingeniero de Software Sénior · responsable de infraestructura",
-    "overview": "Group Wave Enterprise desarrolla productos de automatización de marketing. Me incorporé para trabajar en todo el stack —backend en NestJS, frontend en React y la infraestructura que hay debajo— en un momento en que la plataforma se estaba rediseñando.",
-    "problem": "El producto había crecido como un conjunto de microservicios caros de evolucionar y operar para el tamaño del equipo. Algunos flujos eran lentos, el trabajo intensivo en CPU competía con la atención de peticiones y no había estándares compartidos para repositorios, pipelines ni testing.",
-    "approach": "Junto a un consultor externo de arquitectura de software ayudé a definir la nueva arquitectura de la plataforma y contribuí a la migración a un monolito modular en React/NestJS. En paralelo diseñé, desplegué y mantuve la infraestructura cloud-native, y lideré el trabajo de ingeniería de plataforma para que todos los repositorios compartan la misma base de CI/CD, testing y seguridad.",
-    "architecture": "Vista simplificada. El monolito NestJS está dividido en módulos, delega el trabajo pesado a workers de BullMQ y corre en Kubernetes junto a PostgreSQL, Redis, RabbitMQ y MinIO, todo ello observado con Prometheus, Grafana y Loki.",
+    "tagline": "Un SaaS de automatización de marketing: el producto, la plataforma sobre la que corre y un sistema financiero interno.",
+    "summary": "Ingeniero sénior en Group Wave Enterprise, responsable del producto y de la plataforma: más de 1.000 PRs integrados en seis meses entre infraestructura, backend y frontend.",
+    "role": "Ingeniero de Software Sénior · responsable de producto y plataforma",
+    "overview": "Group Wave Enterprise crea productos de automatización de marketing. Entré para trabajar en todo el stack —backend en NestJS, frontend en React y la infraestructura de debajo— mientras se rediseñaba la plataforma, y terminé a cargo de tres áreas: la propia plataforma, el motor de automatización de campañas y un sistema financiero interno.",
+    "problem": "El producto había crecido como un conjunto de microservicios caro de evolucionar y operar para el tamaño del equipo. Algunos flujos eran lentos, el trabajo intensivo en CPU competía con la atención de peticiones, los builds compartían recursos con producción y no había estándares comunes de repositorios, pipelines, tests ni observabilidad.",
+    "approach": "Junto con un consultor externo de arquitectura de software ayudé a definir la nueva arquitectura y contribuí a la migración a un monolito modular en React/NestJS. En paralelo asumí la plataforma —Kubernetes, CI/CD, bases de datos, observabilidad y seguridad— y construí las áreas de producto que describo abajo, siempre con cambios pequeños y documentados (decisiones en ADRs, operación en runbooks).",
+    "architecture": "Vista simplificada. El monolito NestJS envía el trabajo pesado a workers —un deployment por cola, escalado según la profundidad de la cola con KEDA— y llega a PostgreSQL a través de PgBouncer. Redis, RabbitMQ y MinIO corren a su lado en Kubernetes; Jenkins compila y despliega; OpenTelemetry, Prometheus, Grafana y Loki lo observan todo.",
     "challenges": [
-      "Migrar de microservicios a un monolito modular sin dejar de entregar funcionalidades de producto.",
-      "Separar los jobs intensivos en CPU de la atención de peticiones sin duplicar trabajo, resuelto con workers en segundo plano y deduplicación de jobs en BullMQ.",
-      "Operar todo el stack (Kubernetes, Ansible, PostgreSQL, Redis, RabbitMQ, MinIO, Prometheus, Grafana, Loki) con un equipo pequeño."
+      "Migrar de microservicios a un monolito modular mientras se seguían entregando funcionalidades.",
+      "Separar los jobs intensivos en CPU de la atención de peticiones sin duplicar trabajo: resuelto con workers por cola, autoescalado y deduplicación de jobs en BullMQ.",
+      "Mantener bajo control las conexiones a la base de datos a medida que crecía el número de workers.",
+      "Construir un sistema financiero, donde un error de seguridad sale caro, sin frenar al equipo financiero."
     ],
     "outcomes": [
-      "Flujos de la aplicación más de un 70% más rápidos gracias a refactorización, caché, deduplicación de jobs en BullMQ y workers dedicados para los cuellos de botella intensivos en CPU.",
-      "Estándares de repositorio, CI/CD con GitHub Actions, tests automatizados y refuerzo de la seguridad en toda la plataforma.",
-      "Una base de conocimiento RAG compartida para Claude Code y skills/agentes de LLM reutilizables para el equipo de ingeniería.",
-      "Funcionalidades de producto en backend y frontend: flujos de automatización de campañas de Meta, un VSL Builder y agentes de IA que generan componentes de UI."
+      "Flujos de la aplicación más de un 70% más rápidos gracias a refactorización, caché, deduplicación de jobs en BullMQ y workers dedicados.",
+      "Más de 1.000 pull requests integrados en unos seis meses entre infraestructura, backend y frontend.",
+      "CI aislado de producción, feedback más rápido en los PRs y cada cambio de pipeline documentado en un ADR.",
+      "Observabilidad con SLOs y alertas vinculadas a runbooks y post-mortems.",
+      "Una plataforma financiera interna de uso diario, además del motor de automatización de campañas y una API externa.",
+      "Una base de conocimiento RAG compartida para Claude Code y skills/agentes de LLM reutilizables para el equipo."
     ],
     "lessons": [
-      "Un monolito modular le da a un equipo pequeño la mayor parte del aislamiento de los microservicios con una fracción del coste operativo.",
-      "La ingeniería de plataforma da frutos más rápido cuando queda plasmada en plantillas y pipelines, no en documentos."
+      "Un monolito modular da a un equipo pequeño gran parte del aislamiento de los microservicios con una fracción del coste operativo.",
+      "La ingeniería de plataforma rinde antes cuando se codifica en plantillas y pipelines, no en documentos.",
+      "Dejar cada decisión por escrito en un ADR es lo que permitió cambiar el CI tres veces sin perder el razonamiento."
     ],
-    "note": "Los detalles internos y de clientes son confidenciales; este caso de estudio solo cubre lo que figura públicamente en mi CV."
+    "note": "Los detalles internos y de clientes son confidenciales. Este caso de estudio se queda al nivel de mi CV: sin proveedores, nombres internos ni detalles de seguridad.",
+    "chapters": [
+      {
+        "id": "platform",
+        "title": "Plataforma y fiabilidad",
+        "body": "La mayor parte de mi trabajo estuvo por debajo del producto: hacer que la plataforma fuera más barata de operar, más segura de cambiar y observable.",
+        "points": [
+          "CI/CD reconstruido en tres fases —GitHub Actions → runners efímeros self-hosted en Kubernetes → Jenkins independiente aprovisionado con Ansible y configurado como código— con el CI aislado de producción, prioridad por rama y solo los tests afectados (con cobertura del diff) en los pull requests.",
+          "Workers separados en un deployment por cola, cada uno con sus propios recursos y presupuesto de conexiones, con autoescalado según la profundidad de la cola mediante KEDA.",
+          "Un proyecto de gestión de conexiones de PostgreSQL: PgBouncer, presupuesto de conexiones por worker, limpieza de transacciones inactivas y ajuste de memoria, además de backups externos automáticos y cifrados y acceso a la base de datos auditado y con mínimo privilegio para el equipo.",
+          "Observabilidad de punta a punta: trazas de OpenTelemetry correlacionadas con los logs (y un trace ID copiable en la UI), Prometheus con Thanos, Loki, dashboards en Grafana, Grafana Faro para monitorizar usuarios reales, SLOs con alertas de burn rate en varias ventanas, runbooks y post-mortems.",
+          "Base de seguridad: secretos fuera de los repositorios, escaneo de secretos y análisis estático en el CI y en pre-commit, SSO en las herramientas internas y un ingress reforzado."
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "Motor de automatización de campañas",
+        "body": "Los media buyers describen reglas —cuando las métricas de una campaña cruzan un umbral, cambia su presupuesto o su estado— y la plataforma las ejecuta de forma programada.",
+        "points": [
+          "Un motor de reglas con condiciones sobre ventas, gasto y checkout, acciones de presupuesto y estado, programación por franja horaria y selección manual o automática de objetivos.",
+          "La ejecución corre en workers dedicados; cada ejecución registra la versión de la regla vigente, qué pasó con cada objetivo y por qué no pasó nada cuando la regla se omitió.",
+          "Una API externa versionada con claves por tenant, límite de peticiones y contrato OpenAPI publicado, para que otros sistemas lean los mismos datos."
+        ]
+      },
+      {
+        "id": "finance",
+        "title": "Plataforma financiera interna",
+        "body": "Un sistema interno que sustituyó las hojas de cálculo del equipo financiero del grupo. Lo diseñé y construí de punta a punta, backend y frontend. Los detalles de seguridad se mantienen deliberadamente generales aquí.",
+        "points": [
+          "Ledger y ERP: sincronización de cuentas bancarias y de tarjetas mediante colas con progreso por cuenta, cuenta de resultados multimoneda al tipo de cambio del día, importación y exportación CSV y emparejamiento automático de transferencias internas.",
+          "Un motor de reglas de categorización en el que gana la regla más específica y los conflictos se muestran antes de guardar, además de categorización masiva y sugerencias.",
+          "Operaciones financieras: comisiones con cierre mensual, nómina de proveedores, facturas, previsión de impuestos, bonificaciones, documentos contables, un registro de socios y una suite de actividades.",
+          "Seguridad en capas: aislamiento de tenants garantizado por la base de datos además de la aplicación, datos sensibles cifrados y enmascarados con acceso auditado, un registro de auditoría a prueba de manipulaciones, autenticación reforzada en las acciones críticas, accesos con caducidad, informes y alertas, y controles de seguridad en el CI."
+        ]
+      }
+    ]
   },
   "rickos": {
     "title": "RickOS",
