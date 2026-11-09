@@ -288,9 +288,9 @@
       "km": "Kilometres",
       "nomadSince": "Nomad since"
     },
-    "legendHighlight": "Studied · spoke · lived",
+    "legendHighlight": "Studied · spoke",
     "legendTrip": "Every stop",
-    "highlights": "Where I studied, spoke & lived",
+    "highlights": "Where I studied & spoke",
     "countriesTitle": "Countries, by time spent",
     "countriesIntro": "Every country I've been to, ordered by how long I've stayed. Open one to see the cities and dates.",
     "passingThrough": "A few hours",
@@ -303,7 +303,8 @@
       "days_other": "{n} days",
       "weeks_one": "{n} week",
       "weeks_other": "{n} weeks"
-    }
+    },
+    "moreCountries": "+ {n} more countries"
   },
   "contact": {
     "kicker": "Contact",

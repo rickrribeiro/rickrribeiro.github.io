@@ -158,6 +158,13 @@ export function HomePage() {
                       <span className="label">{countryLabel(content, locale, c.country) ?? (c.days > 0 ? formatDays(c.days, t, tag) : '')}</span>
                     </li>
                   ))}
+                  {totals.countries > topCountries.length && (
+                    <li className="journey-teaser__more">
+                      <L to="/journey/" className="link-arrow">
+                        {t('journey.moreCountries', { n: totals.countries - topCountries.length })} <Icon name="arrow-right" size={14} />
+                      </L>
+                    </li>
+                  )}
                 </ol>
               </div>
               <L to="/journey/" className="link-arrow">

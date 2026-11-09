@@ -288,9 +288,9 @@
       "km": "Quilômetros",
       "nomadSince": "Nômade desde"
     },
-    "legendHighlight": "Estudei · palestrei · morei",
+    "legendHighlight": "Estudei · palestrei",
     "legendTrip": "Cada parada",
-    "highlights": "Onde estudei, palestrei e morei",
+    "highlights": "Onde estudei e palestrei",
     "countriesTitle": "Países, por tempo",
     "countriesIntro": "Todos os países por onde passei, ordenados por quanto tempo fiquei. Abra um para ver as cidades e datas.",
     "passingThrough": "Algumas horas",
@@ -303,7 +303,8 @@
       "days_other": "{n} dias",
       "weeks_one": "{n} semana",
       "weeks_other": "{n} semanas"
-    }
+    },
+    "moreCountries": "+ {n} outros países"
   },
   "contact": {
     "kicker": "Contato",

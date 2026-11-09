@@ -19,8 +19,7 @@
       "id": "cork",
       "enabled": true,
       "kinds": [
-        "studied",
-        "lived"
+        "studied"
       ],
       "city": "Cork",
       "country": "IE",
@@ -31,7 +30,7 @@
     },
     {
       "id": "argentina",
-      "enabled": true,
+      "enabled": false,
       "kinds": [
         "lived"
       ],
@@ -102,7 +101,8 @@
       "PT": 7,
       "US": 90,
       "SCT": 1,
-      "JP": 61
+      "JP": 61,
+      "IE": 213
     },
     "countryLabel": {
       "BR": {
