@@ -292,7 +292,7 @@
     "legendTrip": "Every stop",
     "highlights": "Where I studied & spoke",
     "countriesTitle": "Countries, by time spent",
-    "countriesIntro": "Every country I've been to, ordered by how long I've stayed. Open one to see the cities and dates.",
+    "countriesIntro": "Every country I've been to, ordered by how long I've stayed. Open one to see the cities and dates. (There are some cities missing)",
     "passingThrough": "A few hours",
     "cities_one": "{n} city",
     "cities_other": "{n} cities",
