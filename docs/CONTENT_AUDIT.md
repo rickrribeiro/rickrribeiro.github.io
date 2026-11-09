@@ -19,9 +19,8 @@ Where the PDF and LinkedIn disagreed, **LinkedIn (more recent) won**:
 
 ## ⚠ Please verify / complete
 
-1. **Résumé PDF is outdated.** It also includes your phone number. Replace
-   `public/resumes/ricardo-ribeiro-resume-en.pdf` with an updated, ATS-friendly version.
-   You can add `pt` and `es` PDFs in `site.json` → `resume`.
+1. ~~**Résumé PDF is outdated.**~~ Resolved 2026-11-09: replaced with the new version (no phone number).
+   PT and ES PDFs can still be added in `site.json` → `resume`.
 2. **Availability line is off.** LinkedIn "Open to work" is *recruiters-only*, so the site
    doesn't say you are looking. Set `site.json` → `availability.open: true` if you want it shown.
 3. **Wave Group website**: `https://groupwave.global` was inferred from your e-mail domain.
@@ -72,6 +71,6 @@ Rotate those credentials and purge them from git history.
 
 - Source: PR titles in the three Wave repositories (~861 merged PRs, May–Nov 2026). The user stated **1000+ PRs** in total, which is the figure shown in the hero and the résumé.
 - **Confidentiality rule for the internal financial platform:** describe *what* exists (domains, kinds of controls), never *how*. No vendors, internal names, table or role names, parameters (timeouts, limits, windows), MFA/crypto/permission mechanics, or vulnerabilities that were fixed.
-- New skills are dated `since: 2026`. **Jest** may go back further (Agile Content / Mindsight?). Confirm with the user.
+- New skills are dated `since: 2026`; the user confirmed Jest is 2026. Mocha and Chai date from 2019; no experience is linked yet.
 - Still open: the CI time before and after, and other impact numbers. Are the "Feat/financeiro dan" PRs someone else's work that the user only merged?
-- The résumé PDF on the site is still the old one. A new PDF was generated locally (CURRICULO_ATUALIZADO.pdf, gitignored) and is waiting for the user's approval.
+- Résumé PDF replaced on 2026-11-09 with the new version (no phone number). It is generated from CURRICULO_ATUALIZADO.md, which is gitignored.

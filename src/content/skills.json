@@ -9,7 +9,7 @@
     { "id": "cloud", "skills": ["aws", "lambda", "serverless-framework", "kubernetes", "docker", "terraform", "ansible", "github-actions", "travis-ci", "minio", "k3s", "kustomize", "keda", "jenkins"] },
     { "id": "observability", "skills": ["grafana", "prometheus", "loki", "cloudwatch", "opentelemetry", "thanos", "grafana-faro", "sre"] },
     { "id": "security", "skills": ["oauth-sso", "gitleaks", "semgrep"] },
-    { "id": "testing", "skills": ["automated-testing", "robot-framework", "vitest", "playwright", "jest", "load-testing"] },
+    { "id": "testing", "skills": ["automated-testing", "robot-framework", "vitest", "playwright", "jest", "mocha", "chai", "load-testing"] },
     { "id": "ai", "skills": ["llm-apps", "rag", "vector-databases", "ai-agents", "langchain", "claude-code", "prompt-engineering"] },
     { "id": "architecture", "skills": ["microservices", "serverless-architecture", "event-driven", "modular-monolith", "ddd", "design-patterns"] },
     { "id": "games", "skills": ["unity", "godot", "hololens", "vuforia"] },
@@ -117,6 +117,8 @@
     "gitleaks": { "name": "Gitleaks", "since": 2026 },
     "semgrep": { "name": "Semgrep", "since": 2026 },
     "jest": { "name": "Jest", "since": 2026 },
+    "mocha": { "name": "Mocha", "since": 2019 },
+    "chai": { "name": "Chai", "since": 2019 },
     "load-testing": { "name": "Load testing", "since": 2026 },
     "openapi": { "name": "OpenAPI", "since": 2026 }
   }
