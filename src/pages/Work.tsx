@@ -11,7 +11,12 @@ export function WorkPage() {
   return (
     <>
       <Seo title={t('work.title')} description={text.seo?.work ?? ''} />
-      <PageHeader kicker={t('work.kicker')} title={t('work.title')} intro={t('work.intro')} />
+      <PageHeader kicker={t('work.kicker')} title={
+          <>
+            {t('work.title')} <span className="page-header__note">{t('work.note')}</span>
+          </>
+        }
+        intro={t('work.intro')} />
       <section className="section section--tight container" aria-label={t('work.title')}>
         <ProjectIndex projects={[...featured, ...rest]} />
       </section>

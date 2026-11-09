@@ -146,6 +146,14 @@ kbd {
   letter-spacing: var(--tracking-display);
   font-weight: 650;
 }
+.page-header__note {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: var(--step-0);
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--text-muted);
+}
 .page-header__intro {
   margin-top: var(--space-m);
   max-width: 54ch;
