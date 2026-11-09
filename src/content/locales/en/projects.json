@@ -69,25 +69,66 @@
   "rickos": {
     "title": "RickOS",
     "tagline": "A local-first personal operating system with an AI layer built on Claude Code.",
-    "summary": "What started as a time tracker became a desktop + mobile command centre for time, tasks, learning, finances and projects — with AI features that run the local Claude Code CLI.",
+    "summary": "What started as a time tracker became a desktop + mobile command centre for time, tasks, habits, learning, finances and projects — with AI features that run the local Claude Code CLI.",
     "role": "Solo — design, architecture, development",
     "overview": "RickOS is the tool I use to run my own days. It began as a simple working-time tracker and grew, one module at a time, into a single panel: a timeline time tracker with Pomodoro, inbox/TODO/habits, a Learning OS (roadmaps, Markdown notes, AI-generated flashcards with SM-2 spaced repetition, quizzes and Obsidian export), finances, a flight-price monitor, GitHub-synced projects and a worktree health scanner.",
     "problem": "My work, study and personal planning lived in a dozen apps that didn't talk to each other, and none of them could use the AI tooling I already rely on every day.",
     "approach": "A headless Fastify server is the only owner of the database and exposes everything through a single RPC endpoint plus server-sent events. The Electron app and a PWA I use on my phone are just clients of that server. AI features shell out to the local Claude Code CLI, stream results live and can run in the background.",
     "architecture": "Both clients talk to one Fastify server over RPC + SSE. SQLite runs in WebAssembly (sql.js) with versioned migrations; secrets are encrypted with AES-256-GCM; remote access requires a token.",
+    "chapters": [
+      {
+        "id": "ai",
+        "title": "AI layer",
+        "points": [
+          "Prompt Runner: parallel tabs that combine an agent, a set of skills, a project and a prompt, run through the local Claude Code CLI with live streaming.",
+          "Brain dump: free text in, tasks, projects and calendar entries out.",
+          "AI-generated flashcards and quizzes in the Learning OS, and a daily briefing on the dashboard.",
+          "Token usage of every AI run is recorded per module and per project."
+        ]
+      },
+      {
+        "id": "modules",
+        "title": "Modules",
+        "points": [
+          "Time tracker: a continuous 24-hour timeline with draggable blocks, tags, Pomodoro, a monthly heatmap and an hour bank.",
+          "Organisation: inbox with a global capture shortcut, TODO with priorities and due dates, habits with monthly grids and insights, weekly review and a knowledge base.",
+          "Projects: GitHub issues on a Kanban board, and a scanner that flags local branches and worktrees that are at risk, forgotten, orphaned or safe to clean.",
+          "Finances, travel (flight-price monitoring) and links, all optional and configurable."
+        ]
+      },
+      {
+        "id": "engineering",
+        "title": "Engineering",
+        "points": [
+          "One RPC registry shared by the desktop and the web: the same handlers serve Electron and the phone.",
+          "A Playwright script captures every page at desktop and phone sizes in two visual skins, so UI changes are reviewed side by side.",
+          "Daily database snapshots and a one-file export and import."
+        ]
+      }
+    ],
     "challenges": [
       "Keeping one source of truth while serving a desktop app and a phone at the same time.",
-      "Running long AI jobs (prompt runner, brain-dump → tasks, flashcard generation) without blocking the UI.",
+      "Running long AI jobs (prompt runner, brain dump → tasks, flashcard generation) without blocking the UI.",
       "Integrating GitHub, multi-account Google Calendar OAuth, Pluggy Open Finance and Skyscanner behind one consistent interface."
     ],
     "outcomes": [
-      "Daily-driver tool with 169 commits and counting.",
+      "Daily-driver tool with 170+ commits and counting.",
+      "Runs as a desktop app and as an installable PWA from the same server and database.",
       "Automated Playwright screenshot suite that captures every page at desktop and phone sizes in two skins."
     ],
     "lessons": [
       "Local-first plus a thin server is a surprisingly powerful architecture for personal software.",
       "Treating an AI CLI as a subprocess you orchestrate is more flexible than embedding a single API call."
-    ]
+    ],
+    "note": "Screenshots use a separate demo database filled with fictional data.",
+    "captions": {
+      "dashboard": "Dashboard: active task, top tasks, habits and the brain-dump entry point",
+      "timeline": "Timeline time tracker",
+      "phone": "The same server as a PWA on the phone",
+      "habits": "Habits with monthly grid and insights",
+      "todo": "TODO with priorities, projects and due dates",
+      "runner": "Prompt Runner: agent + skills + project, run on the local Claude Code CLI"
+    }
   },
   "telecom-subscriptions": {
     "title": "Telecom Subscription Platform",
@@ -213,49 +254,119 @@
   },
   "trama-expedicoes": {
     "title": "Trama de Expedições",
-    "tagline": "A 3D mobile squad game prototype — built with an AI-agent-driven workflow.",
-    "summary": "Unity PvPvE squad game in active development: offline PvE, recruiting and fusing units, an authoritative-networking spike and bot-driven balancing.",
+    "tagline": "A 3D mobile squad game — client, match server and online services — built solo with AI agents.",
+    "summary": "Unity PvPvE squad game in active development: an authoritative match server for Linux, client-side prediction, matchmaking, accounts, clans, parties and an automated visual QA suite that captures every screen.",
     "role": "Solo — game design, engineering, tooling",
-    "overview": "Trama de Expedições is a personal game project and an experiment in building something large with AI agents as collaborators. It is honest about where it is: offline PvE, movement and local-network movement work; networked combat, PvP and a validated mobile build do not exist yet.",
-    "problem": "Can one person, working with AI agents, build the technical foundations of a multiplayer mobile game — networking, balancing, content pipeline — to a professional standard?",
-    "approach": "A Unity client sits on a shared .NET core library, with an authoritative match-host spike for networking and meta-services (chat, clans, economy, friends) covered by tests. Blender Python scripts generate LODs, portraits and UI icons. Project state, decisions and hand-offs are documented for agents in dedicated files.",
-    "architecture": "Prototype architecture: the Unity client talks to an authoritative match host; a shared .NET core keeps rules identical on both sides; bots drive automated balancing runs.",
+    "overview": "Trama de Expedições is a personal game project and an experiment in building something large with AI agents as collaborators. In about a month it went from a movement lab to online matches against a dedicated server, with a full set of menus, social features and a progression loop. It is honest about where it is: everything below is verified by automated scenarios, not yet by human playtests, and there is no validated mobile build.",
+    "problem": "Can one person, working with AI agents, build the technical foundations of a multiplayer mobile game — networking, online services, balancing, content pipeline and QA — to a professional standard?",
+    "approach": "A Unity client and a headless match server share one .NET core library, so the rules are identical on both sides. Online services (accounts, friends, clans, chat, parties, mail, ranking and economy) live in a separate .NET 8 service on PostgreSQL. Every change goes through an automated scenario runner and is documented for the agents: project state, a hand-off file, open items and nine ADRs.",
+    "architecture": "The Unity client talks to an authoritative match server over UDP and to the meta service for everything outside a match. The match server runs in Docker on Linux; a shared .NET core keeps rules identical on client and server; bots fill rooms and drive automated balancing runs.",
+    "chapters": [
+      {
+        "id": "networking",
+        "title": "Networking and matchmaking",
+        "points": [
+          "Dedicated, authoritative match server built for Linux and packaged in Docker (88 MB image).",
+          "Client-side prediction for the player's own squad: p95 position error of 0.4–0.5 m at 200–300 ms of latency.",
+          "Tested on a grid of 16 network conditions: responses arrive at the round-trip time plus about 85–130 ms, and packet loss only costs smoothness.",
+          "Rooms open on demand per game mode and close by themselves; a short queue fills empty seats with bots.",
+          "Parties: invite friends, ready up and join the same team; ranked play is solo only."
+        ]
+      },
+      {
+        "id": "services",
+        "title": "Online services",
+        "points": [
+          "A .NET 8 service on PostgreSQL for accounts, friends, clans with chat, parties, mail, ranking and economy.",
+          "Recoverable login with an emailed code; Google and Apple sign-in are written but not yet wired to real keys.",
+          "The match server checks every party key with the service, so a client cannot fake one."
+        ]
+      },
+      {
+        "id": "qa",
+        "title": "Automated visual QA",
+        "points": [
+          "A scenario runner drives the real game build and captures 31 screens at four aspect ratios, plus empty, loading, error and long-name states.",
+          "Screens are scored against the design mock-ups (SSIM with the 3D background masked) and checked by eye before and after each change.",
+          "A review of 242 visual issues became ten stacked pull requests, each with its own scenarios passing."
+        ]
+      },
+      {
+        "id": "art",
+        "title": "Art pipeline",
+        "points": [
+          "A \"toy board\" art standard documented in an ADR: calm ground, chunky pieces, only gameplay draws attention.",
+          "Map kits modelled by code in Blender with Python; the whole map is 341k triangles, against 1.78M for one quadrant of the previous version.",
+          "Measurable readability criteria checked by a script on every capture."
+        ]
+      }
+    ],
     "challenges": [
-      "Keeping game rules deterministic between client and host.",
-      "Balancing maps without a player base."
+      "Keeping game rules deterministic between client and server.",
+      "Making latency and packet loss invisible on a mobile-style game without a real network test yet.",
+      "Balancing maps without a player base.",
+      "Keeping dozens of UI screens consistent across aspect ratios and edge cases."
     ],
     "outcomes": [
+      "600+ commits and 190+ merged pull requests, most of them from AI-agent branches.",
       "72 bot matches per map kept each of 6 maps between 35% and 65% win rate.",
       "Stress test with 400 units at a p95 frame time of about 3.3–3.5 ms (headless, Mac).",
-      "Skeletal animation with LOD for 18 characters.",
-      "500+ commits, including 190+ pull requests from AI-agent branches."
+      "Skeletal animation with LOD for 18 characters."
     ],
     "lessons": [
-      "AI agents are productive when the project's state and decisions are written down for them."
+      "AI agents are productive when the project's state and decisions are written down for them.",
+      "Automated screenshots plus a human review loop scale far better than manual QA for UI."
     ],
-    "note": "Source is private while the game is in development."
+    "note": "Source is private while the game is in development. Screenshots come from the automated test runs of the development build.",
+    "captions": {
+      "match": "A match: the squad fighting fauna for gems",
+      "intro": "Match intro: map, modifier and the eight squads",
+      "lobby": "Match room on the dedicated server",
+      "character": "Character page with stars, modifiers and progression",
+      "bestiary": "Bestiary with per-creature goals",
+      "results": "Team results"
+    }
   },
   "smoketrack": {
     "title": "SmokeTrack",
     "tagline": "A private, offline quantified-self app to understand — and quit — smoking.",
-    "summary": "Log every cigarette with context, then see patterns: moving averages, hour × day heatmaps, longest gaps, triggers and mood. Runs as a PWA and as an iOS app.",
+    "summary": "Log every cigarette with context and mood, then see patterns: moving averages, hour × day heatmaps, intervals, longest gaps, triggers and period comparisons. Runs as a PWA and as an iOS app.",
     "role": "Solo — product, design, development",
-    "overview": "SmokeTrack is a small product with a personal purpose: help people (me first) notice the patterns behind their smoking. Everything stays on the device.",
+    "overview": "SmokeTrack is a small product with a personal purpose: help people (me first) notice the patterns behind their smoking. Everything stays on the device — no account, no backend.",
     "problem": "Quitting apps either nag or demand accounts. I wanted something private that turns a simple log into insight.",
-    "approach": "React + TypeScript + Vite, local-first storage, Recharts for analysis and a PWA plus a Capacitor iOS build. Additive JSON import/export with validation and data migration keeps data portable.",
+    "approach": "React + TypeScript + Vite with Tailwind, local-first storage, Recharts for analysis and a PWA plus a Capacitor iOS build. Additive JSON import/export with validation and data migration keeps data portable as the model evolves.",
+    "chapters": [
+      {
+        "id": "analysis",
+        "title": "What the analysis shows",
+        "points": [
+          "Daily, weekday and weekend averages, and a daily chart with a 7-day moving average.",
+          "Intervals between records (mean, median, p90) and the longest gap without smoking.",
+          "An hour × weekday heatmap and the most frequent triggers (activity × time of day) compared with the average.",
+          "Breakdowns by activity, type and mood, plus a comparison with the previous period.",
+          "A 365-day consumption calendar and a per-day timeline that ignore the filters.",
+          "Filters by period or calendar month, weekdays or weekends, totals or daily averages."
+        ]
+      }
+    ],
     "challenges": [
       "Making analysis useful with only a few data points a day.",
       "Evolving the data model safely on users' devices."
     ],
     "outcomes": [
       "Shipped as a PWA on GitHub Pages and packaged for iOS with Capacitor.",
-      "Analysis filters by period or month, weekday vs weekend, totals vs daily averages."
+      "Record editing, mood and notes added without breaking existing data, thanks to the migration layer.",
+      "Analytics covered by Vitest unit tests."
     ],
     "lessons": [
       "Privacy is a feature: no account means no friction to start."
     ],
+    "note": "Screenshots use generated sample data.",
     "captions": {
-      "log": "Logging screen (live demo, mobile)"
+      "log": "Logging screen with type, activity and mood",
+      "analysis": "Averages, daily trend and intervals",
+      "triggers": "Hour × day heatmap and most frequent triggers",
+      "comparison": "Comparison with the previous period"
     }
   },
   "clanmanager": {

@@ -248,7 +248,11 @@
         "github": "https://github.com/rickrribeiro/time-tracker"
       },
       "cover": {
-        "kind": "diagram"
+        "kind": "image",
+        "src": "/images/projects/rickos/dashboard.webp",
+        "width": 2000,
+        "height": 1250,
+        "frame": "browser"
       },
       "accent": "#8ED1FF",
       "diagram": {
@@ -320,7 +324,57 @@
             "to": "ext"
           }
         ]
-      }
+      },
+      "gallery": [
+        {
+          "src": "/images/projects/rickos/dashboard.webp",
+          "kind": "image",
+          "width": 2000,
+          "height": 1250,
+          "frame": "browser",
+          "caption": "dashboard"
+        },
+        {
+          "src": "/images/projects/rickos/timeline.webp",
+          "kind": "image",
+          "width": 2000,
+          "height": 1250,
+          "frame": "browser",
+          "caption": "timeline"
+        },
+        {
+          "src": "/images/projects/rickos/dashboard-phone.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "phone"
+        },
+        {
+          "src": "/images/projects/rickos/habits.webp",
+          "kind": "image",
+          "width": 2000,
+          "height": 1250,
+          "frame": "browser",
+          "caption": "habits"
+        },
+        {
+          "src": "/images/projects/rickos/todo.webp",
+          "kind": "image",
+          "width": 2000,
+          "height": 1250,
+          "frame": "browser",
+          "caption": "todo"
+        },
+        {
+          "src": "/images/projects/rickos/prompt-runner.webp",
+          "kind": "image",
+          "width": 2000,
+          "height": 1250,
+          "frame": "browser",
+          "caption": "runner"
+        }
+      ]
     },
     {
       "id": "telecom-subscriptions",
@@ -917,6 +971,8 @@
       "technologies": [
         "unity",
         "csharp",
+        "postgresql",
+        "docker",
         "python",
         "claude-code"
       ],
@@ -927,7 +983,11 @@
       "source": "private",
       "links": {},
       "cover": {
-        "kind": "diagram"
+        "kind": "image",
+        "src": "/images/projects/trama-expedicoes/home.webp",
+        "width": 1280,
+        "height": 720,
+        "frame": "none"
       },
       "accent": "#C792FF",
       "diagram": {
@@ -936,14 +996,7 @@
             "id": "client",
             "label": "Unity client",
             "kind": "client",
-            "x": 10,
-            "y": 30
-          },
-          {
-            "id": "host",
-            "label": "Authoritative match host",
-            "kind": "service",
-            "x": 42,
+            "x": 8,
             "y": 30
           },
           {
@@ -951,27 +1004,47 @@
             "label": "Shared .NET core",
             "kind": "service",
             "x": 42,
-            "y": 8
+            "y": 6
           },
           {
-            "id": "meta",
-            "label": "Meta services (chat, clans, economy)",
+            "id": "host",
+            "label": "Match server",
             "kind": "service",
-            "x": 76,
-            "y": 18
+            "x": 42,
+            "y": 30
           },
           {
             "id": "bots",
-            "label": "Bot balancing runs",
+            "label": "Bots · balancing",
             "kind": "ai",
-            "x": 76,
-            "y": 48
+            "x": 42,
+            "y": 54
+          },
+          {
+            "id": "meta",
+            "label": "Meta service",
+            "kind": "service",
+            "x": 80,
+            "y": 16
+          },
+          {
+            "id": "pg",
+            "label": "PostgreSQL",
+            "kind": "data",
+            "x": 80,
+            "y": 44
           }
         ],
         "edges": [
           {
             "from": "client",
-            "to": "host"
+            "to": "host",
+            "label": "UDP"
+          },
+          {
+            "from": "client",
+            "to": "meta",
+            "dashed": true
           },
           {
             "from": "core",
@@ -979,15 +1052,69 @@
             "dashed": true
           },
           {
+            "from": "bots",
+            "to": "host"
+          },
+          {
             "from": "host",
             "to": "meta"
           },
           {
-            "from": "bots",
-            "to": "host"
+            "from": "meta",
+            "to": "pg"
           }
         ]
-      }
+      },
+      "gallery": [
+        {
+          "src": "/images/projects/trama-expedicoes/match.webp",
+          "kind": "image",
+          "width": 1280,
+          "height": 720,
+          "frame": "none",
+          "caption": "match"
+        },
+        {
+          "src": "/images/projects/trama-expedicoes/match-intro.webp",
+          "kind": "image",
+          "width": 1280,
+          "height": 720,
+          "frame": "none",
+          "caption": "intro"
+        },
+        {
+          "src": "/images/projects/trama-expedicoes/lobby.webp",
+          "kind": "image",
+          "width": 1280,
+          "height": 720,
+          "frame": "none",
+          "caption": "lobby"
+        },
+        {
+          "src": "/images/projects/trama-expedicoes/character.webp",
+          "kind": "image",
+          "width": 1280,
+          "height": 720,
+          "frame": "none",
+          "caption": "character"
+        },
+        {
+          "src": "/images/projects/trama-expedicoes/bestiary.webp",
+          "kind": "image",
+          "width": 1672,
+          "height": 942,
+          "frame": "none",
+          "caption": "bestiary"
+        },
+        {
+          "src": "/images/projects/trama-expedicoes/results.webp",
+          "kind": "image",
+          "width": 1280,
+          "height": 720,
+          "frame": "none",
+          "caption": "results"
+        }
+      ]
     },
     {
       "id": "smoketrack",
@@ -1004,6 +1131,7 @@
         "react",
         "typescript",
         "vite",
+        "tailwind",
         "recharts",
         "pwa",
         "capacitor",
@@ -1020,7 +1148,7 @@
       },
       "cover": {
         "kind": "image",
-        "src": "/images/projects/smoketrack/app-mobile.webp",
+        "src": "/images/projects/smoketrack/register.webp",
         "width": 1170,
         "height": 2532,
         "frame": "phone"
@@ -1028,12 +1156,36 @@
       "accent": "#6E6BFF",
       "gallery": [
         {
-          "src": "/images/projects/smoketrack/app-mobile.webp",
+          "src": "/images/projects/smoketrack/register.webp",
           "kind": "image",
           "width": 1170,
           "height": 2532,
           "frame": "phone",
           "caption": "log"
+        },
+        {
+          "src": "/images/projects/smoketrack/analysis.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "analysis"
+        },
+        {
+          "src": "/images/projects/smoketrack/heatmap-triggers.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "triggers"
+        },
+        {
+          "src": "/images/projects/smoketrack/comparison.webp",
+          "kind": "image",
+          "width": 1170,
+          "height": 2532,
+          "frame": "phone",
+          "caption": "comparison"
         }
       ]
     },

@@ -69,25 +69,66 @@
   "rickos": {
     "title": "RickOS",
     "tagline": "Um sistema operacional pessoal local-first com uma camada de IA construída sobre o Claude Code.",
-    "summary": "O que começou como um controle de horas virou uma central de comando desktop + mobile para tempo, tarefas, estudos, finanças e projetos — com funcionalidades de IA que rodam a CLI local do Claude Code.",
+    "summary": "O que começou como um controle de horas virou uma central de comando desktop + mobile para tempo, tarefas, hábitos, estudos, finanças e projetos — com funcionalidades de IA que rodam a CLI local do Claude Code.",
     "role": "Solo — design, arquitetura, desenvolvimento",
-    "overview": "O RickOS é a ferramenta que uso para organizar meus dias. Começou como um simples controle de horas trabalhadas e cresceu, um módulo de cada vez, até virar um painel único: controle de tempo em timeline com Pomodoro, inbox/TODO/hábitos, um Learning OS (roadmaps, notas em Markdown, flashcards gerados por IA com repetição espaçada SM-2, quizzes e exportação para o Obsidian), finanças, um monitor de preços de passagens, projetos sincronizados com o GitHub e um scanner de saúde de worktrees.",
-    "problem": "Meu trabalho, meus estudos e meu planejamento pessoal viviam em uma dúzia de apps que não conversavam entre si, e nenhum deles conseguia usar as ferramentas de IA das quais já dependo todos os dias.",
-    "approach": "Um servidor Fastify headless é o único dono do banco de dados e expõe tudo por um único endpoint RPC mais server-sent events. O app Electron e uma PWA que uso no celular são apenas clientes desse servidor. As funcionalidades de IA chamam a CLI local do Claude Code, fazem streaming dos resultados ao vivo e podem rodar em background.",
-    "architecture": "Os dois clientes conversam com um único servidor Fastify via RPC + SSE. O SQLite roda em WebAssembly (sql.js) com migrations versionadas; os segredos são criptografados com AES-256-GCM; o acesso remoto exige um token.",
+    "overview": "O RickOS é a ferramenta que uso para organizar meus dias. Começou como um simples controle de horas trabalhadas e cresceu, um módulo de cada vez, até virar um painel único: controle de tempo em linha do tempo com Pomodoro, inbox/TODO/hábitos, um Learning OS (roadmaps, anotações em Markdown, flashcards gerados por IA com repetição espaçada SM-2, quizzes e exportação para o Obsidian), finanças, um monitor de preços de passagens, projetos sincronizados com o GitHub e um verificador da saúde das worktrees.",
+    "problem": "Meu trabalho, meus estudos e meu planejamento pessoal viviam em uma dúzia de apps que não conversavam entre si, e nenhum deles conseguia usar as ferramentas de IA que eu já uso todos os dias.",
+    "approach": "Um servidor Fastify headless é o único dono do banco e expõe tudo por um único endpoint RPC mais server-sent events. O app Electron e uma PWA que uso no celular são apenas clientes desse servidor. As funcionalidades de IA chamam a CLI local do Claude Code, transmitem os resultados ao vivo e podem rodar em segundo plano.",
+    "architecture": "Os dois clientes conversam com um único servidor Fastify via RPC + SSE. O SQLite roda em WebAssembly (sql.js) com migrações versionadas; os segredos são criptografados com AES-256-GCM; o acesso remoto exige um token.",
+    "chapters": [
+      {
+        "id": "ai",
+        "title": "Camada de IA",
+        "points": [
+          "Prompt Runner: abas paralelas que combinam um agente, um conjunto de skills, um projeto e um prompt, executados pela CLI local do Claude Code com streaming ao vivo.",
+          "Brain dump: texto livre entra, tarefas, projetos e eventos de agenda saem.",
+          "Flashcards e quizzes gerados por IA no Learning OS, e um briefing diário no dashboard.",
+          "O uso de tokens de cada execução de IA é registrado por módulo e por projeto."
+        ]
+      },
+      {
+        "id": "modules",
+        "title": "Módulos",
+        "points": [
+          "Controle de tempo: linha do tempo contínua de 24 horas com blocos arrastáveis, tags, Pomodoro, heatmap mensal e banco de horas.",
+          "Organização: inbox com atalho global de captura, TODO com prioridades e prazos, hábitos com grade mensal e insights, revisão semanal e base de conhecimento.",
+          "Projetos: issues do GitHub em Kanban e um verificador que aponta branches e worktrees locais em risco, esquecidas, órfãs ou prontas para limpar.",
+          "Finanças, viagens (monitor de preços de passagens) e links, todos opcionais e configuráveis."
+        ]
+      },
+      {
+        "id": "engineering",
+        "title": "Engenharia",
+        "points": [
+          "Um único registro de RPC compartilhado entre desktop e web: os mesmos handlers atendem o Electron e o celular.",
+          "Um script com Playwright captura todas as páginas em tamanho desktop e celular, nas duas skins visuais, para revisar mudanças de interface lado a lado.",
+          "Snapshots diários do banco e exportação e importação em um único arquivo."
+        ]
+      }
+    ],
     "challenges": [
       "Manter uma única fonte de verdade atendendo um app desktop e um celular ao mesmo tempo.",
-      "Rodar jobs longos de IA (executor de prompts, brain-dump → tarefas, geração de flashcards) sem travar a UI.",
-      "Integrar GitHub, OAuth do Google Calendar com múltiplas contas, Pluggy Open Finance e Skyscanner por trás de uma interface consistente."
+      "Rodar jobs longos de IA (prompt runner, brain dump → tarefas, geração de flashcards) sem travar a interface.",
+      "Integrar GitHub, OAuth multi-conta do Google Calendar, Pluggy Open Finance e Skyscanner atrás de uma interface consistente."
     ],
     "outcomes": [
-      "Ferramenta de uso diário com 169 commits e contando.",
-      "Suíte automatizada de screenshots com Playwright que captura todas as páginas em tamanhos de desktop e celular, em dois temas."
+      "Ferramenta de uso diário com mais de 170 commits, e contando.",
+      "Roda como app desktop e como PWA instalável, a partir do mesmo servidor e do mesmo banco.",
+      "Suíte automatizada de screenshots com Playwright que captura todas as páginas em tamanho desktop e celular, em duas skins."
     ],
     "lessons": [
       "Local-first com um servidor enxuto é uma arquitetura surpreendentemente poderosa para software pessoal.",
-      "Tratar uma CLI de IA como um subprocesso orquestrado é mais flexível do que embutir uma única chamada de API."
-    ]
+      "Tratar uma CLI de IA como um subprocesso que você orquestra é mais flexível do que embutir uma única chamada de API."
+    ],
+    "note": "As imagens usam um banco de demonstração separado, com dados fictícios.",
+    "captions": {
+      "dashboard": "Dashboard: tarefa ativa, top tarefas, hábitos e a entrada do brain dump",
+      "timeline": "Controle de tempo na linha do tempo",
+      "phone": "O mesmo servidor como PWA no celular",
+      "habits": "Hábitos com grade mensal e insights",
+      "todo": "TODO com prioridades, projetos e prazos",
+      "runner": "Prompt Runner: agente + skills + projeto, executado na CLI local do Claude Code"
+    }
   },
   "telecom-subscriptions": {
     "title": "Plataforma de Assinaturas de Telecom",
@@ -213,49 +254,119 @@
   },
   "trama-expedicoes": {
     "title": "Trama de Expedições",
-    "tagline": "Um protótipo de jogo mobile 3D de esquadrões — construído com um workflow guiado por agentes de IA.",
-    "summary": "Jogo de esquadrões PvPvE em Unity, em desenvolvimento ativo: PvE offline, recrutamento e fusão de unidades, um spike de networking autoritativo e balanceamento feito por bots.",
+    "tagline": "Um jogo mobile 3D de esquadrões — cliente, servidor de partida e serviços online — feito sozinho com agentes de IA.",
+    "summary": "Jogo de esquadrões PvPvE em Unity, em desenvolvimento ativo: servidor de partida autoritativo para Linux, predição no cliente, matchmaking, contas, clãs, equipes e uma suíte automatizada de QA visual que captura todas as telas.",
     "role": "Solo — game design, engenharia, ferramentas",
-    "overview": "Trama de Expedições é um projeto pessoal de jogo e um experimento de construir algo grande com agentes de IA como colaboradores. Ele é honesto sobre onde está: PvE offline, movimentação e movimentação em rede local funcionam; combate em rede, PvP e um build mobile validado ainda não existem.",
-    "problem": "Uma pessoa, trabalhando com agentes de IA, consegue construir as fundações técnicas de um jogo mobile multiplayer — networking, balanceamento, pipeline de conteúdo — com padrão profissional?",
-    "approach": "Um cliente Unity se apoia em uma biblioteca core compartilhada em .NET, com um spike de match host autoritativo para networking e meta-serviços (chat, clãs, economia, amigos) cobertos por testes. Scripts Python no Blender geram LODs, retratos e ícones de UI. O estado do projeto, as decisões e as passagens de bastão ficam documentados para os agentes em arquivos dedicados.",
-    "architecture": "Arquitetura de protótipo: o cliente Unity conversa com um match host autoritativo; um core compartilhado em .NET mantém as regras idênticas dos dois lados; bots conduzem rodadas automatizadas de balanceamento.",
+    "overview": "Trama de Expedições é um projeto pessoal de jogo e um experimento de construir algo grande com agentes de IA como colaboradores. Em cerca de um mês, saiu de um laboratório de movimentação para partidas online contra um servidor dedicado, com o conjunto completo de menus, recursos sociais e um ciclo de progressão. Ele é honesto sobre onde está: tudo abaixo é verificado por cenários automatizados, ainda não por playtests com pessoas, e não existe um build mobile validado.",
+    "problem": "Uma pessoa, trabalhando com agentes de IA, consegue construir as fundações técnicas de um jogo mobile multiplayer — networking, serviços online, balanceamento, pipeline de conteúdo e QA — com padrão profissional?",
+    "approach": "Um cliente Unity e um servidor de partida headless compartilham uma mesma biblioteca core em .NET, então as regras são idênticas dos dois lados. Os serviços online (contas, amigos, clãs, chat, equipes, correio, ranking e economia) ficam num serviço .NET 8 separado, sobre PostgreSQL. Toda mudança passa por um executor de cenários automatizado e é documentada para os agentes: estado do projeto, arquivo de passagem de bastão, pendências e nove ADRs.",
+    "architecture": "O cliente Unity conversa com um servidor de partida autoritativo via UDP e com o meta-serviço para tudo fora da partida. O servidor de partida roda em Docker no Linux; um core compartilhado em .NET mantém as regras idênticas no cliente e no servidor; bots completam as salas e conduzem rodadas automatizadas de balanceamento.",
+    "chapters": [
+      {
+        "id": "networking",
+        "title": "Networking e matchmaking",
+        "points": [
+          "Servidor de partida dedicado e autoritativo, compilado para Linux e empacotado em Docker (imagem de 88 MB).",
+          "Predição no cliente para o próprio esquadrão: erro de posição p95 de 0,4–0,5 m com 200–300 ms de latência.",
+          "Testado numa grade de 16 condições de rede: a resposta chega no tempo de ida e volta mais cerca de 85–130 ms, e a perda de pacotes só tira suavidade.",
+          "Salas abrem sob demanda por modo de jogo e fecham sozinhas; uma fila curta completa os assentos vazios com bots.",
+          "Equipes: convidar amigos, marcar pronto e entrar no mesmo time; a ranqueada é só solo."
+        ]
+      },
+      {
+        "id": "services",
+        "title": "Serviços online",
+        "points": [
+          "Um serviço .NET 8 sobre PostgreSQL para contas, amigos, clãs com chat, equipes, correio, ranking e economia.",
+          "Login recuperável com código por e-mail; o login com Google e Apple está escrito, mas ainda sem as chaves reais.",
+          "O servidor de partida confere no serviço a chave de cada equipe, então o cliente não consegue falsificá-la."
+        ]
+      },
+      {
+        "id": "qa",
+        "title": "QA visual automatizado",
+        "points": [
+          "Um executor de cenários dirige o build real do jogo e captura 31 telas em quatro proporções, além dos estados vazio, carregando, erro e nome longo.",
+          "As telas recebem nota contra as maquetes (SSIM com o fundo 3D mascarado) e são conferidas a olho antes e depois de cada mudança.",
+          "Uma revisão de 242 problemas visuais virou dez pull requests empilhadas, cada uma com seus cenários passando."
+        ]
+      },
+      {
+        "id": "art",
+        "title": "Pipeline de arte",
+        "points": [
+          "Um padrão de arte de \"tabuleiro de brinquedo\" documentado em ADR: chão calmo, peças gordas, só o que é jogo chama atenção.",
+          "Kits de mapa modelados por código no Blender com Python; o mapa inteiro tem 341 mil triângulos, contra 1,78 milhão em um único quadrante da versão anterior.",
+          "Critérios de legibilidade mensuráveis, conferidos por script em cada captura."
+        ]
+      }
+    ],
     "challenges": [
-      "Manter as regras do jogo determinísticas entre cliente e host.",
-      "Balancear mapas sem uma base de jogadores."
+      "Manter as regras do jogo determinísticas entre cliente e servidor.",
+      "Tornar a latência e a perda de pacotes invisíveis num jogo mobile, ainda sem um teste em rede real.",
+      "Balancear mapas sem uma base de jogadores.",
+      "Manter dezenas de telas consistentes em várias proporções e casos extremos."
     ],
     "outcomes": [
+      "Mais de 600 commits e mais de 190 pull requests mergeadas, a maioria vinda de branches de agentes de IA.",
       "72 partidas de bots por mapa mantiveram cada um dos 6 mapas entre 35% e 65% de taxa de vitória.",
       "Teste de estresse com 400 unidades a um frame time p95 de cerca de 3,3–3,5 ms (headless, Mac).",
-      "Animação esquelética com LOD para 18 personagens.",
-      "Mais de 500 commits, incluindo mais de 190 pull requests de branches de agentes de IA."
+      "Animação esquelética com LOD para 18 personagens."
     ],
     "lessons": [
-      "Agentes de IA são produtivos quando o estado e as decisões do projeto estão documentados para eles."
+      "Agentes de IA são produtivos quando o estado e as decisões do projeto estão escritos para eles.",
+      "Capturas automatizadas com um ciclo de revisão humana escalam muito melhor que QA manual de interface."
     ],
-    "note": "O código é privado enquanto o jogo está em desenvolvimento."
+    "note": "O código é privado enquanto o jogo está em desenvolvimento. As imagens vêm das execuções de teste automatizadas do build de desenvolvimento.",
+    "captions": {
+      "match": "Uma partida: o esquadrão enfrentando a fauna por gemas",
+      "intro": "Abertura da partida: mapa, modificador e os oito esquadrões",
+      "lobby": "Sala da partida no servidor dedicado",
+      "character": "Página do personagem com estrelas, modificadores e progressão",
+      "bestiary": "Bestiário com metas por criatura",
+      "results": "Resultados por equipe"
+    }
   },
   "smoketrack": {
     "title": "SmokeTrack",
     "tagline": "Um app de quantified self privado e offline para entender — e parar de — fumar.",
-    "summary": "Registre cada cigarro com contexto e veja os padrões: médias móveis, heatmaps de hora × dia, maiores intervalos, gatilhos e humor. Roda como PWA e como app iOS.",
+    "summary": "Registre cada cigarro com contexto e humor e veja os padrões: médias móveis, heatmaps de hora × dia, intervalos, maiores pausas, gatilhos e comparação entre períodos. Roda como PWA e como app iOS.",
     "role": "Solo — produto, design, desenvolvimento",
-    "overview": "O SmokeTrack é um produto pequeno com um propósito pessoal: ajudar as pessoas (eu primeiro) a perceber os padrões por trás do hábito de fumar. Tudo fica no dispositivo.",
+    "overview": "O SmokeTrack é um produto pequeno com um propósito pessoal: ajudar as pessoas (eu primeiro) a perceber os padrões por trás do hábito de fumar. Tudo fica no dispositivo — sem conta e sem backend.",
     "problem": "Apps para parar de fumar ou ficam te pressionando o tempo todo ou exigem conta. Eu queria algo privado que transformasse um simples registro em insights.",
-    "approach": "React + TypeScript + Vite, armazenamento local-first, Recharts para as análises e uma PWA mais um build iOS com Capacitor. Importação/exportação aditiva de JSON com validação e migração de dados mantém os dados portáveis.",
+    "approach": "React + TypeScript + Vite com Tailwind, armazenamento local-first, Recharts para as análises e uma PWA mais um build iOS com Capacitor. Importação/exportação aditiva de JSON com validação e migração de dados mantém os dados portáveis enquanto o modelo evolui.",
+    "chapters": [
+      {
+        "id": "analysis",
+        "title": "O que a análise mostra",
+        "points": [
+          "Médias diária, de dias úteis e de fim de semana, e um gráfico diário com média móvel de 7 dias.",
+          "Intervalos entre registros (média, mediana, p90) e a maior pausa sem fumar.",
+          "Um heatmap de hora × dia da semana e os gatilhos mais frequentes (atividade × período do dia) comparados com a média.",
+          "Quebras por atividade, tipo e humor, além da comparação com o período anterior.",
+          "Um calendário de consumo de 365 dias e uma linha do tempo por dia, que ignoram os filtros.",
+          "Filtros por período ou mês-calendário, dias úteis ou fins de semana, totais ou médias diárias."
+        ]
+      }
+    ],
     "challenges": [
       "Tornar a análise útil com poucos registros por dia.",
       "Evoluir o modelo de dados com segurança nos dispositivos dos usuários."
     ],
     "outcomes": [
       "Publicado como PWA no GitHub Pages e empacotado para iOS com Capacitor.",
-      "Filtros de análise por período ou mês, dias úteis vs. fim de semana, totais vs. médias diárias."
+      "Edição de registros, humor e notas adicionados sem quebrar os dados existentes, graças à camada de migração.",
+      "Análises cobertas por testes unitários com Vitest."
     ],
     "lessons": [
       "Privacidade é uma funcionalidade: sem conta, não há atrito para começar."
     ],
+    "note": "As imagens usam dados de exemplo gerados.",
     "captions": {
-      "log": "Tela de registro (demo ao vivo, mobile)"
+      "log": "Tela de registro com tipo, atividade e humor",
+      "analysis": "Médias, tendência diária e intervalos",
+      "triggers": "Heatmap de hora × dia e gatilhos mais frequentes",
+      "comparison": "Comparação com o período anterior"
     }
   },
   "clanmanager": {
