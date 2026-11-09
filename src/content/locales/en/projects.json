@@ -17,6 +17,7 @@
     "outcomes": [
       "Application workflows more than 70% faster through refactoring, caching, BullMQ job deduplication and dedicated workers.",
       "1,000+ merged pull requests in about six months across infrastructure, backend and frontend.",
+      "Backend PR pipeline 26% faster and a ~41% smaller backend image.",
       "CI isolated from production, faster feedback on PRs and every pipeline change documented as an ADR.",
       "Observability with SLOs and alerts that are tied to runbooks and post-mortems.",
       "An internal financial platform in daily use, plus a campaign-automation engine and an external API.",
@@ -34,11 +35,12 @@
         "title": "Platform & reliability",
         "body": "Most of my work happened below the product: making the platform cheaper to run, safer to change and observable.",
         "points": [
-          "CI/CD rebuilt in three phases — GitHub Actions → self-hosted ephemeral runners on Kubernetes → standalone Jenkins provisioned with Ansible and configured as code — with CI isolated from production, priority per branch and only the affected tests (with diff coverage) on pull requests.",
+          "CI/CD rebuilt in three phases — GitHub Actions → self-hosted ephemeral runners on Kubernetes → standalone Jenkins provisioned with Ansible and configured as code — with CI isolated from production, priority per branch and only the affected tests (with diff coverage) on pull requests. Profiling cut backend PR time by 26% (lint + tests 380 s → 244 s), the backend image by ~41% (2.5 GB → 1.5 GB) and one build step from ~285 s to ~5 s.",
           "Workers split into one deployment per queue, each with its own resources and connection budget, autoscaled on queue depth with KEDA.",
           "A PostgreSQL connection-management project: PgBouncer, per-worker connection budgets, cleanup of idle transactions and memory tuning — plus automated, encrypted off-site backups and audited, least-privilege database access for engineers.",
           "Observability end to end: OpenTelemetry traces correlated with logs (and a copyable trace ID in the UI), Prometheus with Thanos, Loki, Grafana dashboards, Grafana Faro for real-user monitoring, SLOs with multi-window burn-rate alerts, runbooks and post-mortems.",
-          "Security baseline: secrets out of the repositories, secret scanning and static analysis in CI and pre-commit, SSO for internal tools and a hardened ingress."
+          "Security baseline: secrets out of the repositories, secret scanning and static analysis in CI and pre-commit, SSO for internal tools and a hardened ingress.",
+          "Incident response and audits: root-cause analysis of production incidents (table bloat, disk I/O saturation — including a query-logging loop growing ~20 GB/h that competed with the database's write-ahead log — and a runaway budget automation), each turned into fixes, guardrails and alerts; plus a multi-tenant readiness audit with a GO/NO-GO assessment and a phased 13-sprint plan."
         ]
       },
       {
@@ -54,7 +56,7 @@
       {
         "id": "finance",
         "title": "Internal financial platform",
-        "body": "An internal system that replaced spreadsheets for the group's finance team. I designed and built it end to end, backend and frontend. Security details are deliberately kept general here.",
+        "body": "An internal system that replaced spreadsheets for the group's finance team. I led its design and built most of it, backend and frontend. Security details are deliberately kept general here.",
         "points": [
           "Ledger and ERP: bank and card-account sync through queues with per-account progress, multi-currency P&L at daily exchange rates, CSV import and export, and automatic matching of internal transfers.",
           "A categorization rules engine where the most specific rule wins and conflicts are shown before saving, plus bulk categorization and suggestions.",

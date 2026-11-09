@@ -17,6 +17,7 @@
     "outcomes": [
       "Workflows da aplicação mais de 70% mais rápidos com refatoração, cache, deduplicação de jobs no BullMQ e workers dedicados.",
       "Mais de 1.000 pull requests mergeados em cerca de seis meses entre infraestrutura, backend e frontend.",
+      "Pipeline de PR do backend 26% mais rápido e imagem do backend ~41% menor.",
       "CI isolado da produção, feedback mais rápido nos PRs e cada mudança de pipeline documentada em ADR.",
       "Observabilidade com SLOs e alertas ligados a runbooks e post-mortems.",
       "Uma plataforma financeira interna em uso diário, além do motor de automação de campanhas e de uma API externa.",
@@ -34,11 +35,12 @@
         "title": "Plataforma e confiabilidade",
         "body": "A maior parte do meu trabalho foi abaixo do produto: deixar a plataforma mais barata de operar, mais segura de mudar e observável.",
         "points": [
-          "CI/CD reconstruído em três fases — GitHub Actions → runners efêmeros self-hosted no Kubernetes → Jenkins standalone provisionado com Ansible e configurado como código — com o CI isolado da produção, prioridade por branch e só os testes afetados (com cobertura do diff) nos pull requests.",
+          "CI/CD reconstruído em três fases — GitHub Actions → runners efêmeros self-hosted no Kubernetes → Jenkins standalone provisionado com Ansible e configurado como código — com o CI isolado da produção, prioridade por branch e só os testes afetados (com cobertura do diff) nos pull requests. O profiling reduziu em 26% o tempo dos PRs do backend (lint + testes 380 s → 244 s), em ~41% a imagem do backend (2,5 GB → 1,5 GB) e uma etapa do build de ~285 s para ~5 s.",
           "Workers separados em um deployment por fila, cada um com recursos e orçamento de conexões próprios, com autoscaling pela profundidade da fila via KEDA.",
           "Um projeto de gestão de conexões do PostgreSQL: PgBouncer, orçamento de conexões por worker, limpeza de transações ociosas e ajuste de memória — além de backups externos automáticos e criptografados e acesso ao banco auditado e com privilégio mínimo para o time.",
           "Observabilidade de ponta a ponta: traces do OpenTelemetry correlacionados aos logs (com um trace ID copiável na UI), Prometheus com Thanos, Loki, dashboards no Grafana, Grafana Faro para monitorar usuários reais, SLOs com alertas de burn rate em múltiplas janelas, runbooks e post-mortems.",
-          "Base de segurança: segredos fora dos repositórios, varredura de segredos e análise estática no CI e no pre-commit, SSO nas ferramentas internas e ingress endurecido."
+          "Base de segurança: segredos fora dos repositórios, varredura de segredos e análise estática no CI e no pre-commit, SSO nas ferramentas internas e ingress endurecido.",
+          "Incidentes e auditorias: análise de causa raiz de incidentes em produção (bloat de tabelas, saturação de I/O de disco — incluindo um ciclo de log de queries que crescia ~20 GB/h e disputava o disco com o WAL do banco — e uma automação de orçamento descontrolada), cada um transformado em correções, travas e alertas; e uma auditoria de prontidão multi-tenant com parecer GO/NO-GO e um plano de 13 sprints."
         ]
       },
       {
@@ -54,7 +56,7 @@
       {
         "id": "finance",
         "title": "Plataforma financeira interna",
-        "body": "Um sistema interno que substituiu planilhas do time financeiro do grupo. Projetei e construí de ponta a ponta, backend e frontend. Os detalhes de segurança ficam propositalmente genéricos aqui.",
+        "body": "Um sistema interno que substituiu planilhas do time financeiro do grupo. Liderei o design e construí a maior parte, backend e frontend. Os detalhes de segurança ficam propositalmente genéricos aqui.",
         "points": [
           "Ledger e ERP: sincronização de contas bancárias e de cartão por filas com progresso por conta, DRE multimoeda pela cotação do dia, importação e exportação CSV e pareamento automático de transferências internas.",
           "Um motor de regras de categorização em que a regra mais específica vence e os conflitos aparecem antes de salvar, além de categorização em lote e sugestões.",

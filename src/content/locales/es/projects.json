@@ -17,6 +17,7 @@
     "outcomes": [
       "Flujos de la aplicación más de un 70% más rápidos gracias a refactorización, caché, deduplicación de jobs en BullMQ y workers dedicados.",
       "Más de 1.000 pull requests integrados en unos seis meses entre infraestructura, backend y frontend.",
+      "Pipeline de PRs del backend un 26% más rápido e imagen del backend ~41% más pequeña.",
       "CI aislado de producción, feedback más rápido en los PRs y cada cambio de pipeline documentado en un ADR.",
       "Observabilidad con SLOs y alertas vinculadas a runbooks y post-mortems.",
       "Una plataforma financiera interna de uso diario, además del motor de automatización de campañas y una API externa.",
@@ -34,11 +35,12 @@
         "title": "Plataforma y fiabilidad",
         "body": "La mayor parte de mi trabajo estuvo por debajo del producto: hacer que la plataforma fuera más barata de operar, más segura de cambiar y observable.",
         "points": [
-          "CI/CD reconstruido en tres fases —GitHub Actions → runners efímeros self-hosted en Kubernetes → Jenkins independiente aprovisionado con Ansible y configurado como código— con el CI aislado de producción, prioridad por rama y solo los tests afectados (con cobertura del diff) en los pull requests.",
+          "CI/CD reconstruido en tres fases —GitHub Actions → runners efímeros self-hosted en Kubernetes → Jenkins independiente aprovisionado con Ansible y configurado como código— con el CI aislado de producción, prioridad por rama y solo los tests afectados (con cobertura del diff) en los pull requests. El profiling redujo un 26% el tiempo de los PRs del backend (lint + tests 380 s → 244 s), un ~41% la imagen del backend (2,5 GB → 1,5 GB) y un paso del build de ~285 s a ~5 s.",
           "Workers separados en un deployment por cola, cada uno con sus propios recursos y presupuesto de conexiones, con autoescalado según la profundidad de la cola mediante KEDA.",
           "Un proyecto de gestión de conexiones de PostgreSQL: PgBouncer, presupuesto de conexiones por worker, limpieza de transacciones inactivas y ajuste de memoria, además de backups externos automáticos y cifrados y acceso a la base de datos auditado y con mínimo privilegio para el equipo.",
           "Observabilidad de punta a punta: trazas de OpenTelemetry correlacionadas con los logs (y un trace ID copiable en la UI), Prometheus con Thanos, Loki, dashboards en Grafana, Grafana Faro para monitorizar usuarios reales, SLOs con alertas de burn rate en varias ventanas, runbooks y post-mortems.",
-          "Base de seguridad: secretos fuera de los repositorios, escaneo de secretos y análisis estático en el CI y en pre-commit, SSO en las herramientas internas y un ingress reforzado."
+          "Base de seguridad: secretos fuera de los repositorios, escaneo de secretos y análisis estático en el CI y en pre-commit, SSO en las herramientas internas y un ingress reforzado.",
+          "Incidentes y auditorías: análisis de causa raíz de incidentes en producción (bloat de tablas, saturación de E/S de disco —incluido un bucle de logs de consultas que crecía ~20 GB/h y competía con el WAL de la base de datos— y una automatización de presupuesto descontrolada), cada uno convertido en correcciones, salvaguardas y alertas; además de una auditoría de preparación multi-tenant con dictamen GO/NO-GO y un plan de 13 sprints."
         ]
       },
       {
@@ -54,7 +56,7 @@
       {
         "id": "finance",
         "title": "Plataforma financiera interna",
-        "body": "Un sistema interno que sustituyó las hojas de cálculo del equipo financiero del grupo. Lo diseñé y construí de punta a punta, backend y frontend. Los detalles de seguridad se mantienen deliberadamente generales aquí.",
+        "body": "Un sistema interno que sustituyó las hojas de cálculo del equipo financiero del grupo. Lideré su diseño y construí la mayor parte, backend y frontend. Los detalles de seguridad se mantienen deliberadamente generales aquí.",
         "points": [
           "Ledger y ERP: sincronización de cuentas bancarias y de tarjetas mediante colas con progreso por cuenta, cuenta de resultados multimoneda al tipo de cambio del día, importación y exportación CSV y emparejamiento automático de transferencias internas.",
           "Un motor de reglas de categorización en el que gana la regla más específica y los conflictos se muestran antes de guardar, además de categorización masiva y sugerencias.",
