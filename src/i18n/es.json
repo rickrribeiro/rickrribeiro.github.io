@@ -89,6 +89,7 @@
     "stack": "Stack",
     "links": "Enlaces",
     "features": "Funcionalidades",
+    "origin": { "work": "Trabajo", "personal": "Personal" },
     "overview": "Resumen",
     "problem": "El problema",
     "approach": "Qué hice",

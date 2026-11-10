@@ -468,6 +468,26 @@
   letter-spacing: var(--tracking-tight);
   line-height: 1.1;
 }
+.origin-badge {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.12rem 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  line-height: 1.4;
+  vertical-align: 0.35em;
+  color: var(--text-muted);
+}
+.origin-badge--work {
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
 .pindex__tagline {
   font-size: var(--step--1);
   color: var(--text-muted);

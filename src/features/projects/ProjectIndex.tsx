@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSite } from '../../app/SiteContext';
 import type { Project } from '../../lib/schema';
-import { availableFilters, filterProjects, projectText, yearOf } from '../../lib/content';
+import { availableFilters, filterProjects, isWorkProject, projectText, yearOf } from '../../lib/content';
 import { projectPath } from '../../lib/routes';
 import { L } from '../../components/Links';
 import { Icon } from '../../components/Icon';
@@ -95,12 +95,16 @@ export function ProjectIndex({ projects, withFilters = true, startIndex = 1 }: {
         >
           {visible.map((p, i) => {
             const text = projectText(content, locale, p.id);
+            const origin = isWorkProject(p) ? 'work' : 'personal';
             return (
               <li key={p.id} className="pindex__row" onPointerEnter={() => setHovered(p.id)}>
                 <L to={projectPath(p.id)} className="pindex__link" onFocus={() => setHovered(null)}>
                   <span className="pindex__num mono">{String(i + startIndex).padStart(2, '0')}</span>
                   <span className="pindex__main">
-                    <span className="pindex__title">{text.title}</span>
+                    <span className="pindex__title">
+                      {text.title}
+                      <span className={`origin-badge origin-badge--${origin}`}>{t(`project.origin.${origin}`)}</span>
+                    </span>
                     {text.tagline && <span className="pindex__tagline">{text.tagline}</span>}
                   </span>
                   <span className="pindex__cats label">{p.categories.slice(0, 2).map((c) => t(`category.${c}`)).join(' · ')}</span>

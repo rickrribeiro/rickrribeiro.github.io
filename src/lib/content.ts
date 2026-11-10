@@ -193,11 +193,16 @@ export function labProjects(content: ParsedContent): Project[] {
   return visibleProjects(content).filter((p) => p.lab && !p.featured);
 }
 
+/** Done for an employer or client (professional, consulting) vs. on Ricardo's own (everything else). */
+export function isWorkProject(p: Project): boolean {
+  return p.type === 'professional' || p.type === 'consulting';
+}
+
 export function matchesFilter(p: Project, filter: string): boolean {
   if (filter === 'all') return true;
   if (filter === 'featured') return p.featured;
   if (filter === 'lab') return p.lab;
-  if (filter === 'professional') return p.type === 'professional' || p.type === 'consulting';
+  if (filter === 'professional') return isWorkProject(p);
   return p.type === filter || (p.categories as string[]).includes(filter);
 }
 
