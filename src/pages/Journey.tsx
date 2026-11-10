@@ -15,12 +15,13 @@ const Globe = lazy(() => import('../features/journey/Globe').then((m) => ({ defa
 const fmtCoord = (v: number, pos: string, neg: string) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? pos : neg}`;
 const highlightKinds: PlaceKind[] = ['studied', 'spoke', 'lived', 'home'];
 
-export function KindBadges({ kinds }: { kinds: PlaceKind[] }) {
+export function KindBadges({ kinds, current = false }: { kinds: PlaceKind[]; current?: boolean }) {
   const { t } = useSite();
   const shown = highlightKinds.filter((k) => kinds.includes(k));
-  if (!shown.length) return null;
+  if (!shown.length && !current) return null;
   return (
     <span className="kind-badges">
+      {current && <span className="kind-badge kind-badge--current">{t('journey.current')}</span>}
       {shown.map((k) => (
         <span key={k} className={`kind-badge kind-badge--${k}`}>
           {t(`journey.kind.${k}`)}
@@ -133,7 +134,7 @@ export function JourneyPage() {
                       <span className="country__rank mono">{String(i + 1).padStart(2, '0')}</span>
                       <span className="country__name">
                         {region(c.country)}
-                        <KindBadges kinds={c.kinds} />
+                        <KindBadges kinds={c.kinds} current={c.country === content.journey.overrides.currentCountry} />
                       </span>
                       <span className="country__bar" aria-hidden="true">
                         <span style={{ width: `${Math.max(2, (c.days / maxDays) * 100)}%` }} />

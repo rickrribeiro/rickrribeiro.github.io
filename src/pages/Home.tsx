@@ -154,7 +154,7 @@ export function HomePage() {
                   {topCountries.map((c) => (
                     <li key={c.country}>
                       <span className="mono">{c.country}</span> {region(c.country)}
-                      <KindBadges kinds={c.kinds} />
+                      <KindBadges kinds={c.kinds} current={c.country === content.journey.overrides.currentCountry} />
                       <span className="label">{countryLabel(content, locale, c.country) ?? (c.days > 0 ? formatDays(c.days, t, tag) : '')}</span>
                     </li>
                   ))}

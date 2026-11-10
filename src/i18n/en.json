@@ -278,6 +278,7 @@
       "spoke": "Spoke",
       "visited": "Visited"
     },
+    "current": "Current",
     "places": "Places",
     "months": "{n} months",
     "languagesTitle": "Languages I live in",

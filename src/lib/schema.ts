@@ -316,6 +316,8 @@ export const journeySchema = z.object({
       regions: z.record(z.string().regex(/^[A-Z]{2,3}$/), z.record(z.string(), z.string())).default({}),
       countryDays: z.record(z.string().regex(/^[A-Z]{2,3}$/), z.number().int().min(0)).default({}),
       countryLabel: z.record(z.string().regex(/^[A-Z]{2,3}$/), z.record(z.string(), z.string())).default({}),
+      /** Country (or region code) where Ricardo is right now — gets a "Current" badge. */
+      currentCountry: z.string().regex(/^[A-Z]{2,3}$/).optional(),
     })
     .default({ cityCountry: {}, regions: {}, countryDays: {}, countryLabel: {} }),
 });

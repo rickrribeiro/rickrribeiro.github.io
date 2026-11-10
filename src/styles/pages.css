@@ -766,6 +766,28 @@
   border-color: color-mix(in oklab, var(--signal) 50%, transparent);
   color: var(--signal);
 }
+.kind-badge--current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-color: color-mix(in oklab, var(--signal) 60%, transparent);
+  color: var(--signal);
+  background: color-mix(in oklab, var(--signal) 12%, transparent);
+}
+.kind-badge--current::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: current-pulse 2s ease-in-out infinite;
+}
+@keyframes current-pulse {
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kind-badge--current::before { animation: none; }
+}
 .place .kind-badges {
   margin-bottom: 0.2rem;
 }
