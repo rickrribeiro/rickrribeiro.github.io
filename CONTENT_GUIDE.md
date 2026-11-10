@@ -52,6 +52,7 @@ if something is invalid you get a precise error overlay (also `npm run validate`
   "tagline": "One line that makes people click.",
   "summary": "Two sentences for cards and link previews.",
   "role": "Solo — design and development",
+  "features": [{ "module": "⏱ Time tracker", "items": ["Feature one", "Feature two"] }],
   "overview": "…",
   "problem": "…",
   "approach": "…",
@@ -66,6 +67,8 @@ if something is invalid you get a precise error overlay (also `npm run validate`
 ```
 
 3. Optionally add the same keys to `locales/pt/projects.json` and `locales/es/projects.json`.
+
+`features` is optional: it becomes the first section of the case study, a tree with the project at the root, one branch per module and its features as leaves.
 
 The case-study page is generated at `/work/my-project/` (and `/pt/…`, `/es/…`).
 Sections without text are skipped, so a small project can have a short page.

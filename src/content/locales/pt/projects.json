@@ -71,6 +71,93 @@
     "tagline": "Um sistema operacional pessoal local-first com uma camada de IA construída sobre o Claude Code.",
     "summary": "O que começou como um controle de horas virou uma central de comando desktop + mobile para tempo, tarefas, hábitos, estudos, finanças e projetos — com funcionalidades de IA que rodam a CLI local do Claude Code.",
     "role": "Solo — design, arquitetura, desenvolvimento",
+    "features": [
+      {
+        "module": "🏠 Dashboard",
+        "items": [
+          "O dia num relance: tarefa ativa, principais tarefas, hábitos e horas da semana",
+          "Brain dump: escreva livremente e a IA transforma em tarefas, projetos e eventos na agenda",
+          "Briefing diário feito pela IA"
+        ]
+      },
+      {
+        "module": "⏱ Time tracker",
+        "items": [
+          "Timeline de 24 horas com blocos que se arrastam",
+          "Cronômetro da tarefa ativa e modo Pomodoro",
+          "Tags, calendário mensal com heatmap, estatísticas e banco de horas"
+        ]
+      },
+      {
+        "module": "🗂 Organização",
+        "items": [
+          "Inbox com atalho global de captura rápida",
+          "Lista de TODO com prioridade, prazo e projeto",
+          "Metas do mês",
+          "Hábitos com grade mensal e insights",
+          "Revisão semanal guiada, com a IA rascunhando cada etapa",
+          "Base de conhecimento"
+        ]
+      },
+      {
+        "module": "🎓 Estudos",
+        "items": [
+          "Tópicos com roadmap em árvore",
+          "Anotações em Markdown com pré-visualização",
+          "Flashcards escritos à mão ou gerados pela IA",
+          "Revisão espaçada SM-2 e quizzes automáticos",
+          "Exportação para Markdown, JSON ou pasta do Obsidian"
+        ]
+      },
+      {
+        "module": "💰 Finanças",
+        "items": [
+          "Contas e transações, importadas de CSV ou via Open Finance",
+          "Orçamento mensal",
+          "Investimentos com histórico mensal e gráfico de evolução",
+          "Relatórios e modo privacidade que esconde os valores"
+        ]
+      },
+      {
+        "module": "📁 Projetos",
+        "items": [
+          "Projetos sincronizados com o GitHub, com issues num quadro Kanban",
+          "Criação de issues descrevendo para o Claude",
+          "Scanner de branches e worktrees: em risco, esquecidas, órfãs ou prontas para limpar"
+        ]
+      },
+      {
+        "module": "✈️ Viagens",
+        "items": [
+          "Próximas viagens",
+          "Monitoramento de preço de passagens",
+          "Destinos, documentos e recomendações"
+        ]
+      },
+      {
+        "module": "🤖 IA",
+        "items": [
+          "Prompt Runner: abas paralelas que combinam agente, skills, projeto e prompt",
+          "Chat com assistente",
+          "Biblioteca de skills e agentes",
+          "Histórico de execuções com uso de tokens por módulo e projeto"
+        ]
+      },
+      {
+        "module": "⚡ Automações",
+        "items": [
+          "Alertas para: falta de foco produtivo, estouro de orçamento, branches esquecidas, flashcards acumulando"
+        ]
+      },
+      {
+        "module": "⚙️ Configurações",
+        "items": [
+          "Integrações: GitHub, Google Agenda (várias contas), Open Finance e preços de passagens",
+          "Links com tags",
+          "Backup e restauração completos do banco"
+        ]
+      }
+    ],
     "overview": "O RickOS é a ferramenta que uso para organizar meus dias. Começou como um simples controle de horas trabalhadas e cresceu, um módulo de cada vez, até virar um painel único: controle de tempo em linha do tempo com Pomodoro, inbox/TODO/hábitos, um Learning OS (roadmaps, anotações em Markdown, flashcards gerados por IA com repetição espaçada SM-2, quizzes e exportação para o Obsidian), finanças, um monitor de preços de passagens, projetos sincronizados com o GitHub e um verificador da saúde das worktrees.",
     "problem": "Meu trabalho, meus estudos e meu planejamento pessoal viviam em uma dúzia de apps que não conversavam entre si, e nenhum deles conseguia usar as ferramentas de IA que eu já uso todos os dias.",
     "approach": "Um servidor Fastify headless é o único dono do banco e expõe tudo por um único endpoint RPC mais server-sent events. O app Electron e uma PWA que uso no celular são apenas clientes desse servidor. As funcionalidades de IA chamam a CLI local do Claude Code, transmitem os resultados ao vivo e podem rodar em segundo plano.",

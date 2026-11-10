@@ -933,6 +933,67 @@
 .case__section--chapter .case__text + .case__list {
   margin-top: var(--space-m);
 }
+/* Feature tree: project root → modules → features, drawn with connector lines. */
+.feature-tree {
+  --tree-line: var(--line-strong);
+  --tree-x: 0.45rem;
+  --tree-tick: 0.75em;
+}
+.feature-tree ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.feature-tree__root {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--p-accent);
+}
+.feature-tree li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.5rem;
+}
+.feature-tree li::before,
+.feature-tree li::after {
+  content: '';
+  position: absolute;
+  left: var(--tree-x);
+}
+.feature-tree li::before {
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--tree-line);
+}
+.feature-tree li:last-child::before {
+  bottom: auto;
+  height: calc(0.2rem + var(--tree-tick));
+}
+.feature-tree li::after {
+  top: calc(0.2rem + var(--tree-tick));
+  width: 0.8rem;
+  border-top: 1px solid var(--tree-line);
+}
+.feature-tree__module {
+  padding-top: var(--space-xs) !important;
+}
+.feature-tree__module::after {
+  top: calc(var(--space-xs) + var(--tree-tick)) !important;
+}
+.feature-tree__module:last-child::before {
+  height: calc(var(--space-xs) + var(--tree-tick)) !important;
+}
+.feature-tree__name {
+  font-weight: 600;
+  font-size: var(--step-0);
+}
+.feature-tree__leaves {
+  margin-top: 0.15rem !important;
+}
+.feature-tree__leaves li {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
 .case__list--chapter li::before {
   content: '→';
   font-size: 0.9rem;

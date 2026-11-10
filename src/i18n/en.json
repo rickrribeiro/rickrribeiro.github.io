@@ -88,6 +88,7 @@
     "type": "Type",
     "stack": "Stack",
     "links": "Links",
+    "features": "Features",
     "overview": "Overview",
     "problem": "The problem",
     "approach": "What I did",

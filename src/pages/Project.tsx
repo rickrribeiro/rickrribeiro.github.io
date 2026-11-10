@@ -42,7 +42,9 @@ export function ProjectPage() {
   const showArchitecture = !!project.diagram;
   const chapters = text.chapters ?? [];
   const gallery = project.gallery;
+  const features = text.features ?? [];
   const toc = [
+    ...(features.length ? [{ id: 'features', title: t('project.features') }] : []),
     ...blocks.map((b) => ({ id: b.id, title: b.title })),
     ...(showArchitecture ? [{ id: 'architecture', title: t('project.architecture') }] : []),
     ...chapters.map((c) => ({ id: c.id, title: c.title })),
@@ -151,6 +153,30 @@ export function ProjectPage() {
 
         <div className="case__content">
           {text.note && <p className="case__note">{text.note}</p>}
+
+          {features.length > 0 && (
+            <Reveal as="section" className="case__section" aria-labelledby="h-features">
+              <h2 className="case__h" id="h-features">
+                <span id="features" className="case__anchor" />
+                {t('project.features')}
+              </h2>
+              <div className="feature-tree">
+                <p className="feature-tree__root mono">{text.title}</p>
+                <ul className="feature-tree__branches">
+                  {features.map((m) => (
+                    <li key={m.module} className="feature-tree__module">
+                      <span className="feature-tree__name">{m.module}</span>
+                      <ul className="feature-tree__leaves">
+                        {m.items.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          )}
 
           {blocks.map((b) => (
             <Reveal as="section" key={b.id} className="case__section" aria-labelledby={`h-${b.id}`}>
