@@ -62,7 +62,9 @@ describe('durations', () => {
     const t = createT(parsed(), 'en');
     const f = (d: number) => formatDays(d, t, 'en-US');
     expect(f(10)).toMatch(/10 days/);
-    expect(f(28)).toMatch(/4 weeks/);
+    expect(f(21)).toMatch(/3 weeks/);
+    expect(f(25)).toMatch(/^1 mo$/); // 4 weeks → 1 month
+    expect(f(28)).toMatch(/^1 mo$/);
     expect(f(35)).toMatch(/^1 mo$/); // 1.15 → 1
     expect(f(48)).toMatch(/^2 mos$/); // 1.58 → 2
     expect(f(55)).toMatch(/^2 mos$/);

@@ -374,7 +374,9 @@ export function formatDays(days: number, t: TFunction, tag: string): string {
     const months = Math.max(1, Math.floor(m) + (m - Math.floor(m) > 0.5 ? 1 : 0));
     return formatDuration(months, t, tag);
   }
-  if (days >= 14) return t(`journey.duration.weeks_${rule(Math.round(days / 7))}`, { n: Math.round(days / 7) });
+  const weeks = Math.round(days / 7);
+  if (weeks >= 4) return formatDuration(1, t, tag); // "4 weeks" reads better as a month
+  if (days >= 14) return t(`journey.duration.weeks_${rule(weeks)}`, { n: weeks });
   return t(`journey.duration.days_${rule(Math.max(1, days))}`, { n: Math.max(1, days) });
 }
 
